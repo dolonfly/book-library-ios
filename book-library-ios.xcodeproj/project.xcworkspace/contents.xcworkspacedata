@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:book-library-ios.xcodeproj">
+      location = "self:/Users/dll/data/workspace/book-library-ios/book-library-ios.xcodeproj">
    </FileRef>
 </Workspace>
