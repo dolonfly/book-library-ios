@@ -192,6 +192,7 @@
 		4E5E98971BA6F4D3002B3687 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = DLL;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = dll;
 				TargetAttributes = {
