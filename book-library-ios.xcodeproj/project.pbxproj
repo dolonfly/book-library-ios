@@ -98,14 +98,8 @@
 		4E5E98A11BA6F4D3002B3687 /* book-library-ios */ = {
 			isa = PBXGroup;
 			children = (
-				4E5E98A61BA6F4D3002B3687 /* AppDelegate.h */,
-				4E5E98A71BA6F4D3002B3687 /* AppDelegate.m */,
 				4E5E98AC1BA6F4D3002B3687 /* ViewController.h */,
 				4E5E98AD1BA6F4D3002B3687 /* ViewController.m */,
-				4E5E98AF1BA6F4D3002B3687 /* Main.storyboard */,
-				4E5E98B21BA6F4D3002B3687 /* Images.xcassets */,
-				4E5E98B41BA6F4D3002B3687 /* LaunchScreen.xib */,
-				4E5E98A91BA6F4D3002B3687 /* book_library_ios.xcdatamodeld */,
 				4E5E98A21BA6F4D3002B3687 /* Supporting Files */,
 			);
 			path = "book-library-ios";
@@ -114,6 +108,12 @@
 		4E5E98A21BA6F4D3002B3687 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4E5E98A91BA6F4D3002B3687 /* book_library_ios.xcdatamodeld */,
+				4E5E98AF1BA6F4D3002B3687 /* Main.storyboard */,
+				4E5E98B41BA6F4D3002B3687 /* LaunchScreen.xib */,
+				4E5E98B21BA6F4D3002B3687 /* Images.xcassets */,
+				4E5E98A61BA6F4D3002B3687 /* AppDelegate.h */,
+				4E5E98A71BA6F4D3002B3687 /* AppDelegate.m */,
 				4E5E98A31BA6F4D3002B3687 /* Info.plist */,
 				4E5E98A41BA6F4D3002B3687 /* main.m */,
 			);
