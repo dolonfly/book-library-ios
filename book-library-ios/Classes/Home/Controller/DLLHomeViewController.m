@@ -7,16 +7,105 @@
 //
 
 #import "DLLHomeViewController.h"
+#import "BLKFlexibleHeightBar.h"
+#import "SquareCashStyleBehaviorDefiner.h"
+#import "DLLBookInfoCollectionViewCell.h"
 
-@interface DLLHomeViewController ()
+@interface DLLHomeViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
+
+@property (nonatomic, strong) NSArray *books;
 
 @end
 
 @implementation DLLHomeViewController
 
+- (NSArray *)books
+{
+    if (!_books) {
+        NSMutableArray *books  = [NSMutableArray array];
+        
+        for (int i = 0; i < 50; i++) {
+            DLLBook *book1= [[DLLBook alloc] init];
+            book1.bookName = @"罗马帝国兴亡史";
+            book1.bookImage = @"http://img3.douban.com/mpic/s28142050.jpg";
+            
+            [books addObject:book1];
+            
+        }
+        _books = [NSArray arrayWithArray:books];
+    }
+    return _books;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self.navigationController setNavigationBarHidden:true];
+    
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    flowLayout.minimumInteritemSpacing = 0;
+    flowLayout.minimumLineSpacing = 5;
+    int width = self.view.bounds.size.width / 3-1;
+    flowLayout.itemSize = CGSizeMake(width, width);
+    
+    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
+    collectionView.dataSource = self;
+    collectionView.frame = self.view.bounds;
+    [collectionView registerClass:[DLLBookInfoCollectionViewCell class] forCellWithReuseIdentifier:@"bookInfoCell"];
+    collectionView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
+    [self.view addSubview:collectionView];
+    
+    
+    BLKFlexibleHeightBar *myBar = [[BLKFlexibleHeightBar alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 100.0)];
+    myBar.minimumBarHeight = 50.0;
+    
+    myBar.backgroundColor = [UIColor colorWithRed:0.86 green:0.25 blue:0.23 alpha:1];
+    [self.view addSubview:myBar];
+    
+    myBar.behaviorDefiner = [SquareCashStyleBehaviorDefiner new];
+    
+    [myBar.behaviorDefiner addSnappingPositionProgress:0.0 forProgressRangeStart:0.0 end:0.5];
+    [myBar.behaviorDefiner addSnappingPositionProgress:1.0 forProgressRangeStart:0.5 end:1.0];
+    
+    ((UIScrollView *)collectionView).delegate = (id<UITableViewDelegate>)myBar.behaviorDefiner;
+    
+    UISearchBar *searchBar = [[UISearchBar alloc] init];
+    [searchBar sizeToFit];
+    [myBar addSubview:searchBar];
+    
+    BLKFlexibleHeightBarSubviewLayoutAttributes *initialLayoutAttributes = [BLKFlexibleHeightBarSubviewLayoutAttributes new];
+    initialLayoutAttributes.size = searchBar.frame.size;
+    initialLayoutAttributes.center = CGPointMake(CGRectGetMidX(myBar.bounds), CGRectGetMidY(myBar.bounds)+10.0);
+    // This is what we want the bar to look like at its maximum height (progress == 0.0)
+    [searchBar addLayoutAttributes:initialLayoutAttributes forProgress:0.0];
+    
+    // Create a final set of layout attributes based on the same values as the initial layout attributes
+    BLKFlexibleHeightBarSubviewLayoutAttributes *finalLayoutAttributes = [[BLKFlexibleHeightBarSubviewLayoutAttributes alloc] initWithExistingLayoutAttributes:initialLayoutAttributes];
+    finalLayoutAttributes.alpha = 0.0;
+    CGAffineTransform translation = CGAffineTransformMakeTranslation(0.0, -30.0);
+    CGAffineTransform scale = CGAffineTransformMakeScale(0.2, 0.2);
+    finalLayoutAttributes.transform = CGAffineTransformConcat(scale, translation);
+    
+    // This is what we want the bar to look like at its minimum height (progress == 1.0)
+    [searchBar addLayoutAttributes:finalLayoutAttributes forProgress:1.0];
+    
+    
+    
+}
+
+#pragma mark - collectionView delegate
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.books.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    DLLBookInfoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"bookInfoCell" forIndexPath:indexPath];
+
+    cell.dllBook = self.books[indexPath.row];
+
+    return cell;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +113,22 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
+
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
+
 
 @end
+
+

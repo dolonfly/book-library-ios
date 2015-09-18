@@ -14,6 +14,8 @@
 		4E5E98B31BA6F4D3002B3687 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E5E98B21BA6F4D3002B3687 /* Images.xcassets */; };
 		4E5E98B61BA6F4D3002B3687 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E5E98B41BA6F4D3002B3687 /* LaunchScreen.xib */; };
 		4E5E98C21BA6F4D3002B3687 /* book_library_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5E98C11BA6F4D3002B3687 /* book_library_iosTests.m */; };
+		4E6D93261BABC81600A2B0A7 /* DLLBookInfoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E6D93241BABC81600A2B0A7 /* DLLBookInfoCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		4E6D932A1BABCDAB00A2B0A7 /* DLLBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E6D93291BABCDAB00A2B0A7 /* DLLBook.m */; settings = {ASSET_TAGS = (); }; };
 		4EA07C021BA97CFF00829E90 /* DLLHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA07C011BA97CFF00829E90 /* DLLHomeViewController.m */; };
 		4EA07C0B1BA9816A00829E90 /* DLLListPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA07C0A1BA9816A00829E90 /* DLLListPageViewController.m */; };
 		824DAAABC331CAD282B6536D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06442852704598A8C9E37C54 /* libPods.a */; };
@@ -43,6 +45,10 @@
 		4E5E98BB1BA6F4D3002B3687 /* book-library-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "book-library-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E5E98C01BA6F4D3002B3687 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E5E98C11BA6F4D3002B3687 /* book_library_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = book_library_iosTests.m; sourceTree = "<group>"; };
+		4E6D93231BABC81600A2B0A7 /* DLLBookInfoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLBookInfoCollectionViewCell.h; sourceTree = "<group>"; };
+		4E6D93241BABC81600A2B0A7 /* DLLBookInfoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLBookInfoCollectionViewCell.m; sourceTree = "<group>"; };
+		4E6D93281BABCDAB00A2B0A7 /* DLLBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLBook.h; sourceTree = "<group>"; };
+		4E6D93291BABCDAB00A2B0A7 /* DLLBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLBook.m; sourceTree = "<group>"; };
 		4EA07C001BA97CFF00829E90 /* DLLHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLHomeViewController.h; sourceTree = "<group>"; };
 		4EA07C011BA97CFF00829E90 /* DLLHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLHomeViewController.m; sourceTree = "<group>"; };
 		4EA07C091BA9816A00829E90 /* DLLListPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLListPageViewController.h; sourceTree = "<group>"; };
@@ -139,13 +145,52 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		4E6D931B1BABB5B700A2B0A7 /* commons */ = {
+			isa = PBXGroup;
+			children = (
+				4E6D931C1BABB5B700A2B0A7 /* Controller */,
+				4E6D931D1BABB5B700A2B0A7 /* Model */,
+				4E6D931E1BABB5B700A2B0A7 /* Other */,
+				4E6D931F1BABB5B700A2B0A7 /* View */,
+			);
+			path = commons;
+			sourceTree = "<group>";
+		};
+		4E6D931C1BABB5B700A2B0A7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4E6D931D1BABB5B700A2B0A7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4E6D931E1BABB5B700A2B0A7 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		4E6D931F1BABB5B700A2B0A7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		4EA07BE81BA9741400829E90 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4E6D931B1BABB5B700A2B0A7 /* commons */,
 				4EA07C041BA9813100829E90 /* list */,
 				4EA07BE91BA9741400829E90 /* Disc(发现) */,
 				4EA07BEE1BA9741400829E90 /* Home */,
-				4EA07BF31BA9741400829E90 /* My */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -213,6 +258,8 @@
 		4EA07BF01BA9741400829E90 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4E6D93281BABCDAB00A2B0A7 /* DLLBook.h */,
+				4E6D93291BABCDAB00A2B0A7 /* DLLBook.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -227,45 +274,8 @@
 		4EA07BF21BA9741400829E90 /* View */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		4EA07BF31BA9741400829E90 /* My */ = {
-			isa = PBXGroup;
-			children = (
-				4EA07BF41BA9741400829E90 /* Controller */,
-				4EA07BF51BA9741400829E90 /* Model */,
-				4EA07BF61BA9741400829E90 /* Other */,
-				4EA07BF71BA9741400829E90 /* View */,
-			);
-			path = My;
-			sourceTree = "<group>";
-		};
-		4EA07BF41BA9741400829E90 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		4EA07BF51BA9741400829E90 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		4EA07BF61BA9741400829E90 /* Other */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Other;
-			sourceTree = "<group>";
-		};
-		4EA07BF71BA9741400829E90 /* View */ = {
-			isa = PBXGroup;
-			children = (
+				4E6D93231BABC81600A2B0A7 /* DLLBookInfoCollectionViewCell.h */,
+				4E6D93241BABC81600A2B0A7 /* DLLBookInfoCollectionViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -458,8 +468,10 @@
 			files = (
 				4EA07C0B1BA9816A00829E90 /* DLLListPageViewController.m in Sources */,
 				4E5E98A81BA6F4D3002B3687 /* AppDelegate.m in Sources */,
+				4E6D932A1BABCDAB00A2B0A7 /* DLLBook.m in Sources */,
 				4E5E98AB1BA6F4D3002B3687 /* book_library_ios.xcdatamodeld in Sources */,
 				4EA07C021BA97CFF00829E90 /* DLLHomeViewController.m in Sources */,
+				4E6D93261BABC81600A2B0A7 /* DLLBookInfoCollectionViewCell.m in Sources */,
 				4E5E98A51BA6F4D3002B3687 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
