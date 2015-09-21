@@ -41,7 +41,7 @@
     
     self.imgView.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height-20);
     self.label.frame = CGRectMake(0, self.bounds.size.height-15, self.bounds.size.width, 10);
-    self.label.textColor = [UIColor whiteColor];
+    self.label.textColor = [UIColor grayColor];
 }
 
 -(void)setDllBook:(DLLBook *)dllBook

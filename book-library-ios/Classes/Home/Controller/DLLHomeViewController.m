@@ -53,6 +53,7 @@
     collectionView.frame = self.view.bounds;
     [collectionView registerClass:[DLLBookInfoCollectionViewCell class] forCellWithReuseIdentifier:@"bookInfoCell"];
     collectionView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
+    collectionView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:collectionView];
     
     
