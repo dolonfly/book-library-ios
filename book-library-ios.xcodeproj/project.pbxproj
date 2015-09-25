@@ -16,6 +16,7 @@
 		4E5E98C21BA6F4D3002B3687 /* book_library_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5E98C11BA6F4D3002B3687 /* book_library_iosTests.m */; };
 		4E6D93261BABC81600A2B0A7 /* DLLBookInfoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E6D93241BABC81600A2B0A7 /* DLLBookInfoCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		4E6D932A1BABCDAB00A2B0A7 /* DLLBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E6D93291BABCDAB00A2B0A7 /* DLLBook.m */; settings = {ASSET_TAGS = (); }; };
+		4E7B23FA1BB3F13E00A42E62 /* TTHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B23F91BB3F13E00A42E62 /* TTHttpTool.m */; settings = {ASSET_TAGS = (); }; };
 		4EA07C021BA97CFF00829E90 /* DLLHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA07C011BA97CFF00829E90 /* DLLHomeViewController.m */; };
 		4EA07C0B1BA9816A00829E90 /* DLLListPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA07C0A1BA9816A00829E90 /* DLLListPageViewController.m */; };
 		824DAAABC331CAD282B6536D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06442852704598A8C9E37C54 /* libPods.a */; };
@@ -49,6 +50,8 @@
 		4E6D93241BABC81600A2B0A7 /* DLLBookInfoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLBookInfoCollectionViewCell.m; sourceTree = "<group>"; };
 		4E6D93281BABCDAB00A2B0A7 /* DLLBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLBook.h; sourceTree = "<group>"; };
 		4E6D93291BABCDAB00A2B0A7 /* DLLBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLBook.m; sourceTree = "<group>"; };
+		4E7B23F81BB3F13E00A42E62 /* TTHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTHttpTool.h; sourceTree = "<group>"; };
+		4E7B23F91BB3F13E00A42E62 /* TTHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTHttpTool.m; sourceTree = "<group>"; };
 		4EA07C001BA97CFF00829E90 /* DLLHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLHomeViewController.h; sourceTree = "<group>"; };
 		4EA07C011BA97CFF00829E90 /* DLLHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLHomeViewController.m; sourceTree = "<group>"; };
 		4EA07C091BA9816A00829E90 /* DLLListPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLListPageViewController.h; sourceTree = "<group>"; };
@@ -148,40 +151,18 @@
 		4E6D931B1BABB5B700A2B0A7 /* commons */ = {
 			isa = PBXGroup;
 			children = (
-				4E6D931C1BABB5B700A2B0A7 /* Controller */,
-				4E6D931D1BABB5B700A2B0A7 /* Model */,
-				4E6D931E1BABB5B700A2B0A7 /* Other */,
-				4E6D931F1BABB5B700A2B0A7 /* View */,
+				4E7B23F71BB3F11F00A42E62 /* tool */,
 			);
 			path = commons;
 			sourceTree = "<group>";
 		};
-		4E6D931C1BABB5B700A2B0A7 /* Controller */ = {
+		4E7B23F71BB3F11F00A42E62 /* tool */ = {
 			isa = PBXGroup;
 			children = (
+				4E7B23F81BB3F13E00A42E62 /* TTHttpTool.h */,
+				4E7B23F91BB3F13E00A42E62 /* TTHttpTool.m */,
 			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		4E6D931D1BABB5B700A2B0A7 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		4E6D931E1BABB5B700A2B0A7 /* Other */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Other;
-			sourceTree = "<group>";
-		};
-		4E6D931F1BABB5B700A2B0A7 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
+			path = tool;
 			sourceTree = "<group>";
 		};
 		4EA07BE81BA9741400829E90 /* Classes */ = {
@@ -471,6 +452,7 @@
 				4E6D932A1BABCDAB00A2B0A7 /* DLLBook.m in Sources */,
 				4E5E98AB1BA6F4D3002B3687 /* book_library_ios.xcdatamodeld in Sources */,
 				4EA07C021BA97CFF00829E90 /* DLLHomeViewController.m in Sources */,
+				4E7B23FA1BB3F13E00A42E62 /* TTHttpTool.m in Sources */,
 				4E6D93261BABC81600A2B0A7 /* DLLBookInfoCollectionViewCell.m in Sources */,
 				4E5E98A51BA6F4D3002B3687 /* main.m in Sources */,
 			);
