@@ -7,7 +7,7 @@
 //
 
 #import "DLLBookInfoCollectionViewCell.h"
-#import "SDWebImage/UIImageView+WebCache.h"
+#import <UIImageView+WebCache.h>
 
 @interface DLLBookInfoCollectionViewCell ()
 

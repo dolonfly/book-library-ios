@@ -7,15 +7,15 @@
 //
 
 #import "DLLBookDetailView.h"
-#import "SDWebImage/UIImageView+WebCache.h"
+#import <UIImageView+WebCache.h>
 
 
-@interface DLLBookDetailView()
+@interface DLLBookDetailView ()
 
 @property (nonatomic, weak) UIImageView *imgView;
 @property (nonatomic, weak) UILabel *nameLabel;
 @property (nonatomic, weak) UILabel *authorLabel;
-@property (nonatomic,weak) UILabel *publisherLabel;
+@property (nonatomic, weak) UILabel *publisherLabel;
 
 @end
 
@@ -55,7 +55,12 @@
     return self;
 }
 
--(void)setDllBook:(DLLBook *)dllBook
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+}
+
+- (void)setDllBook:(DLLBook *)dllBook
 {
     _dllBook = dllBook;
     
