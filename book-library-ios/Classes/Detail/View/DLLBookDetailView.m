@@ -8,9 +8,10 @@
 
 #import "DLLBookDetailView.h"
 #import <UIImageView+WebCache.h>
+#import <SDWebImageManager.h>
 
 
-@interface DLLBookDetailView ()
+@interface DLLBookDetailView () <SDWebImageManagerDelegate>
 
 @property (nonatomic, weak) UIImageView *imgView;
 @property (nonatomic, weak) UILabel *nameLabel;
@@ -36,7 +37,6 @@
     self = [super initWithFrame:frame];
     if (self) {
     
-        
         UIImageView *imageView = [[UIImageView alloc] init];
         imageView.backgroundColor = [UIColor grayColor];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -71,21 +71,70 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    self.backgroundColor = [UIColor yellowColor];
+   
     
+    float y = 200;
+    float divsion = 10;
+    float fatherFrameWidth = self.frame.size.width;
+    // set frame
+    
+    
+    
+    
+    y = divsion + self.imgView.frame.origin.y + self.imgView.frame.size.height;
+    
+    self.nameLabel.frame = CGRectMake(0, y, fatherFrameWidth, 20);
+    self.nameLabel.contentMode = UIViewContentModeCenter;
+    [self.nameLabel setTextAlignment:NSTextAlignmentCenter];
+    
+    
+    NSLog(@"image frame yyyy:%f",self.imgView.image.size.height);
+    NSLog(@"image view h:%f",y);
     
 }
+
 
 - (void)setDllBook:(DLLBook *)dllBook
 {
     _dllBook = dllBook;
-    
-    [self.imgView sd_setImageWithURL:[NSURL URLWithString:dllBook.bookImage] placeholderImage:nil];
+    SDWebImageManager* imageManager = [SDWebImageManager sharedManager];
+    imageManager.delegate = self;
+    [imageManager downloadImageWithURL:[NSURL URLWithString:dllBook.bookImage] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        //this is progress ,only special options can support
+        
+    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        if (finished) {
+            self.imgView.image = image;
+            
+            float imageHeigth = self.imgView.image.size.height;
+            float imageWidth = self.imgView.image.size.width;
+            float needWidth = self.frame.size.width/2;
+            float needHeight = needWidth * imageHeigth / imageWidth;
+            float needX = (self.frame.size.width - needWidth) / 2;
+            // 1. 用一个临时变量保存返回值。
+            CGRect temp = self.imgView.frame;
+            // 2. 给这个变量赋值。因为变量都是L-Value，可以被赋值
+            temp.size.height = needHeight;
+            temp.size.width = needWidth;
+            temp.origin.x = needX;
+            //    temp.origin.y = y;
+            // 3. 修改frame的值
+            self.imgView.frame = temp;
+        }else{
+            NSLog(@"download image err");
+        }
+    }];
+//    [self.imgView sd_setImageWithURL:[NSURL URLWithString:dllBook.bookImage] placeholderImage:nil];
     
     self.nameLabel.text = dllBook.bookName;
-    self.authorLabel.text = dllBook.author;
+    self.authorLabel.text = [dllBook.authors componentsJoinedByString:@","];
     self.publisherLabel.text = dllBook.publisher;
     
 }
+
+
+
 
 
 

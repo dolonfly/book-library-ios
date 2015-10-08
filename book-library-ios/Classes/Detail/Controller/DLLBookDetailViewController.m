@@ -8,8 +8,12 @@
 
 #import "DLLBookDetailViewController.h"
 #import "DLLBookDetailView.h"
+#import "TTHttpTool.h"
+#import <MJExtension.h>
 
 @interface DLLBookDetailViewController ()
+
+- (void)requestBookById:(NSString *)bookId;
 
 @end
 
@@ -19,9 +23,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    DLLBookDetailView *bookDetailView = [[DLLBookDetailView alloc] init];
-    bookDetailView.frame = self.view.bounds;
-    [self.view addSubview:bookDetailView];
+    [self requestBookById:self.bookId];
+    
+    
 
 }
 
@@ -34,6 +38,36 @@
 
 - (void)requestBookById:(NSString *)bookId{
     //请求网络，获取对应图书Id的图书信息，并转换为Book对象
+    NSLog(@"bookId:%@",bookId);
+    
+    NSString *baseUrl = @"https://api.douban.com/v2/book/isbn/";
+    
+    NSString *url = [baseUrl stringByAppendingString:bookId];
+    
+    [TTHttpTool getWithURL:url parameters:NULL success:^(id responseData) {
+        [DLLBook setupReplacedKeyFromPropertyName:^NSDictionary *{
+            return @{
+                     @"bookId":@"id",
+                     @"bookName":@"title",
+                     @"bookImage":@"images.large",
+                     @"price":@"price",
+                     @"authors":@"author",
+                     @"publisher":@"publisher"
+                     
+                     };
+        }];
+        DLLBook *book = [DLLBook objectWithKeyValues:responseData];
+        DLLBookDetailView *bookDetailView = [[DLLBookDetailView alloc] init];
+        bookDetailView.frame = self.view.bounds;
+        [self.view addSubview:bookDetailView];
+        bookDetailView.dllBook = book;
+
+        
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+        
+    }];
+    
 }
 
 /*

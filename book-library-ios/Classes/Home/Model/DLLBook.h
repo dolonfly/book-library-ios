@@ -19,7 +19,7 @@
 /** 价格*/
 @property (nonatomic, assign) float price;
 /** 作者*/
-@property (nonatomic,copy) NSString *author;
+@property (nonatomic,copy) NSArray *authors;
 /** 出版社*/
 @property (nonatomic,copy) NSString *publisher;
 
