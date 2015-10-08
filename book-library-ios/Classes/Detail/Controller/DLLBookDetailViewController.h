@@ -10,4 +10,6 @@
 
 @interface DLLBookDetailViewController : UIViewController
 
+@property (nonatomic, strong) NSString *bookId;
+
 @end

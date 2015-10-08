@@ -7,15 +7,17 @@
 //
 
 #import "DLLBookDetailView.h"
-#import "SDWebImage/UIImageView+WebCache.h"
+#import <UIImageView+WebCache.h>
 
 
-@interface DLLBookDetailView()
+@interface DLLBookDetailView ()
 
 @property (nonatomic, weak) UIImageView *imgView;
 @property (nonatomic, weak) UILabel *nameLabel;
 @property (nonatomic, weak) UILabel *authorLabel;
-@property (nonatomic,weak) UILabel *publisherLabel;
+@property (nonatomic, weak) UILabel *publisherLabel;
+@property (nonatomic, weak) UILabel *borrowLabel;
+@property (nonatomic, weak) UILabel *putInStorageLabel;
 
 @end
 
@@ -33,6 +35,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+    
+        
         UIImageView *imageView = [[UIImageView alloc] init];
         imageView.backgroundColor = [UIColor grayColor];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -50,12 +54,28 @@
         UILabel *publisherLabel = [[UILabel alloc] init];
         [self addSubview:publisherLabel];
         self.publisherLabel = publisherLabel;
+        
+        UILabel *borrowLabel = [[UILabel alloc] init];
+        [self addSubview:borrowLabel];
+        self.borrowLabel = borrowLabel;
+        
+        UILabel *putInStorageLabel = [[UILabel alloc] init];
+        [self addSubview:putInStorageLabel];
+        self.putInStorageLabel = putInStorageLabel;
 
     }
     return self;
 }
 
--(void)setDllBook:(DLLBook *)dllBook
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    
+}
+
+- (void)setDllBook:(DLLBook *)dllBook
 {
     _dllBook = dllBook;
     

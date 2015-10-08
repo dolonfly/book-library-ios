@@ -10,9 +10,11 @@
 #import "BLKFlexibleHeightBar.h"
 #import "SquareCashStyleBehaviorDefiner.h"
 #import "DLLBookInfoCollectionViewCell.h"
+#import "DLLBookDetailViewController.h"
 
 @interface DLLHomeViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
 
+@property (nonatomic, weak) UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *books;
 
 @end
@@ -45,17 +47,18 @@
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     flowLayout.minimumInteritemSpacing = 0;
     flowLayout.minimumLineSpacing = 5;
-    int width = self.view.bounds.size.width / 3-1;
+    CGFloat width = self.view.bounds.size.width / 3-10;
     flowLayout.itemSize = CGSizeMake(width, width);
     
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
     collectionView.dataSource = self;
+    collectionView.delegate = self;
     collectionView.frame = self.view.bounds;
     [collectionView registerClass:[DLLBookInfoCollectionViewCell class] forCellWithReuseIdentifier:@"bookInfoCell"];
     collectionView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
     collectionView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:collectionView];
-    
+    self.collectionView = collectionView;
     
     BLKFlexibleHeightBar *myBar = [[BLKFlexibleHeightBar alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 100.0)];
     myBar.minimumBarHeight = 50.0;
@@ -68,7 +71,7 @@
     [myBar.behaviorDefiner addSnappingPositionProgress:0.0 forProgressRangeStart:0.0 end:0.5];
     [myBar.behaviorDefiner addSnappingPositionProgress:1.0 forProgressRangeStart:0.5 end:1.0];
     
-    ((UIScrollView *)collectionView).delegate = (id<UITableViewDelegate>)myBar.behaviorDefiner;
+//    ((UIScrollView *)collectionView).delegate = (id<UITableViewDelegate>)myBar.behaviorDefiner;
     
     UISearchBar *searchBar = [[UISearchBar alloc] init];
     [searchBar sizeToFit];
@@ -95,6 +98,7 @@
 }
 
 #pragma mark - collectionView delegate
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return self.books.count;
@@ -109,14 +113,11 @@
     return cell;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    DLLBookDetailViewController *detailVc = [[DLLBookDetailViewController alloc] init];
+    detailVc.bookId = @"9787535481108";
+    [self.navigationController pushViewController:detailVc animated:YES];
 }
 
 /*
