@@ -12,7 +12,7 @@
 #import "DLLBookInfoCollectionViewCell.h"
 #import "DLLBookDetailViewController.h"
 
-@interface DLLHomeViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
+@interface DLLHomeViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, weak) UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *books;
@@ -47,8 +47,11 @@
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     flowLayout.minimumInteritemSpacing = 0;
     flowLayout.minimumLineSpacing = 5;
-    CGFloat width = self.view.bounds.size.width / 3-10;
-    flowLayout.itemSize = CGSizeMake(width, width);
+    CGFloat width = self.view.bounds.size.width / 3 - 10;
+    CGFloat height = width / 0.625 ;//为什么是0.625倍？仿照kindle 的尺寸
+    flowLayout.itemSize = CGSizeMake(width, height);
+    flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 0, 10);
+    
     
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
     collectionView.dataSource = self;
