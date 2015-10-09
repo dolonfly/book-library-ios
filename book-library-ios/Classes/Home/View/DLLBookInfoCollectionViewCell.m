@@ -8,8 +8,9 @@
 
 #import "DLLBookInfoCollectionViewCell.h"
 #import <UIImageView+WebCache.h>
+#import <SDWebImageManager.h>
 
-@interface DLLBookInfoCollectionViewCell ()
+@interface DLLBookInfoCollectionViewCell () <SDWebImageManagerDelegate>
 
 @property (nonatomic, weak) UIImageView *imgView;
 @property (nonatomic, weak) UILabel *label;
@@ -48,8 +49,16 @@
 {
     _dllBook = dllBook;
     
-    [self.imgView sd_setImageWithURL:[NSURL URLWithString:dllBook.bookImage] placeholderImage:nil];
-    
+    SDWebImageManager *imageManager = [SDWebImageManager sharedManager];
+    imageManager.delegate = self;
+    [imageManager downloadImageWithURL:[NSURL URLWithString:dllBook.bookImage] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        
+    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        if (finished) {
+            self.imgView.image = image;
+        }
+    }];
+        
     self.label.text = dllBook.bookName;
     
 }
