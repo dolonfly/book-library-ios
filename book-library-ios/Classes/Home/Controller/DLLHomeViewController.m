@@ -42,8 +42,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.navigationController setNavigationBarHidden:true];
-    
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     flowLayout.minimumInteritemSpacing = 0;
     flowLayout.minimumLineSpacing = 5;
@@ -58,11 +56,12 @@
     collectionView.delegate = self;
     collectionView.frame = self.view.bounds;
     [collectionView registerClass:[DLLBookInfoCollectionViewCell class] forCellWithReuseIdentifier:@"bookInfoCell"];
-    collectionView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
+//    collectionView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0); 
     collectionView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:collectionView];
     self.collectionView = collectionView;
     
+    /*
     BLKFlexibleHeightBar *myBar = [[BLKFlexibleHeightBar alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 100.0)];
     myBar.minimumBarHeight = 50.0;
     
@@ -95,7 +94,7 @@
     
     // This is what we want the bar to look like at its minimum height (progress == 1.0)
     [searchBar addLayoutAttributes:finalLayoutAttributes forProgress:1.0];
-    
+    */
     
     
 }
