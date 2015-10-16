@@ -39,11 +39,12 @@
     
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     flowLayout.minimumInteritemSpacing = 0;
-    flowLayout.minimumLineSpacing = 5;
+    flowLayout.minimumLineSpacing = 10;
     CGFloat width = self.view.bounds.size.width / 3 - 10;
     CGFloat height = width / 0.625 ;//为什么是0.625倍？仿照kindle 的尺寸
     flowLayout.itemSize = CGSizeMake(width, height);
     flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 0, 10);
+    
     
     
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
@@ -51,7 +52,7 @@
     collectionView.delegate = self;
     collectionView.frame = self.view.bounds;
     [collectionView registerClass:[DLLBookInfoCollectionViewCell class] forCellWithReuseIdentifier:@"bookInfoCell"];
-//    collectionView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0); 
+//    collectionView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
     collectionView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:collectionView];
     self.collectionView = collectionView;
