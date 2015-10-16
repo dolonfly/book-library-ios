@@ -130,8 +130,9 @@
 {
     _dllBook = dllBook;
     SDWebImageManager* imageManager = [SDWebImageManager sharedManager];
+    NSLog(@"bookImageUrl:%@",dllBook.image);
     imageManager.delegate = self;
-    [imageManager downloadImageWithURL:[NSURL URLWithString:dllBook.bookImage] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+    [imageManager downloadImageWithURL:[NSURL URLWithString:dllBook.image] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
         //this is progress ,only special options can support
         
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
@@ -165,8 +166,8 @@
     }];
 //    [self.imgView sd_setImageWithURL:[NSURL URLWithString:dllBook.bookImage] placeholderImage:nil];
     
-    self.nameLabel.text = dllBook.bookName;
-    self.authorLabel.text = [NSString stringWithFormat:@"作者：%@",[dllBook.authors componentsJoinedByString:@","]];
+    self.nameLabel.text = dllBook.title;
+    self.authorLabel.text = [NSString stringWithFormat:@"作者：%@",dllBook.author];
     self.publisherLabel.text = [NSString stringWithFormat:@"出版社：%@",dllBook.publisher];
     NSLog(@"出版社：%@",dllBook.publisher);
     

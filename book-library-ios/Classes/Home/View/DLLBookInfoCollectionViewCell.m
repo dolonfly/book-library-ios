@@ -52,9 +52,10 @@
 {
     _dllBook = dllBook;
     
+    
     SDWebImageManager *imageManager = [SDWebImageManager sharedManager];
     imageManager.delegate = self;
-    [imageManager downloadImageWithURL:[NSURL URLWithString:dllBook.bookImage] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+    [imageManager downloadImageWithURL:[NSURL URLWithString:dllBook.image] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
         
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
         if (finished) {
@@ -62,7 +63,7 @@
         }
     }];
         
-    self.label.text = dllBook.bookName;
+    self.label.text = dllBook.title;
     
 }
 

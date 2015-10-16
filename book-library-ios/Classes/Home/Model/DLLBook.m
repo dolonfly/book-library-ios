@@ -7,7 +7,15 @@
 //
 
 #import "DLLBook.h"
+#import <MJExtension.h>
 
 @implementation DLLBook
+
++ (NSDictionary *)replacedKeyFromPropertyName
+{
+    return @{
+             @"ID" : @"_id",
+             };
+}
 
 @end

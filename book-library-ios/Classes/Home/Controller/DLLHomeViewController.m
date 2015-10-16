@@ -11,11 +11,14 @@
 #import "SquareCashStyleBehaviorDefiner.h"
 #import "DLLBookInfoCollectionViewCell.h"
 #import "DLLBookDetailViewController.h"
+#import "TTHttpTool.h"
+#import <MJExtension.h>
 
 @interface DLLHomeViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, weak) UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *books;
+- (void)requestNewsBooks;
 
 @end
 
@@ -24,23 +27,14 @@
 - (NSArray *)books
 {
     if (!_books) {
-        NSMutableArray *books  = [NSMutableArray array];
-        
-        for (int i = 0; i < 50; i++) {
-            DLLBook *book1= [[DLLBook alloc] init];
-            book1.bookName = @"罗马帝国兴亡史";
-            book1.bookImage = @"http://img3.douban.com/mpic/s28142050.jpg";
-            
-            [books addObject:book1];
-            
-        }
-        _books = [NSArray arrayWithArray:books];
+        _books = [NSArray array];
     }
     return _books;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self requestNewsBooks];
     
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     flowLayout.minimumInteritemSpacing = 0;
@@ -60,7 +54,7 @@
     collectionView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:collectionView];
     self.collectionView = collectionView;
-    
+        
     /*
     BLKFlexibleHeightBar *myBar = [[BLKFlexibleHeightBar alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 100.0)];
     myBar.minimumBarHeight = 50.0;
@@ -117,8 +111,9 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    DLLBook *book = self.books[indexPath.item];
     DLLBookDetailViewController *detailVc = [[DLLBookDetailViewController alloc] init];
-    detailVc.bookId = @"9787535481108";
+    detailVc.bookId = book.ID;
     [self.navigationController pushViewController:detailVc animated:YES];
 }
 
@@ -132,7 +127,20 @@
  }
  */
 
+- (void)requestNewsBooks
+{
+    [TTHttpTool getWithURL:@"http://121.40.253.109:3002/api/v1/book/news" parameters:NULL success:^(id responseData) {
+        int code = [responseData[@"code"] intValue];
+        if (code == 200) {
+            NSArray *datas = responseData[@"data"];
+            NSArray *books = [DLLBook objectArrayWithKeyValuesArray:datas];
+            _books = books;
+            
+        }
+        [self.collectionView reloadData];
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
 
 @end
-
-

@@ -11,15 +11,15 @@
 @interface DLLBook : NSObject
 
 /** book ID*/
-@property (nonatomic, copy) NSString *bookId;
+@property (nonatomic, copy) NSString *ID;
 /** 图片*/
-@property (nonatomic, copy) NSString *bookImage;
+@property (nonatomic, copy) NSString *image;
 /** 图书名称*/
-@property (nonatomic, copy) NSString *bookName;
+@property (nonatomic, copy) NSString *title;
 /** 价格*/
 @property (nonatomic, assign) float price;
 /** 作者*/
-@property (nonatomic,copy) NSArray *authors;
+@property (nonatomic,copy) NSArray *author;
 /** 出版社*/
 @property (nonatomic,copy) NSString *publisher;
 
