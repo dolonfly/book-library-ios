@@ -81,7 +81,7 @@
             </objects>
             <point key="canvasLocation" x="614" y="1949"/>
         </scene>
-        <!--列表页-->
+        <!--我-->
         <scene sceneID="mPz-nI-cC1">
             <objects>
                 <viewController id="gqT-VB-Rvy" customClass="DLLListPageViewController" sceneMemberID="viewController">
@@ -100,7 +100,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="列表页" id="ohT-Hq-Ey6"/>
+                    <navigationItem key="navigationItem" title="我" id="ohT-Hq-Ey6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aEA-Vl-cmZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
