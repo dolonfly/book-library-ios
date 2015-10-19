@@ -7,9 +7,10 @@
 //
 
 #import "DLLListPageViewController.h"
+#import <UIScrollView+APParallaxHeader.h>
 
 @interface DLLListPageViewController ()
-
+@property (nonatomic, weak)UITableView *tableView;
 @end
 
 @implementation DLLListPageViewController
@@ -17,11 +18,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    UITableView *tableView  = [[UITableView alloc] init];
+    tableView.frame = self.view.bounds;
+    [self.view addSubview:tableView];
+    self.tableView = tableView;
+    [self.tableView addParallaxWithImage:[UIImage imageNamed:@"miao.jpg"] andHeight:220];
+
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
 }
 
 /*

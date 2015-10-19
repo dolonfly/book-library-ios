@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - APParallaxHeader (0.1.6)
   - BLKFlexibleHeightBar (1.0.2)
   - MJExtension (2.1.1)
   - SDWebImage (3.7.3):
@@ -28,12 +29,14 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5.3)
+  - APParallaxHeader
   - BLKFlexibleHeightBar (~> 1.0)
   - MJExtension (~> 2.1.0)
   - SDWebImage (~> 3.7.2)
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  APParallaxHeader: 854bc48a2487ca12c702f8a236fec0d89cdac5c3
   BLKFlexibleHeightBar: b27572a69633d8e33f1f2bbc486b04d8e86f742d
   MJExtension: 4b8a628ec7764a4b3c6c0e7261ec0687cf32ff20
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
