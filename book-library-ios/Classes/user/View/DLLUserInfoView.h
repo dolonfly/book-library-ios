@@ -1,5 +1,5 @@
 //
-//  DLLUserCenterViewController.h
+//  DLLUserInfoView.h
 //  book-library-ios
 //
 //  Created by dll on 15/10/20.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DLLUserCenterViewController : UIViewController<UITableViewDataSource,UITableViewDelegate> 
+@interface DLLUserInfoView : UIImageView
 
 @end
