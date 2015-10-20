@@ -33,6 +33,10 @@
             
         }];
         self.contentMode = UIViewContentModeScaleAspectFill;
+        self.imgView.layer.cornerRadius=50.0f;
+        self.imgView.clipsToBounds = YES;
+        self.imgView.layer.borderWidth = 3.0f;
+        self.imgView.layer.borderColor = [UIColor whiteColor].CGColor;
         
         
     }
@@ -46,8 +50,6 @@
     CGFloat height = self.frame.size.height;
     CGFloat imageRadius = 50;
     CGFloat spaceHeigth = 50;
-    NSLog(@"view size:%f",self.frame.size.width);
-    NSLog(@"view size:%f",self.frame.size.height);
     self.imgView.frame = CGRectMake(width / 2 - imageRadius, height - imageRadius*2 - spaceHeigth, imageRadius * 2, imageRadius * 2);
 }
 
