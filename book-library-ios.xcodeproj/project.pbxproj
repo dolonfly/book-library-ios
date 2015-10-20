@@ -12,6 +12,7 @@
 		4E29D8111BD10B7D001F8CCB /* DLLHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E29D8101BD10B7D001F8CCB /* DLLHomeViewController.m */; settings = {ASSET_TAGS = (); }; };
 		4E29D8171BD10BA0001F8CCB /* DLLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E29D8141BD10BA0001F8CCB /* DLLNavigationController.m */; settings = {ASSET_TAGS = (); }; };
 		4E29D8181BD10BA0001F8CCB /* DLLTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E29D8161BD10BA0001F8CCB /* DLLTabBarViewController.m */; settings = {ASSET_TAGS = (); }; };
+		4E29D8291BD5E84C001F8CCB /* DLLUserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E29D8281BD5E84C001F8CCB /* DLLUserCenterViewController.m */; settings = {ASSET_TAGS = (); }; };
 		4E5E98A51BA6F4D3002B3687 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5E98A41BA6F4D3002B3687 /* main.m */; };
 		4E5E98A81BA6F4D3002B3687 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5E98A71BA6F4D3002B3687 /* AppDelegate.m */; };
 		4E5E98AB1BA6F4D3002B3687 /* book_library_ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E5E98A91BA6F4D3002B3687 /* book_library_ios.xcdatamodeld */; };
@@ -48,6 +49,8 @@
 		4E29D8141BD10BA0001F8CCB /* DLLNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLNavigationController.m; sourceTree = "<group>"; };
 		4E29D8151BD10BA0001F8CCB /* DLLTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLTabBarViewController.h; sourceTree = "<group>"; };
 		4E29D8161BD10BA0001F8CCB /* DLLTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLTabBarViewController.m; sourceTree = "<group>"; };
+		4E29D8271BD5E84C001F8CCB /* DLLUserCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLUserCenterViewController.h; sourceTree = "<group>"; };
+		4E29D8281BD5E84C001F8CCB /* DLLUserCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLUserCenterViewController.m; sourceTree = "<group>"; };
 		4E5E989F1BA6F4D3002B3687 /* book-library-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "book-library-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E5E98A31BA6F4D3002B3687 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E5E98A41BA6F4D3002B3687 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -145,6 +148,31 @@
 			path = root;
 			sourceTree = "<group>";
 		};
+		4E29D8211BD5E7C3001F8CCB /* user */ = {
+			isa = PBXGroup;
+			children = (
+				4E29D8221BD5E7C3001F8CCB /* Controller */,
+				4E29D8231BD5E7C3001F8CCB /* View */,
+			);
+			path = user;
+			sourceTree = "<group>";
+		};
+		4E29D8221BD5E7C3001F8CCB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4E29D8271BD5E84C001F8CCB /* DLLUserCenterViewController.h */,
+				4E29D8281BD5E84C001F8CCB /* DLLUserCenterViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4E29D8231BD5E7C3001F8CCB /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		4E5E98961BA6F4D3002B3687 = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +254,7 @@
 		4EA07BE81BA9741400829E90 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4E29D8211BD5E7C3001F8CCB /* user */,
 				4E29D8121BD10BA0001F8CCB /* root */,
 				4E0C2A781BC13BDD0035351A /* Detail */,
 				4E6D931B1BABB5B700A2B0A7 /* commons */,
@@ -510,6 +539,7 @@
 				4EA07C0B1BA9816A00829E90 /* DLLListPageViewController.m in Sources */,
 				4E0C2A8F1BC140840035351A /* DLLBookDetailView.m in Sources */,
 				4E5E98A81BA6F4D3002B3687 /* AppDelegate.m in Sources */,
+				4E29D8291BD5E84C001F8CCB /* DLLUserCenterViewController.m in Sources */,
 				4E29D8181BD10BA0001F8CCB /* DLLTabBarViewController.m in Sources */,
 				4E6D932A1BABCDAB00A2B0A7 /* DLLBook.m in Sources */,
 				4E5E98AB1BA6F4D3002B3687 /* book_library_ios.xcdatamodeld in Sources */,
