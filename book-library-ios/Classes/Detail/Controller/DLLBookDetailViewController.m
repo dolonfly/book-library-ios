@@ -51,7 +51,7 @@
         if (code == 200) {
             DLLBook *book = [DLLBook objectWithKeyValues:responseData[@"data"]];
             NSLog(@"bookImage:%@",book.ID);
-            DLLBookDetailView *bookDetailView = [[DLLBookDetailView alloc] init];
+            DLLBookDetailView *bookDetailView = [[DLLBookDetailView alloc] initWithFrame:self.view.frame];
             bookDetailView.frame = self.view.bounds;
             [self.view addSubview:bookDetailView];
             bookDetailView.dllBook = book;
