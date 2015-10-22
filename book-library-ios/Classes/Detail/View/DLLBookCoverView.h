@@ -1,15 +1,15 @@
 //
-//  DLLBookDetailView.h
+//  DLLBookCoverView.h
 //  book-library-ios
 //
-//  Created by dll on 15/10/4.
+//  Created by dll on 15/10/21.
 //  Copyright © 2015年 dll. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "DLLBook.h"
 
-@interface DLLBookDetailView : UITableView
+@interface DLLBookCoverView : UIImageView
 
 @property(nonatomic,strong) DLLBook *dllBook;
 

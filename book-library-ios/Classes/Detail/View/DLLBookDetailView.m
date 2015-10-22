@@ -9,6 +9,8 @@
 #import "DLLBookDetailView.h"
 #import <UIImageView+WebCache.h>
 #import <SDWebImageManager.h>
+#import <UIScrollView+APParallaxHeader.h>
+#import "DLLBookCoverView.h"
 
 
 @interface DLLBookDetailView () <SDWebImageManagerDelegate>
@@ -19,6 +21,8 @@
 @property (nonatomic, weak) UILabel *publisherLabel;
 @property (nonatomic, weak) UIButton *putInStorageBtn;
 @property (nonatomic, weak) UIButton *likeBtn;
+
+@property (nonatomic, weak) DLLBookCoverView *bookCover;
 
 @end
 
@@ -37,11 +41,18 @@
     self = [super initWithFrame:frame];
     if (self) {
     
-        UIImageView *imageView = [[UIImageView alloc] init];
-        imageView.backgroundColor = [UIColor grayColor];
-        imageView.contentMode = UIViewContentModeScaleAspectFit;
-        [self addSubview:imageView];
-        self.imgView = imageView;
+//        [self addParallaxWithImage:[UIImage imageNamed:@"miao.jpg"] andHeight:300];
+        
+        DLLBookCoverView *bookCover = [[DLLBookCoverView alloc] initWithFrame:frame];
+        self.bookCover = bookCover;
+        [self addParallaxWithView:bookCover andHeight:500];
+        
+        
+//        UIImageView *imageView = [[UIImageView alloc] init];
+//        imageView.backgroundColor = [UIColor grayColor];
+//        imageView.contentMode = UIViewContentModeScaleAspectFit;
+//        [self addSubview:imageView];
+//        self.imgView = imageView;
         
         UILabel *nameLabel = [[UILabel alloc] init];
         [self addSubview:nameLabel];
@@ -66,6 +77,7 @@
         [likeBtn setTitle:@"推荐" forState:UIControlStateNormal];
         [self addSubview:likeBtn];
         self.likeBtn = likeBtn;
+        
 
     }
     return self;
@@ -77,6 +89,8 @@
     [super layoutSubviews];
     self.backgroundColor = [UIColor colorWithRed:255 green:255 blue:255 alpha:50];
    
+    
+    
     
     float y = 200;
     float divsion = 10;
@@ -129,6 +143,10 @@
 - (void)setDllBook:(DLLBook *)dllBook
 {
     _dllBook = dllBook;
+    
+    self.bookCover.dllBook = dllBook;
+    
+    
     SDWebImageManager* imageManager = [SDWebImageManager sharedManager];
     NSLog(@"bookImageUrl:%@",dllBook.image);
     imageManager.delegate = self;

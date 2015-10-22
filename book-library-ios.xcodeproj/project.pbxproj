@@ -26,6 +26,7 @@
 		4EA07C0B1BA9816A00829E90 /* DLLListPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA07C0A1BA9816A00829E90 /* DLLListPageViewController.m */; };
 		4EB82D101BD61ABA00439542 /* DLLUserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB82D0F1BD61ABA00439542 /* DLLUserInfoView.m */; settings = {ASSET_TAGS = (); }; };
 		4EB82D141BD61B4600439542 /* DLLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB82D131BD61B4600439542 /* DLLUser.m */; settings = {ASSET_TAGS = (); }; };
+		4EB82D171BD736A300439542 /* DLLBookCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB82D161BD736A300439542 /* DLLBookCoverView.m */; settings = {ASSET_TAGS = (); }; };
 		824DAAABC331CAD282B6536D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06442852704598A8C9E37C54 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,8 @@
 		4EB82D0F1BD61ABA00439542 /* DLLUserInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLUserInfoView.m; sourceTree = "<group>"; };
 		4EB82D121BD61B4600439542 /* DLLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLUser.h; sourceTree = "<group>"; };
 		4EB82D131BD61B4600439542 /* DLLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLUser.m; sourceTree = "<group>"; };
+		4EB82D151BD736A300439542 /* DLLBookCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLBookCoverView.h; sourceTree = "<group>"; };
+		4EB82D161BD736A300439542 /* DLLBookCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLBookCoverView.m; sourceTree = "<group>"; };
 		572A2494058AAE7CAF8C030B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		66AD8D393F6412F646D4C96B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +142,8 @@
 			children = (
 				4E0C2A8D1BC140840035351A /* DLLBookDetailView.h */,
 				4E0C2A8E1BC140840035351A /* DLLBookDetailView.m */,
+				4EB82D151BD736A300439542 /* DLLBookCoverView.h */,
+				4EB82D161BD736A300439542 /* DLLBookCoverView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -568,6 +573,7 @@
 				4E6D93261BABC81600A2B0A7 /* DLLBookInfoCollectionViewCell.m in Sources */,
 				4E29D8111BD10B7D001F8CCB /* DLLHomeViewController.m in Sources */,
 				4E29D8171BD10BA0001F8CCB /* DLLNavigationController.m in Sources */,
+				4EB82D171BD736A300439542 /* DLLBookCoverView.m in Sources */,
 				4E5E98A51BA6F4D3002B3687 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
