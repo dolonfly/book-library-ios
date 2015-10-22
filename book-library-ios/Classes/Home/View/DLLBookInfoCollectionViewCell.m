@@ -29,25 +29,6 @@
         self.imgView = imageView;
         self.imgView.contentMode = UIViewContentModeScaleToFill;
         
-        
-        //    //给imageView添加阴影和边框
-        //    UIImageView*imgvPhoto = [[UIImageView alloc] init];
-        //添加边框
-//        CALayer *layer = [imageView layer];
-//        layer.borderColor = [UIColor whiteColor].CGColor;
-//        layer.borderWidth = 1.0f;
-        //添加四个边阴影
-        self.imgView.layer.shadowColor = [UIColor blackColor].CGColor;
-        self.imgView.layer.shadowOffset = CGSizeMake(0,0);
-        self.imgView.layer.shadowOpacity = 0.5;
-        self.imgView.layer.shadowRadius = 10.0;//给imageview添加阴影和边框
-        //添加两个边的阴影
-        self.imgView.layer.shadowColor = [UIColor blackColor].CGColor;
-        self.imgView.layer.shadowOffset = CGSizeMake(4,4);
-        self.self.imgView.layer.shadowOpacity = 0.5;
-        imageView.layer.shadowRadius=2.0;
-        
-        
         UILabel *label = [[UILabel alloc] init];
         [self.contentView addSubview:label];
         self.label = label;
