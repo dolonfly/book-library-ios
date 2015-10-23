@@ -156,7 +156,7 @@
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
         if (finished) {
             self.imgView.image = image;
-            
+            /*
             float imageHeigth = self.imgView.image.size.height;
             float imageWidth = self.imgView.image.size.width;
             float needWidth = self.frame.size.width/2;
@@ -175,7 +175,7 @@
             self.imgView.layer.borderWidth = 1;
             self.imgView.layer.borderColor = [UIColor colorWithRed:218 green:218 blue:218 alpha:0.2].CGColor;
             self.imgView.contentMode = UIViewContentModeScaleAspectFill;
-
+*/
             
             
         }else{
