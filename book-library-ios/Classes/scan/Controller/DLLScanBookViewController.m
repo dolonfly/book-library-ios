@@ -18,8 +18,7 @@
 
 @property (nonatomic, strong) MTBBarcodeScanner *scanner;
 
-@property (nonatomic, weak) IBOutlet UITableView *scanListTableView;
-@property (nonatomic, strong) NSMutableArray *uniqueCodes;
+@property (nonatomic, weak) UILabel *bookNameLabel;
 
 @property (nonatomic, strong)DLLBook *book;
 
@@ -37,27 +36,15 @@
     self.previewView = previewView;
     previewView.frame = CGRectMake(0, 0, self.view.frame.size.width, 250);
     [self.view addSubview:previewView];
+    self.previewView.backgroundColor = [UIColor grayColor];
     
-    UITableView *scanListTableView = [[UITableView alloc] init];
-    self.scanListTableView = scanListTableView;
+    UILabel *bookNameLabel = [[UILabel alloc] init];
+    self.bookNameLabel = bookNameLabel;
+    [self.view addSubview:bookNameLabel];
+    bookNameLabel.frame = CGRectMake(0, 260, self.view.frame.size.width, 20);
     
-    
-    [MTBBarcodeScanner requestCameraPermissionWithSuccess:^(BOOL success) {
-        if (success) {
-            
-            [self.scanner startScanningWithResultBlock:^(NSArray *codes) {
-                AVMetadataMachineReadableCodeObject *code = [codes firstObject];
-                NSLog(@"Found code: %@", code.stringValue);
-                if (code.stringValue) {
-                    [self requestBookByIsbn:code.stringValue];
-                }
-                [self.scanner stopScanning];
-            }];
-            
-        } else {
-            // The user denied access to the camera
-        }
-    }];
+    [self startScanning];
+  
     
 }
 
@@ -75,6 +62,33 @@
     return _scanner;
 }
 
+#pragma mark - Scanning
+
+- (void)startScanning {
+    [MTBBarcodeScanner requestCameraPermissionWithSuccess:^(BOOL success) {
+        if (success) {
+            
+            [self.scanner startScanningWithResultBlock:^(NSArray *codes) {
+                AVMetadataMachineReadableCodeObject *code = [codes firstObject];
+                NSLog(@"Found code: %@", code.stringValue);
+                if (code.stringValue) {
+                    [self.scanner freezeCapture];
+                    [self requestBookByIsbn:code.stringValue];
+                }
+                
+            }];
+            
+        } else {
+            // The user denied access to the camera
+        }
+    }];
+}
+
+- (void)stopScanning {
+    [self.scanner stopScanning];
+   
+}
+
 - (void)requestBookByIsbn:(NSString *)bookIsbn{
     //请求网络，获取对应图书Id的图书信息，并转换为Book对象
     NSLog(@"bookIsbn:%@",bookIsbn);
@@ -86,9 +100,9 @@
     [TTHttpTool getWithURL:url parameters:NULL success:^(id responseData) {
         
             DLLBook *book = [DLLBook objectWithKeyValues:responseData];
-            NSLog(@"bookImage:%@",book.ID);
-            
-       
+            NSLog(@"bookName:%@",book.title);
+        self.bookNameLabel.text = book.title;
+        [self.scanner unfreezeCapture];
         
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
