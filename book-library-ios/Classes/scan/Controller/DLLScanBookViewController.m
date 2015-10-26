@@ -11,6 +11,7 @@
 #import "TTHttpTool.h"
 #import "DLLBook.h"
 #import <MJExtension.h>
+#import <MBProgressHUD.h>
 
 @interface DLLScanBookViewController ()
 
@@ -73,7 +74,12 @@
                 NSLog(@"Found code: %@", code.stringValue);
                 if (code.stringValue) {
                     [self.scanner freezeCapture];
-                    [self requestBookByIsbn:code.stringValue];
+                    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+                        [self requestBookByIsbn:code.stringValue];
+                        
+                    });
+                    
                 }
                 
             }];
@@ -103,6 +109,9 @@
             NSLog(@"bookName:%@",book.title);
         self.bookNameLabel.text = book.title;
         [self.scanner unfreezeCapture];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
         
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
