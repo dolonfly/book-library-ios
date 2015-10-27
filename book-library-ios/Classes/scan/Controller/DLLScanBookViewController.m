@@ -12,6 +12,8 @@
 #import "DLLBook.h"
 #import <MJExtension.h>
 #import <MBProgressHUD.h>
+#import <UIImageView+WebCache.h>
+#import "DLLBookScanDetailView.h"
 
 @interface DLLScanBookViewController ()
 
@@ -19,9 +21,9 @@
 
 @property (nonatomic, strong) MTBBarcodeScanner *scanner;
 
-@property (nonatomic, weak) UILabel *bookNameLabel;
-
 @property (nonatomic, strong)DLLBook *book;
+
+@property (nonatomic, weak) DLLBookScanDetailView  *scanBookDetailView;
 
 
 - (void)requestBookByIsbn:(NSString *)bookIsbn;
@@ -39,11 +41,11 @@
     [self.view addSubview:previewView];
     self.previewView.backgroundColor = [UIColor grayColor];
     
-    UILabel *bookNameLabel = [[UILabel alloc] init];
-    self.bookNameLabel = bookNameLabel;
-    [self.view addSubview:bookNameLabel];
-    bookNameLabel.frame = CGRectMake(0, 260, self.view.frame.size.width, 20);
-    
+    DLLBookScanDetailView *scanBookDetailView = [[DLLBookScanDetailView alloc] initWithFrame:self.view.frame];
+    self.scanBookDetailView = scanBookDetailView;
+    [self.view addSubview:scanBookDetailView];
+    self.scanBookDetailView.frame = CGRectMake(0, 260, self.view.frame.size.width, self.view.frame.size.width - 250 - 50);
+  
     [self startScanning];
   
     
@@ -53,6 +55,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 #pragma mark - Scanner
 
@@ -105,9 +109,10 @@
     NSLog(@"%@", url);
     [TTHttpTool getWithURL:url parameters:NULL success:^(id responseData) {
         
-            DLLBook *book = [DLLBook objectWithKeyValues:responseData];
+            DLLBook *book = [DLLBook objectWithKeyValues:responseData[@"data"]];
             NSLog(@"bookName:%@",book.title);
-        self.bookNameLabel.text = book.title;
+        self.scanBookDetailView.dllBook = book;
+        
         [self.scanner unfreezeCapture];
         dispatch_async(dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:self.view animated:YES];
