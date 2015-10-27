@@ -26,6 +26,9 @@
 @property (nonatomic, weak) DLLBookScanDetailView  *scanBookDetailView;
 
 
+@property (nonatomic, weak) UIButton *saveBookBtn;
+@property (nonatomic, weak) UIButton *cancelBtn;
+
 - (void)requestBookByIsbn:(NSString *)bookIsbn;
 
 @end
@@ -44,7 +47,20 @@
     DLLBookScanDetailView *scanBookDetailView = [[DLLBookScanDetailView alloc] initWithFrame:CGRectMake(0, 260, self.view.frame.size.width, self.view.frame.size.width - 250 - 50)];
     self.scanBookDetailView = scanBookDetailView;
     [self.view addSubview:scanBookDetailView];
-  
+    
+    
+    UIButton *saveBookBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    saveBookBtn.frame = CGRectMake(0, self.view.frame.size.height - 40, self.view.frame.size.width/2-10, 30);
+    [saveBookBtn setTitle:@"入库" forState:UIControlStateNormal];
+    [self.view addSubview:saveBookBtn];
+    self.saveBookBtn = saveBookBtn;
+    
+    UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.cancelBtn = cancelBtn;
+    [self.view addSubview:cancelBtn];
+    cancelBtn.frame = CGRectMake(self.view.frame.size.width/2 + 10, self.view.frame.size.height - 40, self.view.frame.size.width/2-10, 30);
+    [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
+    
     [self startScanning];
   
     
