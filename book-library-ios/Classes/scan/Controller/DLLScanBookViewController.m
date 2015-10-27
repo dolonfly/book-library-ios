@@ -41,10 +41,9 @@
     [self.view addSubview:previewView];
     self.previewView.backgroundColor = [UIColor grayColor];
     
-    DLLBookScanDetailView *scanBookDetailView = [[DLLBookScanDetailView alloc] initWithFrame:self.view.frame];
+    DLLBookScanDetailView *scanBookDetailView = [[DLLBookScanDetailView alloc] initWithFrame:CGRectMake(0, 260, self.view.frame.size.width, self.view.frame.size.width - 250 - 50)];
     self.scanBookDetailView = scanBookDetailView;
     [self.view addSubview:scanBookDetailView];
-    self.scanBookDetailView.frame = CGRectMake(0, 260, self.view.frame.size.width, self.view.frame.size.width - 250 - 50);
   
     [self startScanning];
   
@@ -111,6 +110,8 @@
         
             DLLBook *book = [DLLBook objectWithKeyValues:responseData[@"data"]];
             NSLog(@"bookName:%@",book.title);
+        NSLog(@"bookAuthor:%@",[book.author componentsJoinedByString:@","]);
+
         self.scanBookDetailView.dllBook = book;
         
         [self.scanner unfreezeCapture];

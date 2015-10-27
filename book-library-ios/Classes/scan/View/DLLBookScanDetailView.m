@@ -51,7 +51,7 @@
     self.bookImageView.frame = CGRectMake(0, 0, self.frame.size.width/3, self.frame.size.width / 3 / 0.625);
     self.bookNameLabel.frame = CGRectMake(self.frame.size.width/3, 0, self.frame.size.width/3*2, 20);
     self.bookAuthorLabel.frame = CGRectMake(self.frame.size.width/3, 30, self.frame.size.width/3*2, 20);
-    self.bookPublisherLabel.frame = CGRectMake(self.frame.size.width/3, 30, self.frame.size.width/3*2, 20);
+    self.bookPublisherLabel.frame = CGRectMake(self.frame.size.width/3, 60, self.frame.size.width/3*2, 20);
 }
 
 - (void)setDllBook:(DLLBook *)dllBook
@@ -60,7 +60,7 @@
     
     [self.bookImageView sd_setImageWithURL:[NSURL URLWithString:dllBook.image]];
     self.bookNameLabel.text = dllBook.title;
-    self.bookAuthorLabel.text = [NSString stringWithFormat:@"%@",dllBook.author];
+    self.bookAuthorLabel.text = [dllBook.author componentsJoinedByString:@","];
     self.bookPublisherLabel.text = dllBook.publisher;
 }
 
