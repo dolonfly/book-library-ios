@@ -37,6 +37,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     
     UIView *previewView = [[UIView alloc] init];
     self.previewView = previewView;

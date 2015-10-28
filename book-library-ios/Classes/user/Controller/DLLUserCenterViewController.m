@@ -9,14 +9,31 @@
 #import "DLLUserCenterViewController.h"
 #import <UIScrollView+APParallaxHeader.h>
 #import "DLLUserInfoView.h"
+#import "DLLScanBookViewController.h"
+
+typedef void(^SelectedOption)();
 
 @interface DLLUserCenterViewController ()
 @property (nonatomic, weak)UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataList;
 @property (nonatomic, weak)UIView *userInfoView;
+@property (nonatomic, strong) NSArray *selectedOptions;
 @end
 
 @implementation DLLUserCenterViewController
+
+- (NSArray *)selectedOptions
+{
+    if (! _selectedOptions) {
+        
+        SelectedOption infoOption = ^() {
+            NSLog(@"info");
+        };
+        
+        _selectedOptions = @[infoOption];
+    }
+    return _selectedOptions;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,7 +55,7 @@
 //    [self.tableView addParallaxWithImage:[UIImage imageNamed:@"miao.jpg"] andHeight:220];
     
     // 初始化tableView的数据
-    NSArray *list = [NSArray arrayWithObjects:@"武汉",@"上海",@"北京",@"深圳",@"广州",@"重庆",@"香港",@"台海",@"天津", nil];
+    NSArray *list = [NSArray arrayWithObjects:@"添加图书", nil];
     self.dataList = list;
     // 设置tableView的数据源
     tableView.dataSource = self;
@@ -60,8 +77,8 @@
     }
     NSUInteger row = [indexPath row];
     cell.textLabel.text = [self.dataList objectAtIndex:row];
-    cell.imageView.image = [UIImage imageNamed:@"green.png"];
-    cell.detailTextLabel.text = @"详细信息";
+//    cell.imageView.image = [UIImage imageNamed:@"green.png"];
+//    cell.detailTextLabel.text = @"详细信息";
     return cell;
 }
 
@@ -72,33 +89,17 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return 1;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return TRUE;
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.row==0) {
+        [self clickAddBookCell];
+    }
 }
 
-- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(nonnull NSIndexPath *)indexPath
-{
-    return TRUE;
-}
-
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return UITableViewCellEditingStyleDelete;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return @"删除";
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-}
 
 /*
 #pragma mark - Navigation
@@ -109,5 +110,14 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - onClick
+
+- (void)clickAddBookCell
+{
+    DLLScanBookViewController *scanBookController = [[DLLScanBookViewController alloc] init];
+    [self.navigationController pushViewController:scanBookController animated:true];
+    
+}
 
 @end
