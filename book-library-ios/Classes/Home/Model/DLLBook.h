@@ -22,5 +22,9 @@
 @property (nonatomic,copy) NSArray *author;
 /** 出版社*/
 @property (nonatomic,copy) NSString *publisher;
+/** isbn */
+@property (nonatomic,copy) NSString *isbn;
+
+
 
 @end

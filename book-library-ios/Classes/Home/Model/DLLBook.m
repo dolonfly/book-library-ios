@@ -15,6 +15,7 @@
 {
     return @{
              @"ID" : @"_id",
+             @"isbn" : @"isbn13"
              };
 }
 

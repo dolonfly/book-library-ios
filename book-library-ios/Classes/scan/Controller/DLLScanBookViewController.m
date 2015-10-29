@@ -29,6 +29,8 @@
 @property (nonatomic, weak) UIButton *saveBookBtn;
 @property (nonatomic, weak) UIButton *cancelBtn;
 
+@property (nonatomic, assign) bool canClickSaveBtn;
+
 - (void)requestBookByIsbn:(NSString *)bookIsbn;
 
 @end
@@ -49,19 +51,34 @@
     self.scanBookDetailView = scanBookDetailView;
     [self.view addSubview:scanBookDetailView];
     
+    CGFloat btnWidth = self.view.frame.size.width / 2 - 50;
     
     UIButton *saveBookBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    saveBookBtn.frame = CGRectMake(0, self.view.frame.size.height - 120, self.view.frame.size.width/2-10, 30);
+    saveBookBtn.frame = CGRectMake(25, self.view.frame.size.height - 120, btnWidth, 40);
     [saveBookBtn setTitle:@"入库" forState:UIControlStateNormal];
+    [saveBookBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.view addSubview:saveBookBtn];
     self.saveBookBtn = saveBookBtn;
+    saveBookBtn.tag = 0;
+    [saveBookBtn addTarget:self action:@selector(btnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    saveBookBtn.backgroundColor = [UIColor blueColor];
+    [saveBookBtn.layer setMasksToBounds:YES];
+    [saveBookBtn.layer setCornerRadius:10.0];
+
     
     UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     self.cancelBtn = cancelBtn;
     [self.view addSubview:cancelBtn];
-    cancelBtn.frame = CGRectMake(self.view.frame.size.width/2 + 10, self.view.frame.size.height - 120, self.view.frame.size.width/2-10, 30);
+    cancelBtn.frame = CGRectMake(self.view.frame.size.width/2 + 25, self.view.frame.size.height - 120, btnWidth, 40);
     [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
+    [cancelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    cancelBtn.tag = 1;
+    [cancelBtn addTarget:self action:@selector(btnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    cancelBtn.backgroundColor = [UIColor redColor];
+    [cancelBtn.layer setMasksToBounds:YES];
+    [cancelBtn.layer setCornerRadius:10.0];
     
+    self.canClickSaveBtn = false;
     [self startScanning];
   
     
@@ -76,6 +93,18 @@
 {
     [self stopScanning];
 }
+
+- (void)setCanClickSaveBtn:(bool)canClickSaveBtn
+{
+    _canClickSaveBtn = canClickSaveBtn;
+    if (_canClickSaveBtn) {
+        [self.saveBookBtn setUserInteractionEnabled:YES];
+    }else{
+        [self.saveBookBtn setUserInteractionEnabled:NO];
+        self.saveBookBtn.backgroundColor = [UIColor grayColor];
+    }
+}
+
 
 
 
@@ -131,17 +160,19 @@
     //请求网络，获取对应图书Id的图书信息，并转换为Book对象
     NSLog(@"bookIsbn:%@",bookIsbn);
     
-    NSString *baseUrl = @"http://isbn.itfengzi.com/api/v1/isbn/search?isbn=";
+    NSString *baseUrl = @"http://bl.itfengzi.com/api/v1/book?isbn=";
     
     NSString *url = [baseUrl stringByAppendingString:bookIsbn];
     NSLog(@"%@", url);
     [TTHttpTool getWithURL:url parameters:NULL success:^(id responseData) {
         
             DLLBook *book = [DLLBook objectWithKeyValues:responseData[@"data"]];
+        self.book = book;
             NSLog(@"bookName:%@",book.title);
         NSLog(@"bookAuthor:%@",[book.author componentsJoinedByString:@","]);
 
         self.scanBookDetailView.dllBook = book;
+        self.canClickSaveBtn = true;
         
         [self.scanner unfreezeCapture];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -168,6 +199,27 @@
     
     [hud hide:YES afterDelay:3];
 
+}
+
+#pragma mark - onClick
+-(void)btnPressed:(id)sender{
+    UIButton* btn = (UIButton*)sender;
+    if (btn.tag == 0) {
+        NSString *baseUrl = @"http://bl.itfengzi.com/api/v1/book/add?isbn=";
+        NSString *url = [baseUrl stringByAppendingString:_book.isbn];
+        [TTHttpTool getWithoutStorageWithURL:url parameters:NULL success:^(id responseData) {
+            if ([responseData[@"code"] intValue] == 200) {
+                [self showText:[NSString stringWithFormat:@"保存图书成功，库存为:%d",[responseData[@"data"][@"stock"] intValue]]];
+                self.canClickSaveBtn = false;
+            }else{
+                [self showText:@"保存图书失败"];
+            }
+        } failure:^(NSError *error) {
+            [self showText:@"服务器故障，请稍后重试"];
+        }];
+    }else if(btn.tag == 1){
+        [self.navigationController popViewControllerAnimated:TRUE];
+    }
 }
 
 
