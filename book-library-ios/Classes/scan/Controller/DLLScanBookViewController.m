@@ -51,7 +51,7 @@
     
     
     UIButton *saveBookBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    saveBookBtn.frame = CGRectMake(0, self.view.frame.size.height - 40, self.view.frame.size.width/2-10, 30);
+    saveBookBtn.frame = CGRectMake(0, self.view.frame.size.height - 120, self.view.frame.size.width/2-10, 30);
     [saveBookBtn setTitle:@"入库" forState:UIControlStateNormal];
     [self.view addSubview:saveBookBtn];
     self.saveBookBtn = saveBookBtn;
@@ -59,7 +59,7 @@
     UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     self.cancelBtn = cancelBtn;
     [self.view addSubview:cancelBtn];
-    cancelBtn.frame = CGRectMake(self.view.frame.size.width/2 + 10, self.view.frame.size.height - 40, self.view.frame.size.width/2-10, 30);
+    cancelBtn.frame = CGRectMake(self.view.frame.size.width/2 + 10, self.view.frame.size.height - 120, self.view.frame.size.width/2-10, 30);
     [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
     
     [self startScanning];
@@ -92,7 +92,7 @@
             [self.scanner startScanningWithResultBlock:^(NSArray *codes) {
                 AVMetadataMachineReadableCodeObject *code = [codes firstObject];
                 NSLog(@"Found code: %@", code.stringValue);
-                if (code.stringValue) {
+                if (code.stringValue && (([code.stringValue length]==10) || ([code.stringValue length] ==13 && [code.stringValue hasPrefix:@"978"]))) {
                     [self.scanner freezeCapture];
                     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
                     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
@@ -100,6 +100,13 @@
                         
                     });
                     
+                }else{
+                    [self.scanner freezeCapture];
+                    [self showText:[NSString stringWithFormat:@"条形码不合法：%@",code.stringValue]];
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [self.scanner unfreezeCapture];
+                        
+                    });
                 }
                 
             }];
@@ -140,6 +147,22 @@
         NSLog(@"%@",error);
         
     }];
+}
+
+#pragma mark - tast
+
+- (void)showText:(NSString *)text
+{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    
+    // Configure for text only and offset down
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = text;
+    hud.margin = 10.f;
+    hud.removeFromSuperViewOnHide = YES;
+    
+    [hud hide:YES afterDelay:3];
+
 }
 
 
