@@ -14,6 +14,7 @@
 #import <MBProgressHUD.h>
 #import <UIImageView+WebCache.h>
 #import "DLLBookScanDetailView.h"
+#import <SWFrameButton.h>
 
 @interface DLLScanBookViewController ()
 
@@ -26,8 +27,8 @@
 @property (nonatomic, weak) DLLBookScanDetailView  *scanBookDetailView;
 
 
-@property (nonatomic, weak) UIButton *saveBookBtn;
-@property (nonatomic, weak) UIButton *cancelBtn;
+@property (nonatomic, weak) SWFrameButton *saveBookBtn;
+@property (nonatomic, weak) SWFrameButton *cancelBtn;
 
 @property (nonatomic, assign) bool canClickSaveBtn;
 
@@ -53,7 +54,7 @@
     
     CGFloat btnWidth = self.view.frame.size.width / 2 - 50;
     
-    UIButton *saveBookBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    SWFrameButton *saveBookBtn = [[SWFrameButton alloc] init];
     saveBookBtn.frame = CGRectMake(25, self.view.frame.size.height - 120, btnWidth, 40);
     [saveBookBtn setTitle:@"入库" forState:UIControlStateNormal];
     [saveBookBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -66,7 +67,7 @@
     [saveBookBtn.layer setCornerRadius:10.0];
 
     
-    UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    SWFrameButton *cancelBtn = [[SWFrameButton alloc] init];
     self.cancelBtn = cancelBtn;
     [self.view addSubview:cancelBtn];
     cancelBtn.frame = CGRectMake(self.view.frame.size.width/2 + 25, self.view.frame.size.height - 120, btnWidth, 40);
