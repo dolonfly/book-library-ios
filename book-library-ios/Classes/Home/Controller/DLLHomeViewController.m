@@ -115,7 +115,7 @@
 {
     DLLBook *book = self.books[indexPath.item];
     DLLBookDetailViewController *detailVc = [[DLLBookDetailViewController alloc] init];
-    detailVc.bookId = book.ID;
+    detailVc.book = book;
     [self.navigationController pushViewController:detailVc animated:YES];
 }
 

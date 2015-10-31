@@ -15,10 +15,10 @@
 
 @interface DLLBookDetailViewController ()
 
-- (void)requestBookById:(NSString *)bookId;
 @property (nonatomic, strong) NSArray *dataList;
 @property (nonatomic, weak) DLLBookDetailView *bookDetailView;
 @property (nonatomic, weak) DLLBookCoverView *bookCover;
+
 @end
 
 @implementation DLLBookDetailViewController
@@ -27,7 +27,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self requestBookById:self.bookId];
+    [self requestBookById:self.book];
     self.view.backgroundColor = [UIColor whiteColor];
     
 //    DLLBookDetailView *bookDetailView = [[DLLBookDetailView alloc] initWithFrame:self.view.frame];
@@ -52,13 +52,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)requestBookById:(NSString *)bookId{
+- (void)requestBookById:(DLLBook *)book{
     //请求网络，获取对应图书Id的图书信息，并转换为Book对象
-    NSLog(@"bookId:%@",bookId);
+    NSLog(@"bookId:%@",book.isbn);
     
-    NSString *baseUrl = @"http://121.40.253.109:3002/api/v1/book/get?id=";
+    NSString *baseUrl = @"http://bl.itfengzi.com/api/v1/book/add?isbn=";
     
-    NSString *url = [baseUrl stringByAppendingString:bookId];
+    NSString *url = [baseUrl stringByAppendingString:book.isbn];
     NSLog(@"%@", url);
     [TTHttpTool getWithURL:url parameters:NULL success:^(id responseData) {
         

@@ -62,7 +62,7 @@
     self.saveBookBtn = saveBookBtn;
     saveBookBtn.tag = 0;
     [saveBookBtn addTarget:self action:@selector(btnPressed:) forControlEvents:UIControlEventTouchUpInside];
-    saveBookBtn.backgroundColor = [UIColor blueColor];
+//    saveBookBtn.backgroundColor = [UIColor blueColor];
     [saveBookBtn.layer setMasksToBounds:YES];
     [saveBookBtn.layer setCornerRadius:10.0];
 
@@ -72,10 +72,10 @@
     [self.view addSubview:cancelBtn];
     cancelBtn.frame = CGRectMake(self.view.frame.size.width/2 + 25, self.view.frame.size.height - 120, btnWidth, 40);
     [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
-    [cancelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [cancelBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     cancelBtn.tag = 1;
     [cancelBtn addTarget:self action:@selector(btnPressed:) forControlEvents:UIControlEventTouchUpInside];
-    cancelBtn.backgroundColor = [UIColor redColor];
+//    cancelBtn.backgroundColor = [UIColor redColor];
     [cancelBtn.layer setMasksToBounds:YES];
     [cancelBtn.layer setCornerRadius:10.0];
     

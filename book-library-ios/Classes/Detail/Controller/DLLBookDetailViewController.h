@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DLLBook.h"
 
 @interface DLLBookDetailViewController : UITableViewController
 
-@property (nonatomic, strong) NSString *bookId;
+@property (nonatomic, strong) DLLBook *book;
 
 @end
