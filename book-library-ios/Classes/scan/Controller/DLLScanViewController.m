@@ -12,6 +12,7 @@
 #import "TTHttpTool.h"
 #import <MJExtension.h>
 #import <MBProgressHUD.h>
+#import "DLLBookDetailViewController.h"
 
 @interface DLLScanViewController ()
 
@@ -117,8 +118,12 @@
                 NSLog(@"Found code: %@", code.stringValue);
                 if (code.stringValue && (([code.stringValue length]==10) || ([code.stringValue length] ==13 && [code.stringValue hasPrefix:@"978"]))) {
                     [self.scanner freezeCapture];
-                        NSLog(@"扫描到图书isbn：%@",code.stringValue);
-                        
+                    DLLBook *book = [[DLLBook alloc] init];
+                    book.isbn = code.stringValue;
+                    DLLBookDetailViewController *detailVc = [[DLLBookDetailViewController alloc] init];
+                    detailVc.book = book;
+                    [self.navigationController pushViewController:detailVc animated:YES];
+
                     [self.scanner unfreezeCapture];
                     
                 }else{
