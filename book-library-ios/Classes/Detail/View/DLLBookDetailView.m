@@ -144,7 +144,7 @@
 {
     _dllBook = dllBook;
     
-    self.bookCover.dllBook = dllBook;
+    self.bookCover.book = dllBook;
     
     
     SDWebImageManager* imageManager = [SDWebImageManager sharedManager];

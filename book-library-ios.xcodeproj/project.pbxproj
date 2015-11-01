@@ -23,6 +23,9 @@
 		4E5E98C21BA6F4D3002B3687 /* book_library_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5E98C11BA6F4D3002B3687 /* book_library_iosTests.m */; };
 		4E6D93261BABC81600A2B0A7 /* DLLBookInfoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E6D93241BABC81600A2B0A7 /* DLLBookInfoCollectionViewCell.m */; };
 		4E6D932A1BABCDAB00A2B0A7 /* DLLBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E6D93291BABCDAB00A2B0A7 /* DLLBook.m */; };
+		4E6F78E81BE51013009172A4 /* DLLCommonTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E6F78E71BE51013009172A4 /* DLLCommonTextView.m */; };
+		4E6F78EA1BE51F2F009172A4 /* Empty.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E6F78E91BE51F2F009172A4 /* Empty.xib */; };
+		4E6F78ED1BE5B3A9009172A4 /* DLLTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E6F78EC1BE5B3A9009172A4 /* DLLTextViewController.m */; };
 		4E7B23FA1BB3F13E00A42E62 /* TTHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B23F91BB3F13E00A42E62 /* TTHttpTool.m */; };
 		4EA07C0B1BA9816A00829E90 /* DLLListPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA07C0A1BA9816A00829E90 /* DLLListPageViewController.m */; };
 		4EB82D101BD61ABA00439542 /* DLLUserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB82D0F1BD61ABA00439542 /* DLLUserInfoView.m */; };
@@ -74,6 +77,11 @@
 		4E6D93241BABC81600A2B0A7 /* DLLBookInfoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLBookInfoCollectionViewCell.m; sourceTree = "<group>"; };
 		4E6D93281BABCDAB00A2B0A7 /* DLLBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLBook.h; sourceTree = "<group>"; };
 		4E6D93291BABCDAB00A2B0A7 /* DLLBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLBook.m; sourceTree = "<group>"; };
+		4E6F78E61BE51013009172A4 /* DLLCommonTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLCommonTextView.h; sourceTree = "<group>"; };
+		4E6F78E71BE51013009172A4 /* DLLCommonTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLCommonTextView.m; sourceTree = "<group>"; };
+		4E6F78E91BE51F2F009172A4 /* Empty.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Empty.xib; sourceTree = "<group>"; };
+		4E6F78EB1BE5B3A9009172A4 /* DLLTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLTextViewController.h; sourceTree = "<group>"; };
+		4E6F78EC1BE5B3A9009172A4 /* DLLTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLTextViewController.m; sourceTree = "<group>"; };
 		4E7B23F81BB3F13E00A42E62 /* TTHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTHttpTool.h; sourceTree = "<group>"; };
 		4E7B23F91BB3F13E00A42E62 /* TTHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTHttpTool.m; sourceTree = "<group>"; };
 		4EA07C091BA9816A00829E90 /* DLLListPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLListPageViewController.h; sourceTree = "<group>"; };
@@ -150,6 +158,8 @@
 			children = (
 				4E0C2A841BC13E550035351A /* DLLBookDetailViewController.h */,
 				4E0C2A851BC13E550035351A /* DLLBookDetailViewController.m */,
+				4E6F78EB1BE5B3A9009172A4 /* DLLTextViewController.h */,
+				4E6F78EC1BE5B3A9009172A4 /* DLLTextViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -168,6 +178,9 @@
 				4E0C2A8E1BC140840035351A /* DLLBookDetailView.m */,
 				4EB82D151BD736A300439542 /* DLLBookCoverView.h */,
 				4EB82D161BD736A300439542 /* DLLBookCoverView.m */,
+				4E6F78E61BE51013009172A4 /* DLLCommonTextView.h */,
+				4E6F78E71BE51013009172A4 /* DLLCommonTextView.m */,
+				4E6F78E91BE51F2F009172A4 /* Empty.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -541,6 +554,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E5E98B11BA6F4D3002B3687 /* Main.storyboard in Resources */,
+				4E6F78EA1BE51F2F009172A4 /* Empty.xib in Resources */,
 				4E5E98B61BA6F4D3002B3687 /* LaunchScreen.xib in Resources */,
 				4E5E98B31BA6F4D3002B3687 /* Images.xcassets in Resources */,
 			);
@@ -599,6 +613,7 @@
 				4EB82D141BD61B4600439542 /* DLLUser.m in Sources */,
 				4EF2DDE31BDF267B008D2449 /* DLLBookScanDetailView.m in Sources */,
 				4E5E98A81BA6F4D3002B3687 /* AppDelegate.m in Sources */,
+				4E6F78E81BE51013009172A4 /* DLLCommonTextView.m in Sources */,
 				4E29D8291BD5E84C001F8CCB /* DLLUserCenterViewController.m in Sources */,
 				4E29D8181BD10BA0001F8CCB /* DLLTabBarViewController.m in Sources */,
 				4E6D932A1BABCDAB00A2B0A7 /* DLLBook.m in Sources */,
@@ -606,6 +621,7 @@
 				4E5E98AB1BA6F4D3002B3687 /* book_library_ios.xcdatamodeld in Sources */,
 				4E7B23FA1BB3F13E00A42E62 /* TTHttpTool.m in Sources */,
 				4E0C2A861BC13E550035351A /* DLLBookDetailViewController.m in Sources */,
+				4E6F78ED1BE5B3A9009172A4 /* DLLTextViewController.m in Sources */,
 				4E6D93261BABC81600A2B0A7 /* DLLBookInfoCollectionViewCell.m in Sources */,
 				4E29D8111BD10B7D001F8CCB /* DLLHomeViewController.m in Sources */,
 				4E29D8171BD10BA0001F8CCB /* DLLNavigationController.m in Sources */,

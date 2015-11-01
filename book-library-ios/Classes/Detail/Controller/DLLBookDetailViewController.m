@@ -12,6 +12,8 @@
 #import <MJExtension.h>
 #import <UIScrollView+APParallaxHeader.h>
 #import "DLLBookCoverView.h"
+#import "DLLCommonTextView.h"
+#import "DLLTextViewController.h"
 
 @interface DLLBookDetailViewController ()
 
@@ -23,25 +25,53 @@
 
 @implementation DLLBookDetailViewController
 
+- (instancetype)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:UITableViewStyleGrouped];
+    if (self) {
+        
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self requestBookById:self.book];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    
+    self.view.backgroundColor = [UIColor colorWithRed:247.0/255 green:247.0/255 blue:247.0/255 alpha:1];
+
+//    self.tableView.allowsSelection = NO;
+     self.tableView.tableHeaderView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"transparent.png"] forBarMetrics:UIBarMetricsDefault];
+//    self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+    self.navigationController.navigationBar.translucent = YES;
+//    self.navigationController.automaticallyAdjustsScrollViewInsets = NO;
+//    self.navigationController.edgesForExtendedLayout = UIRectEdgeNone;
+//    self.navigationController.extendedLayoutIncludesOpaqueBars = NO;
+
+    //self.tableView.layer.borderColor = [[UIColor colorWithHexString:@"#6a2d00"] CGColor];
+
     
 //    DLLBookDetailView *bookDetailView = [[DLLBookDetailView alloc] initWithFrame:self.view.frame];
 //    bookDetailView.frame = self.view.bounds;
 //    [self.view addSubview:bookDetailView];
 //    self.bookDetailView = bookDetailView;
     
-    DLLBookCoverView *bookCover = [[DLLBookCoverView alloc] initWithFrame:self.view.frame];
-    self.bookCover = bookCover;
-    [self.tableView addParallaxWithView:bookCover andHeight:500];
+    [self.tableView registerClass:[DLLBookCoverView class] forCellReuseIdentifier:@"bookCover"];
+   
+////
+//    DLLBookCoverView *bookCover = [[DLLBookCoverView alloc] initWithFrame:self.view.frame];
+//    self.bookCover = bookCover;
+//    [self.tableView addParallaxWithView:bookCover andHeight:500];
 
     // 初始化tableView的数据
-    NSArray *list = [NSArray arrayWithObjects:@"武汉",@"上海",@"北京",@"深圳",@"广州",@"重庆",@"香港",@"台海",@"天津",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"0",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"24",@"25",@"26",@"27",@"28",@"29",@"30", nil];
+    NSArray *list = [NSArray arrayWithObjects:@"1武汉",@"2上海",@"3北京",@"深圳",@"广州",@"重庆",@"香港",@"台海",@"天津",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"0",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"24",@"25",@"26",@"27",@"28",@"29",@"30", nil];
     self.dataList = list;
+    
+    [self requestBookById:self.book];
 
 }
 
@@ -56,7 +86,7 @@
     //请求网络，获取对应图书Id的图书信息，并转换为Book对象
     NSLog(@"bookId:%@",book.isbn);
     
-    NSString *baseUrl = @"http://bl.itfengzi.com/api/v1/book/add?isbn=";
+    NSString *baseUrl = @"http://bl.itfengzi.com/api/v1/book?isbn=";
     
     NSString *url = [baseUrl stringByAppendingString:book.isbn];
     NSLog(@"%@", url);
@@ -65,9 +95,8 @@
         int code = [responseData[@"code"] intValue];
         if (code == 200) {
             DLLBook *book = [DLLBook objectWithKeyValues:responseData[@"data"]];
-            NSLog(@"bookImage:%@",book.ID);
              self.bookDetailView.dllBook = book;
-            
+            self.bookCover.book = book;
         }
         
 
@@ -92,26 +121,99 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 30;
+    if (section == 0) {
+        return 1;
+    }else if (section == 1){
+        return 3;
+    }
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellWithIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellWithIdentifier];
+    
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        static NSString *CellWithIdentifier = @"bookCover";
+        DLLBookCoverView *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier];
+        
+        cell.book = self.book;
+        return cell;
+        
+    }else if (indexPath.section == 1 && indexPath.row == 0){
+        static NSString *CellWithIdentifier = @"Cell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellWithIdentifier];
+        }
+        cell.textLabel.text = @"图书目录";
+        return cell;
+    }else if (indexPath.section == 1 && indexPath.row == 1){
+        static NSString *CellWithIdentifier = @"Cell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellWithIdentifier];
+        }
+        cell.textLabel.text = @"作者简介";
+        return cell;
+    }else if (indexPath.section == 1 && indexPath.row == 2){
+        static NSString *CellWithIdentifier = @"Cell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellWithIdentifier];
+        }
+        cell.textLabel.text = @"内容简介";
+
+        return cell;
     }
-    NSUInteger row = [indexPath row];
-    cell.textLabel.text = [self.dataList objectAtIndex:row];
-    cell.imageView.image = [UIImage imageNamed:@"green.png"];
-    cell.detailTextLabel.text = @"详细信息";
-    return cell;
+    return NULL;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        return 200;
+    }
+    return 40;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return @"";
+    }else if (section == 1){
+        return @"";
+    }
+    return @"内容简介";
+}
+
+#pragma mark didSelect
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSString *desText = [[NSString alloc] init];
+    if (indexPath.row == 1) {
+        desText = @"$$$$$$$$$$$$$$$$";
+    }else if (indexPath.row == 2){
+        desText = @"$$$$$$$$$$$$$$$$";
+    }else if (indexPath.row ==3 ){
+                desText = @"$$$$$$$$$$$$$$$$";
+    }
+    [self push2TextView:desText];
+    
+}
+
+#pragma mark - textViewController
+- (void)push2TextView:(NSString *)des
+{
+    DLLTextViewController *textViewController = [[DLLTextViewController alloc] init];
+    textViewController.des = des;
+    [self.navigationController pushViewController:textViewController animated:YES];
+}
+
 
 @end

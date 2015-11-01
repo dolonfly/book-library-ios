@@ -24,6 +24,10 @@
 @property (nonatomic,copy) NSString *publisher;
 /** isbn */
 @property (nonatomic,copy) NSString *isbn;
+/** pages */
+@property (nonatomic,copy) NSNumber *pages;
+/** stock */
+@property (nonatomic,copy) NSNumber *stock;
 
 
 
