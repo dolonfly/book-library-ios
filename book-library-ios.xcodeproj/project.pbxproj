@@ -26,6 +26,7 @@
 		4E6F78E81BE51013009172A4 /* DLLCommonTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E6F78E71BE51013009172A4 /* DLLCommonTextView.m */; };
 		4E6F78EA1BE51F2F009172A4 /* Empty.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E6F78E91BE51F2F009172A4 /* Empty.xib */; };
 		4E6F78ED1BE5B3A9009172A4 /* DLLTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E6F78EC1BE5B3A9009172A4 /* DLLTextViewController.m */; };
+		4E6F78F01BE5FF67009172A4 /* DLLScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E6F78EF1BE5FF67009172A4 /* DLLScanViewController.m */; };
 		4E7B23FA1BB3F13E00A42E62 /* TTHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B23F91BB3F13E00A42E62 /* TTHttpTool.m */; };
 		4EA07C0B1BA9816A00829E90 /* DLLListPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA07C0A1BA9816A00829E90 /* DLLListPageViewController.m */; };
 		4EB82D101BD61ABA00439542 /* DLLUserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB82D0F1BD61ABA00439542 /* DLLUserInfoView.m */; };
@@ -82,6 +83,8 @@
 		4E6F78E91BE51F2F009172A4 /* Empty.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Empty.xib; sourceTree = "<group>"; };
 		4E6F78EB1BE5B3A9009172A4 /* DLLTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLTextViewController.h; sourceTree = "<group>"; };
 		4E6F78EC1BE5B3A9009172A4 /* DLLTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLTextViewController.m; sourceTree = "<group>"; };
+		4E6F78EE1BE5FF67009172A4 /* DLLScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLScanViewController.h; sourceTree = "<group>"; };
+		4E6F78EF1BE5FF67009172A4 /* DLLScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLScanViewController.m; sourceTree = "<group>"; };
 		4E7B23F81BB3F13E00A42E62 /* TTHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTHttpTool.h; sourceTree = "<group>"; };
 		4E7B23F91BB3F13E00A42E62 /* TTHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTHttpTool.m; sourceTree = "<group>"; };
 		4EA07C091BA9816A00829E90 /* DLLListPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLListPageViewController.h; sourceTree = "<group>"; };
@@ -139,6 +142,8 @@
 			children = (
 				4E0554FA1BDCF8DD0034FA2A /* DLLScanBookViewController.h */,
 				4E0554FB1BDCF8DD0034FA2A /* DLLScanBookViewController.m */,
+				4E6F78EE1BE5FF67009172A4 /* DLLScanViewController.h */,
+				4E6F78EF1BE5FF67009172A4 /* DLLScanViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -482,7 +487,6 @@
 				4E5E989C1BA6F4D3002B3687 /* Frameworks */,
 				4E5E989D1BA6F4D3002B3687 /* Resources */,
 				847CABAFC448429026C3F4D1 /* Copy Pods Resources */,
-				001279405280D6B302B93363 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -571,21 +575,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		001279405280D6B302B93363 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		847CABAFC448429026C3F4D1 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -633,6 +622,7 @@
 				4E29D8291BD5E84C001F8CCB /* DLLUserCenterViewController.m in Sources */,
 				4E29D8181BD10BA0001F8CCB /* DLLTabBarViewController.m in Sources */,
 				4E6D932A1BABCDAB00A2B0A7 /* DLLBook.m in Sources */,
+				4E6F78F01BE5FF67009172A4 /* DLLScanViewController.m in Sources */,
 				4E0554FC1BDCF8DD0034FA2A /* DLLScanBookViewController.m in Sources */,
 				4E5E98AB1BA6F4D3002B3687 /* book_library_ios.xcdatamodeld in Sources */,
 				4E7B23FA1BB3F13E00A42E62 /* TTHttpTool.m in Sources */,

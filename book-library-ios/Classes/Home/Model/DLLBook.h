@@ -25,10 +25,15 @@
 /** isbn */
 @property (nonatomic,copy) NSString *isbn;
 /** pages */
-@property (nonatomic,copy) NSNumber *pages;
+@property (nonatomic,assign) int pages;
 /** stock */
-@property (nonatomic,copy) NSNumber *stock;
-
+@property (nonatomic,assign) int stock;
+/** catalog */
+@property (nonatomic,copy) NSString *catalog;
+/** authorIntro */
+@property (nonatomic,copy) NSString *authorIntro;
+/** summary */
+@property (nonatomic,copy) NSString *summary;
 
 
 @end

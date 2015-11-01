@@ -18,8 +18,6 @@
 @interface DLLBookDetailViewController ()
 
 @property (nonatomic, strong) NSArray *dataList;
-@property (nonatomic, weak) DLLBookDetailView *bookDetailView;
-@property (nonatomic, weak) DLLBookCoverView *bookCover;
 
 @end
 
@@ -95,8 +93,8 @@
         int code = [responseData[@"code"] intValue];
         if (code == 200) {
             DLLBook *book = [DLLBook objectWithKeyValues:responseData[@"data"]];
-             self.bookDetailView.dllBook = book;
-            self.bookCover.book = book;
+            self.book = book;
+            [self.tableView reloadData];
         }
         
 
@@ -196,14 +194,17 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSString *desText = [[NSString alloc] init];
-    if (indexPath.row == 1) {
-        desText = @"$$$$$$$$$$$$$$$$";
-    }else if (indexPath.row == 2){
-        desText = @"$$$$$$$$$$$$$$$$";
-    }else if (indexPath.row ==3 ){
-                desText = @"$$$$$$$$$$$$$$$$";
+    if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            desText = self.book.catalog;
+        }else if (indexPath.row == 1){
+            desText = self.book.authorIntro;
+        }else if (indexPath.row ==2 ){
+            desText = self.book.summary;
+        }
+        [self push2TextView:desText];
     }
-    [self push2TextView:desText];
+    
     
 }
 

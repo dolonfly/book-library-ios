@@ -19,7 +19,6 @@
 
 @property (nonatomic, weak) UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *books;
-- (void)requestNewsBooks;
 
 @end
 
@@ -36,7 +35,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self requestNewsBooks];
     
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     flowLayout.minimumInteritemSpacing = 0;
@@ -58,9 +56,10 @@
     [self.view addSubview:collectionView];
     self.collectionView = collectionView;
     
-    self.collectionView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        // 进入刷新状态后会自动调用这个block
-    }];
+    // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
+    self.collectionView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    [self.collectionView.header beginRefreshing];
+
 
 }
 
@@ -98,7 +97,8 @@
  }
  */
 
-- (void)requestNewsBooks
+
+- (void)loadNewData
 {
     [TTHttpTool getWithURL:@"http://121.40.253.109:3002/api/v1/book/news" parameters:NULL success:^(id responseData) {
         int code = [responseData[@"code"] intValue];
@@ -108,10 +108,12 @@
             _books = books;
             
         }
+        [self.collectionView.header endRefreshing];
         [self.collectionView reloadData];
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
     }];
+
 }
 
 @end

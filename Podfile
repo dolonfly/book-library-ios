@@ -4,7 +4,7 @@ pod 'SDWebImage', '~> 3.7.2'
 pod 'BLKFlexibleHeightBar','~> 1.0'
 pod 'APParallaxHeader'
 pod 'LBBlurredImage'
-pod 'MTBBarcodeScanner'
+pod 'MTBBarcodeScanner',:git=>"https://github.com/mikebuss/MTBBarcodeScanner.git"
 pod 'MBProgressHUD', '~> 0.9.1'
 pod 'SWFrameButton'
 pod 'MJRefresh', '~> 2.4.0'

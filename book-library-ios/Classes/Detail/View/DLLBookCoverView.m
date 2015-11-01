@@ -100,8 +100,10 @@
     self.bookTitleLabel.text = book.title;
     self.bookAuthorLabel.text = [NSString stringWithFormat:@"作者：%@",[book.author componentsJoinedByString:@","]];
     self.isbnLabel.text = [NSString stringWithFormat:@"ISBN：%@",book.isbn];
-    self.pagesLabel.text = [NSString stringWithFormat:@"页码：%@",[book.pages stringValue]];
-    self.stockLabel.text = [NSString stringWithFormat:@"库存：%@",[book.stock stringValue]];
+    self.pagesLabel.text = [NSString stringWithFormat:@"页码：%d",book.pages];
+    self.stockLabel.text = [NSString stringWithFormat:@"库存：%d",book.stock];
+
+    NSLog(@"book stock:%d",book.stock);
 
 }
 
