@@ -139,6 +139,7 @@
             
         } else {
             // The user denied access to the camera
+            [self showText:@"请打开相机权限"];
         }
     }];
 }
