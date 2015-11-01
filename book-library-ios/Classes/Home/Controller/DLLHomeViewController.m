@@ -13,6 +13,7 @@
 #import "DLLBookDetailViewController.h"
 #import "TTHttpTool.h"
 #import <MJExtension.h>
+#import <MJRefresh.h>
 
 @interface DLLHomeViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
@@ -56,43 +57,11 @@
     collectionView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:collectionView];
     self.collectionView = collectionView;
-        
-    /*
-    BLKFlexibleHeightBar *myBar = [[BLKFlexibleHeightBar alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 100.0)];
-    myBar.minimumBarHeight = 50.0;
     
-    myBar.backgroundColor = [UIColor colorWithRed:0.86 green:0.25 blue:0.23 alpha:1];
-    [self.view addSubview:myBar];
-    
-    myBar.behaviorDefiner = [SquareCashStyleBehaviorDefiner new];
-    
-    [myBar.behaviorDefiner addSnappingPositionProgress:0.0 forProgressRangeStart:0.0 end:0.5];
-    [myBar.behaviorDefiner addSnappingPositionProgress:1.0 forProgressRangeStart:0.5 end:1.0];
-    
-//    ((UIScrollView *)collectionView).delegate = (id<UITableViewDelegate>)myBar.behaviorDefiner;
-    
-    UISearchBar *searchBar = [[UISearchBar alloc] init];
-    [searchBar sizeToFit];
-    [myBar addSubview:searchBar];
-    
-    BLKFlexibleHeightBarSubviewLayoutAttributes *initialLayoutAttributes = [BLKFlexibleHeightBarSubviewLayoutAttributes new];
-    initialLayoutAttributes.size = searchBar.frame.size;
-    initialLayoutAttributes.center = CGPointMake(CGRectGetMidX(myBar.bounds), CGRectGetMidY(myBar.bounds)+10.0);
-    // This is what we want the bar to look like at its maximum height (progress == 0.0)
-    [searchBar addLayoutAttributes:initialLayoutAttributes forProgress:0.0];
-    
-    // Create a final set of layout attributes based on the same values as the initial layout attributes
-    BLKFlexibleHeightBarSubviewLayoutAttributes *finalLayoutAttributes = [[BLKFlexibleHeightBarSubviewLayoutAttributes alloc] initWithExistingLayoutAttributes:initialLayoutAttributes];
-    finalLayoutAttributes.alpha = 0.0;
-    CGAffineTransform translation = CGAffineTransformMakeTranslation(0.0, -30.0);
-    CGAffineTransform scale = CGAffineTransformMakeScale(0.2, 0.2);
-    finalLayoutAttributes.transform = CGAffineTransformConcat(scale, translation);
-    
-    // This is what we want the bar to look like at its minimum height (progress == 1.0)
-    [searchBar addLayoutAttributes:finalLayoutAttributes forProgress:1.0];
-    */
-    
-    
+    self.collectionView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        // 进入刷新状态后会自动调用这个block
+    }];
+
 }
 
 #pragma mark - collectionView delegate
