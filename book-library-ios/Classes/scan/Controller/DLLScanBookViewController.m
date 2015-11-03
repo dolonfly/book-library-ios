@@ -57,7 +57,7 @@
     SWFrameButton *saveBookBtn = [[SWFrameButton alloc] init];
     saveBookBtn.frame = CGRectMake(25, self.view.frame.size.height - 120, btnWidth, 40);
     [saveBookBtn setTitle:@"入库" forState:UIControlStateNormal];
-    [saveBookBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [saveBookBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.view addSubview:saveBookBtn];
     self.saveBookBtn = saveBookBtn;
     saveBookBtn.tag = 0;
@@ -100,9 +100,11 @@
     _canClickSaveBtn = canClickSaveBtn;
     if (_canClickSaveBtn) {
         [self.saveBookBtn setUserInteractionEnabled:YES];
+        [self.saveBookBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }else{
         [self.saveBookBtn setUserInteractionEnabled:NO];
-        self.saveBookBtn.backgroundColor = [UIColor grayColor];
+//        self.saveBookBtn.backgroundColor = [UIColor grayColor];
+        [self.saveBookBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     }
 }
 
