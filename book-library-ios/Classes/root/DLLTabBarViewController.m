@@ -106,7 +106,9 @@
 - (void)tabBarDidClickCameraButton:(DLLTabBar *)tabBar
 {
     DLLScanViewController *scanVc = [[DLLScanViewController alloc] init];
-    [self presentViewController:scanVc animated:YES completion:nil];
+    DLLNavigationController *nav = [[DLLNavigationController alloc] initWithRootViewController:scanVc];
+    nav.navigationBarHidden = YES;
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 
