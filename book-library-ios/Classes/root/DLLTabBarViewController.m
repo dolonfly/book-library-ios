@@ -73,11 +73,11 @@
 {
     //1.首页控制器
     DLLHomeViewController *homeVc = [[DLLHomeViewController alloc] init];
-    [self setupChildViewController:homeVc withTitle:@"首页" withImageName:@"tabbar_home" withSelectedImageName:@"tabbar_home_selected"];
+    [self setupChildViewController:homeVc withTitle:@"" withImageName:@"tabbar_home_selected" withSelectedImageName:@"tabbar_home"];
     
     //2.我控制器
     DLLUserCenterViewController *userCenterVc = [[DLLUserCenterViewController alloc] init];
-    [self setupChildViewController:userCenterVc withTitle:@"我的" withImageName:@"tabbar_profile" withSelectedImageName:@"tabbar_profile_selected"];
+    [self setupChildViewController:userCenterVc withTitle:@"" withImageName:@"tabbar_profile_selected" withSelectedImageName:@"tabbar_profile"];
 }
 
 - (void)setupChildViewController:(UIViewController *)childVc withTitle:(NSString *)title withImageName:(NSString *)imageName withSelectedImageName:(NSString *)selectImageName

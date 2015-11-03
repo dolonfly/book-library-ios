@@ -36,8 +36,10 @@
 //        self.backgroundColor = [UIColor grayColor];
         
         UIButton *cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        cameraButton.bounds = CGRectMake(0, 0, 60, 60);
-        cameraButton.backgroundColor = [UIColor redColor];
+        cameraButton.frame = CGRectMake(0, 0, 60, 60);
+        [cameraButton setBackgroundImage:[UIImage imageNamed:@"camera_takepicture"] forState:UIControlStateNormal];
+//        cameraButton.backgroundColor = [UIColor yellowColor];
+//        [cameraButton.imageView setImage:[UIImage imageNamed:@"camera_takePicture.png"]];
         /** 为cammeraButton添加点击事件*/
         [cameraButton addTarget:self action:@selector(cameraBtnClick) forControlEvents:UIControlEventTouchUpInside];
         
