@@ -47,18 +47,6 @@
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    self.tabBar.hidden = NO;
-    [super viewDidAppear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    self.tabBar.hidden = YES;
-    [super viewDidDisappear:animated];
-}
-
 /**初始化tabbar */
 - (void)setupTabBar
 {
