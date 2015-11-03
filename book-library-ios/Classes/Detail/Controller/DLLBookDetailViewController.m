@@ -34,7 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self setTitle:@"图书详情"];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     

@@ -37,7 +37,7 @@ typedef void(^SelectedOption)();
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self setTitle:@"我的"];
     UITableView *tableView  = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
 //    tableView.frame = self.view.bounds;
     [self.view addSubview:tableView];
