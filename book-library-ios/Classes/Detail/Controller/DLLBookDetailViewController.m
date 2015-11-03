@@ -43,9 +43,9 @@
 //    self.tableView.allowsSelection = NO;
      self.tableView.tableHeaderView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"transparent.png"] forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"transparent.png"] forBarMetrics:UIBarMetricsDefault];
 //    self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
-    self.navigationController.navigationBar.translucent = YES;
+//    self.navigationController.navigationBar.translucent = YES;
 //    self.navigationController.automaticallyAdjustsScrollViewInsets = NO;
 //    self.navigationController.edgesForExtendedLayout = UIRectEdgeNone;
 //    self.navigationController.extendedLayoutIncludesOpaqueBars = NO;

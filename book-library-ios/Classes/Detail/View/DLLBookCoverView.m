@@ -82,7 +82,7 @@
     CGFloat imageHeigth = 200 - border *2 ;
     CGFloat imageWidth = imageHeigth * 0.725;
     
-    self.backImage.frame = CGRectMake(0, -64, frameWidth, 200+64);
+    self.backImage.frame = CGRectMake(0, 0, frameWidth, 200);
     self.bookImageView.frame = CGRectMake(border, border, imageWidth, imageHeigth);
     self.bookTitleLabel.frame = CGRectMake(imageWidth + border * 2, border, frameWidth - imageWidth - border * 2, 20);
     self.bookAuthorLabel.frame = CGRectMake(imageWidth + border * 2, border + 10 + 20, frameWidth - imageWidth - border * 2, 20);
