@@ -65,6 +65,14 @@
     tips.text = @"将条码放入上面框内进行扫描";
     tips.textAlignment = NSTextAlignmentCenter;
     
+    UIButton *cancelBtn = [[UIButton alloc] init];
+    cancelBtn.frame = CGRectMake(self.view.frame.size.width - 60, 40, 50, 50);
+    cancelBtn.titleLabel.font = [UIFont systemFontOfSize:20];
+    [cancelBtn setTitle:@"✘" forState:UIControlStateNormal];
+    [cancelBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.view addSubview:cancelBtn];
+    [cancelBtn addTarget:self action:@selector(cancelBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    
     self.scanner.scanRect = self.viewOfInterest.frame;
     
     
@@ -163,6 +171,12 @@
     
     [hud hide:YES afterDelay:3];
     
+}
+
+#pragma mark - 点击退出按钮
+- (void)cancelBtnClick
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
