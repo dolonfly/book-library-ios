@@ -35,7 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setTitle:@"图书详情"];
-    
+    self.navigationController.navigationBarHidden = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     
     self.view.backgroundColor = [UIColor colorWithRed:247.0/255 green:247.0/255 blue:247.0/255 alpha:1];

@@ -33,6 +33,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationController.navigationBarHidden = YES;
+    self.navigationController.hidesBottomBarWhenPushed = NO;
     
     UIView *previewView = [[UIView alloc] initWithFrame:self.view.frame];
     self.previewView = previewView;
@@ -87,12 +89,24 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     NSLog(@"view did appear");
-    [self startScanning];
+    
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     NSLog(@"view did disappear");
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBarHidden = YES;
+    [self startScanning];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    self.navigationController.navigationBarHidden = NO;
     [self stopScanning];
 }
 
@@ -130,9 +144,13 @@
                     book.isbn = code.stringValue;
                     DLLBookDetailViewController *detailVc = [[DLLBookDetailViewController alloc] init];
                     detailVc.book = book;
+                     [self.scanner unfreezeCapture];
+//                    self.navigationController.hidesBottomBarWhenPushed = NO;
+//                    self.navigationController.navigationBarHidden = NO;
                     [self.navigationController pushViewController:detailVc animated:YES];
+                    
 
-                    [self.scanner unfreezeCapture];
+                   
                     
                 }else{
                     [self.scanner freezeCapture];
@@ -178,6 +196,8 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+
 
 
 @end
