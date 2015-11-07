@@ -317,9 +317,33 @@
 			path = tool;
 			sourceTree = "<group>";
 		};
+		4E7C60D11BEE2CCB00E1341E /* search */ = {
+			isa = PBXGroup;
+			children = (
+				4E7C60D21BEE2CCB00E1341E /* Controller */,
+				4E7C60D31BEE2CCB00E1341E /* View */,
+			);
+			path = search;
+			sourceTree = "<group>";
+		};
+		4E7C60D21BEE2CCB00E1341E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4E7C60D31BEE2CCB00E1341E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		4EA07BE81BA9741400829E90 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4E7C60D11BEE2CCB00E1341E /* search */,
 				4E0554F81BDCF86C0034FA2A /* scan */,
 				4E29D8211BD5E7C3001F8CCB /* user */,
 				4E29D8121BD10BA0001F8CCB /* root */,

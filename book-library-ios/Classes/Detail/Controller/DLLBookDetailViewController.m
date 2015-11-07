@@ -18,6 +18,7 @@
 @interface DLLBookDetailViewController ()
 
 @property (nonatomic, strong) NSArray *dataList;
+@property (nonatomic, weak) DLLBookCoverView *bookCover;
 
 @end
 
@@ -40,33 +41,15 @@
     
     self.view.backgroundColor = [UIColor colorWithRed:247.0/255 green:247.0/255 blue:247.0/255 alpha:1];
 
-//    self.tableView.allowsSelection = NO;
-     self.tableView.tableHeaderView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
-    
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"transparent.png"] forBarMetrics:UIBarMetricsDefault];
-//    self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
-//    self.navigationController.navigationBar.translucent = YES;
-//    self.navigationController.automaticallyAdjustsScrollViewInsets = NO;
-//    self.navigationController.edgesForExtendedLayout = UIRectEdgeNone;
-//    self.navigationController.extendedLayoutIncludesOpaqueBars = NO;
 
-    //self.tableView.layer.borderColor = [[UIColor colorWithHexString:@"#6a2d00"] CGColor];
 
+    DLLBookCoverView *bookCover = [[DLLBookCoverView alloc] init];
+    bookCover.frame = CGRectMake(0, 0, self.view.frame.size.width,200);
+    [self.tableView setTableHeaderView:bookCover];
+    self.bookCover = bookCover;
     
-//    DLLBookDetailView *bookDetailView = [[DLLBookDetailView alloc] initWithFrame:self.view.frame];
-//    bookDetailView.frame = self.view.bounds;
-//    [self.view addSubview:bookDetailView];
-//    self.bookDetailView = bookDetailView;
-    
-    [self.tableView registerClass:[DLLBookCoverView class] forCellReuseIdentifier:@"bookCover"];
-   
-////
-//    DLLBookCoverView *bookCover = [[DLLBookCoverView alloc] initWithFrame:self.view.frame];
-//    self.bookCover = bookCover;
-//    [self.tableView addParallaxWithView:bookCover andHeight:500];
-
     // 初始化tableView的数据
-    NSArray *list = [NSArray arrayWithObjects:@"1武汉",@"2上海",@"3北京",@"深圳",@"广州",@"重庆",@"香港",@"台海",@"天津",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"0",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"24",@"25",@"26",@"27",@"28",@"29",@"30", nil];
+    NSArray *list = [NSArray arrayWithObjects:@"图书目录",@"作者简介",@"内容简介",nil];
     self.dataList = list;
     
     [self requestBookById:self.book];
@@ -94,6 +77,7 @@
         if (code == 200) {
             DLLBook *book = [DLLBook objectWithKeyValues:responseData[@"data"]];
             self.book = book;
+            self.bookCover.book = book;
             [self.tableView reloadData];
         }
         
@@ -119,93 +103,48 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 1;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return 1;
-    }else if (section == 1){
-        return 3;
-    }
-    return 1;
+    return self.dataList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    if (indexPath.section == 0 && indexPath.row == 0) {
-        static NSString *CellWithIdentifier = @"bookCover";
-        DLLBookCoverView *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier];
-        
-        cell.book = self.book;
-        return cell;
-        
-    }else if (indexPath.section == 1 && indexPath.row == 0){
-        static NSString *CellWithIdentifier = @"Cell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellWithIdentifier];
-        }
-        cell.textLabel.text = @"图书目录";
-        return cell;
-    }else if (indexPath.section == 1 && indexPath.row == 1){
-        static NSString *CellWithIdentifier = @"Cell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellWithIdentifier];
-        }
-        cell.textLabel.text = @"作者简介";
-        return cell;
-    }else if (indexPath.section == 1 && indexPath.row == 2){
-        static NSString *CellWithIdentifier = @"Cell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellWithIdentifier];
-        }
-        cell.textLabel.text = @"内容简介";
-
-        return cell;
+    static NSString *CellWithIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellWithIdentifier];
     }
-    return NULL;
+    cell.textLabel.text = self.dataList[indexPath.row];
+    return cell;
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0 && indexPath.row == 0) {
-        return 200;
-    }
     return 40;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    if (section == 0) {
-        return @"";
-    }else if (section == 1){
-        return @"";
-    }
-    return @"内容简介";
-}
 
 #pragma mark didSelect
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSString *desText = [[NSString alloc] init];
-    if (indexPath.section == 1) {
-        if (indexPath.row == 0) {
-            desText = self.book.catalog;
-        }else if (indexPath.row == 1){
-            desText = self.book.authorIntro;
-        }else if (indexPath.row ==2 ){
-            desText = self.book.summary;
-        }
-        [self push2TextView:desText];
+    
+    if (indexPath.row == 0) {
+        desText = self.book.catalog;
+    }else if (indexPath.row == 1){
+        desText = self.book.authorIntro;
+    }else if (indexPath.row ==2 ){
+        desText = self.book.summary;
     }
-    
-    
+    [self push2TextView:desText];
+   
 }
 
 #pragma mark - textViewController

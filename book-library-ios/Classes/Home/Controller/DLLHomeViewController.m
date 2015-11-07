@@ -44,8 +44,7 @@
     CGFloat height = width / 0.625 ;//为什么是0.625倍？仿照kindle 的尺寸
     flowLayout.itemSize = CGSizeMake(width, height);
     flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 0, 10);
-    
-    
+   
     
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
     collectionView.dataSource = self;
@@ -57,9 +56,13 @@
     [self.view addSubview:collectionView];
     self.collectionView = collectionView;
     
+    
+    
+    
     // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
     self.collectionView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
     [self.collectionView.header beginRefreshing];
+
 
 
 }
