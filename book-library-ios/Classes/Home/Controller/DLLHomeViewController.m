@@ -37,6 +37,9 @@
     [super viewDidLoad];
     [self setTitle:@"首页"];
     
+    UIBarButtonItem *searchItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(selectSearchItem:)];
+    self.navigationItem.rightBarButtonItem = searchItem;
+    
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     flowLayout.minimumInteritemSpacing = 0;
     flowLayout.minimumLineSpacing = 10;
@@ -118,6 +121,13 @@
         NSLog(@"%@",error);
     }];
 
+}
+
+#pragma mark search
+- (void)selectSearchItem:(id)sender
+{
+    UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"提示" message:@"你点击了导航栏右按钮" delegate:self  cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [alter show];
 }
 
 @end
