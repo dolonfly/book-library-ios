@@ -73,7 +73,7 @@
     self.publisherLabel.text = book.publisher;
     self.publishDateLabel.text = book.publisher;;
     self.isbnLabel.text = book.isbn;
-    self.pagesLabel.text = [NSString stringWithFormat:@"%@",book.pages];
+    self.pagesLabel.text = [NSString stringWithFormat:@"%d",book.pages];
 }
 
 @end

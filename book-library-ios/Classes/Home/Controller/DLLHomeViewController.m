@@ -15,10 +15,15 @@
 #import <MJExtension.h>
 #import <MJRefresh.h>
 
-@interface DLLHomeViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+
+@interface DLLHomeViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UISearchControllerDelegate>
 
 @property (nonatomic, weak) UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *books;
+
+//搜索
+@property (nonatomic, strong) UISearchBar       *searchBar;
+@property (strong, nonatomic)  UISearchController *searchController;
 
 @end
 
@@ -128,6 +133,28 @@
 {
     UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"提示" message:@"你点击了导航栏右按钮" delegate:self  cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
     [alter show];
+    UIButton *leftItemView = (UIButton *)self.parentViewController.navigationItem.leftBarButtonItem.customView;
+    [leftItemView removeFromSuperview];
+    
+    
+    if(!_searchBar) {
+        
+        _searchBar = ({
+            
+            UISearchBar *searchBar = [[UISearchBar alloc] init];
+            searchBar.delegate = self;
+            [searchBar sizeToFit];
+            [searchBar setPlaceholder:@"搜索冒泡、用户名、话题"];
+            [searchBar setTintColor:[UIColor whiteColor]];
+            [searchBar setTranslucent:NO];
+            searchBar;
+        });
+        [self.parentViewController.navigationController.view addSubview:_searchBar];
+        
+    }
+    
+    [self.tabBarController.ta]
+    [_searchBar becomeFirstResponder];
 }
 
 @end

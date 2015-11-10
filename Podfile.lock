@@ -26,7 +26,8 @@ PODS:
   - MBProgressHUD (0.9.1)
   - MJExtension (2.1.1)
   - MJRefresh (2.4.9)
-  - MTBBarcodeScanner (1.8.9)
+  - MTBBarcodeScanner (1.8.1)
+  - RDVTabBarController (1.1.9)
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
@@ -40,18 +41,10 @@ DEPENDENCIES:
   - MBProgressHUD (~> 0.9.1)
   - MJExtension (~> 2.1.0)
   - MJRefresh (~> 2.4.0)
-  - MTBBarcodeScanner (from `https://github.com/mikebuss/MTBBarcodeScanner.git`)
+  - MTBBarcodeScanner
+  - RDVTabBarController
   - SDWebImage (~> 3.7.2)
   - SWFrameButton
-
-EXTERNAL SOURCES:
-  MTBBarcodeScanner:
-    :git: https://github.com/mikebuss/MTBBarcodeScanner.git
-
-CHECKOUT OPTIONS:
-  MTBBarcodeScanner:
-    :commit: f24fb71e8d04dba69e7d43c8fae9008b97b77466
-    :git: https://github.com/mikebuss/MTBBarcodeScanner.git
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
@@ -61,7 +54,8 @@ SPEC CHECKSUMS:
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   MJExtension: 4b8a628ec7764a4b3c6c0e7261ec0687cf32ff20
   MJRefresh: be84acb912d0a66364f76a75426698a39528e2ed
-  MTBBarcodeScanner: 0b44de527064dc1e7af33bf4ee3a43cde7306849
+  MTBBarcodeScanner: 4b68473960d351a4359fafd4c9871790ad61cb5a
+  RDVTabBarController: 67794f7a7a37f8e32f046f85ac67d06ab92d624a
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   SWFrameButton: 9d6e46b85d673fc7dc0adc23159cd3448aab0ed6
 
