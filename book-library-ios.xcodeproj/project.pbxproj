@@ -33,6 +33,7 @@
 		4E7C63161BF0D2CF00E1341E /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E7C63141BF0D2CF00E1341E /* NSDate+Helper.m */; };
 		4E7C63171BF0D2CF00E1341E /* README.textile in Resources */ = {isa = PBXBuildFile; fileRef = 4E7C63151BF0D2CF00E1341E /* README.textile */; };
 		4EA07C0B1BA9816A00829E90 /* DLLListPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA07C0A1BA9816A00829E90 /* DLLListPageViewController.m */; };
+		4EA4834F1BF84317004F6E98 /* DLLBookInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA4834E1BF84317004F6E98 /* DLLBookInfoTableViewCell.m */; };
 		4EB82D101BD61ABA00439542 /* DLLUserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB82D0F1BD61ABA00439542 /* DLLUserInfoView.m */; };
 		4EB82D141BD61B4600439542 /* DLLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB82D131BD61B4600439542 /* DLLUser.m */; };
 		4EB82D171BD736A300439542 /* DLLBookCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB82D161BD736A300439542 /* DLLBookCoverView.m */; };
@@ -100,6 +101,8 @@
 		4E7C63151BF0D2CF00E1341E /* README.textile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.textile; sourceTree = "<group>"; };
 		4EA07C091BA9816A00829E90 /* DLLListPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLListPageViewController.h; sourceTree = "<group>"; };
 		4EA07C0A1BA9816A00829E90 /* DLLListPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLListPageViewController.m; sourceTree = "<group>"; };
+		4EA4834D1BF84317004F6E98 /* DLLBookInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLBookInfoTableViewCell.h; sourceTree = "<group>"; };
+		4EA4834E1BF84317004F6E98 /* DLLBookInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLBookInfoTableViewCell.m; sourceTree = "<group>"; };
 		4EB82D0E1BD61ABA00439542 /* DLLUserInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLUserInfoView.h; sourceTree = "<group>"; };
 		4EB82D0F1BD61ABA00439542 /* DLLUserInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLUserInfoView.m; sourceTree = "<group>"; };
 		4EB82D121BD61B4600439542 /* DLLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLUser.h; sourceTree = "<group>"; };
@@ -453,6 +456,8 @@
 			children = (
 				4E6D93231BABC81600A2B0A7 /* DLLBookInfoCollectionViewCell.h */,
 				4E6D93241BABC81600A2B0A7 /* DLLBookInfoCollectionViewCell.m */,
+				4EA4834D1BF84317004F6E98 /* DLLBookInfoTableViewCell.h */,
+				4EA4834E1BF84317004F6E98 /* DLLBookInfoTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -692,6 +697,7 @@
 				4E6D932A1BABCDAB00A2B0A7 /* DLLBook.m in Sources */,
 				4E6F78F01BE5FF67009172A4 /* DLLScanViewController.m in Sources */,
 				4E7C63161BF0D2CF00E1341E /* NSDate+Helper.m in Sources */,
+				4EA4834F1BF84317004F6E98 /* DLLBookInfoTableViewCell.m in Sources */,
 				4E0554FC1BDCF8DD0034FA2A /* DLLScanBookViewController.m in Sources */,
 				4E5E98AB1BA6F4D3002B3687 /* book_library_ios.xcdatamodeld in Sources */,
 				4E7B23FA1BB3F13E00A42E62 /* TTHttpTool.m in Sources */,

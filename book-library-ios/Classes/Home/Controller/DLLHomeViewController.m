@@ -9,16 +9,15 @@
 #import "DLLHomeViewController.h"
 #import "BLKFlexibleHeightBar.h"
 #import "SquareCashStyleBehaviorDefiner.h"
-#import "DLLBookInfoCollectionViewCell.h"
+#import "DLLBookInfoTableViewCell.h"
 #import "DLLBookDetailViewController.h"
 #import "TTHttpTool.h"
 #import <MJExtension.h>
 #import <MJRefresh.h>
 
 
-@interface DLLHomeViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UISearchControllerDelegate>
+@interface DLLHomeViewController ()
 
-@property (nonatomic, weak) UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *books;
 
 //搜索
@@ -45,53 +44,37 @@
     UIBarButtonItem *searchItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(selectSearchItem:)];
     self.navigationItem.rightBarButtonItem = searchItem;
     
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    flowLayout.minimumInteritemSpacing = 0;
-    flowLayout.minimumLineSpacing = 10;
-    CGFloat width = self.view.bounds.size.width / 3 - 10;
-    CGFloat height = width / 0.625 ;//为什么是0.625倍？仿照kindle 的尺寸
-    flowLayout.itemSize = CGSizeMake(width, height);
-    flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 0, 10);
+    [self.tableView registerClass:[DLLBookInfoTableViewCell class] forCellReuseIdentifier:@"bookInfoCell"];
    
     
-    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
-    collectionView.dataSource = self;
-    collectionView.delegate = self;
-    collectionView.frame = self.view.bounds;
-    [collectionView registerClass:[DLLBookInfoCollectionViewCell class] forCellWithReuseIdentifier:@"bookInfoCell"];
-//    collectionView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
-    collectionView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:collectionView];
-    self.collectionView = collectionView;
-    
-    
-    
-    
     // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
-    self.collectionView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
-    [self.collectionView.header beginRefreshing];
+    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    [self.tableView.header beginRefreshing];
 
 
 
 }
 
-#pragma mark - collectionView delegate
+#pragma mark - tableview delegate
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.books.count;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DLLBookInfoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"bookInfoCell" forIndexPath:indexPath];
-
+    DLLBookInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"bookInfoCell"];
     cell.dllBook = self.books[indexPath.row];
-
     return cell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DLLBook *book = self.books[indexPath.item];
     DLLBookDetailViewController *detailVc = [[DLLBookDetailViewController alloc] init];
@@ -99,15 +82,10 @@
     [self.navigationController pushViewController:detailVc animated:YES];
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 133;
+}
 
 
 - (void)loadNewData
@@ -118,10 +96,9 @@
             NSArray *datas = responseData[@"data"];
             NSArray *books = [DLLBook objectArrayWithKeyValuesArray:datas];
             _books = books;
-            
         }
-        [self.collectionView.header endRefreshing];
-        [self.collectionView reloadData];
+        [self.tableView.header endRefreshing];
+        [self.tableView reloadData];
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
     }];
@@ -136,25 +113,6 @@
     UIButton *leftItemView = (UIButton *)self.parentViewController.navigationItem.leftBarButtonItem.customView;
     [leftItemView removeFromSuperview];
     
-    
-    if(!_searchBar) {
-        
-        _searchBar = ({
-            
-            UISearchBar *searchBar = [[UISearchBar alloc] init];
-            searchBar.delegate = self;
-            [searchBar sizeToFit];
-            [searchBar setPlaceholder:@"搜索冒泡、用户名、话题"];
-            [searchBar setTintColor:[UIColor whiteColor]];
-            [searchBar setTranslucent:NO];
-            searchBar;
-        });
-        [self.parentViewController.navigationController.view addSubview:_searchBar];
-        
-    }
-    
-    [self.tabBarController.ta]
-    [_searchBar becomeFirstResponder];
 }
 
 @end
