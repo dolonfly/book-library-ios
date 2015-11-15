@@ -11,6 +11,8 @@
 #import "DLLUserInfoView.h"
 #import "DLLScanBookViewController.h"
 #import <FontAwesomeKit.h>
+#import "DLLLoginViewController.h"
+#import "DLLUser.h"
 
 typedef void(^SelectedOption)();
 
@@ -19,6 +21,8 @@ typedef void(^SelectedOption)();
 @property (nonatomic, strong) NSArray *dataList;
 @property (nonatomic, weak)UIView *userInfoView;
 @property (nonatomic, strong) NSArray *selectedOptions;
+
+@property (nonatomic,assign) BOOL isLogin;
 @end
 
 @implementation DLLUserCenterViewController
@@ -36,24 +40,19 @@ typedef void(^SelectedOption)();
     return _selectedOptions;
 }
 
+- (BOOL)isLogin
+{
+    _isLogin = [[DLLUser new] isLogin];
+    return _isLogin;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setTitle:@"我的"];
-    FAKFoundationIcons *widgetIcon = [FAKFoundationIcons widgetIconWithSize:20];
-//    FAKFontAwesome *cogIcon = [FAKFontAwesome cogIconWithSize:20];
-    [widgetIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
-    UIImage *rightImage = [widgetIcon imageWithSize:CGSizeMake(20, 20)];
-    widgetIcon.iconFontSize = 15;
-
-    UIImage *rightLandscapeImage = [widgetIcon imageWithSize:CGSizeMake(15, 15)];
-    self.navigationItem.rightBarButtonItem =
-    [[UIBarButtonItem alloc] initWithImage:rightImage
-                       landscapeImagePhone:rightLandscapeImage
-                                     style:UIBarButtonItemStylePlain
-                                    target:nil
-                                    action:nil];
+    
+    self.navigationItem.rightBarButtonItem =    [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(loginBtnClick)];
     [self.navigationItem.rightBarButtonItem setTintColor:[UIColor grayColor]];
-
+    
     
     UITableView *tableView  = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
 //    tableView.frame = self.view.bounds;
@@ -66,7 +65,7 @@ typedef void(^SelectedOption)();
     self.userInfoView = userInfoView;
     [tableView addParallaxWithView:userInfoView andHeight:220];
     
-    
+    [self freshItem];
     
     
 //    [self.tableView addParallaxWithImage:[UIImage imageNamed:@"miao.jpg"] andHeight:220];
@@ -117,6 +116,11 @@ typedef void(^SelectedOption)();
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self freshItem];
+    NSLog(@"isLogin:%d",_isLogin);
+}
 
 /*
 #pragma mark - Navigation
@@ -128,12 +132,34 @@ typedef void(^SelectedOption)();
 }
 */
 
+#pragma mark - fresh barbuttonitem
+-(void)freshItem
+{
+    if (self.isLogin) {
+        self.navigationItem.rightBarButtonItem.title = @"登出";
+    }else{
+        self.navigationItem.rightBarButtonItem.title = @"登录";
+    }
+}
+
 #pragma mark - onClick
 
 - (void)clickAddBookCell
 {
     DLLScanBookViewController *scanBookController = [[DLLScanBookViewController alloc] init];
     [self.navigationController pushViewController:scanBookController animated:true];
+    
+}
+
+- (void)loginBtnClick
+{
+    if (_isLogin) {
+        [[DLLUser new] loginout];
+        [self freshItem];
+    }else{
+        DLLLoginViewController *login = [[DLLLoginViewController alloc] init];
+        [self.navigationController pushViewController:login animated:YES];
+    }
     
 }
 

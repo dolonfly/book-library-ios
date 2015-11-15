@@ -16,9 +16,16 @@
 @property (nonatomic, copy) NSString *image;
 /** 名称*/
 @property (nonatomic, copy) NSString *userName;
+/** */
+@property (nonatomic,copy) NSString *password;
 /** email*/
 @property (nonatomic, copy) NSString *email;
 /** 昵称*/
 @property (nonatomic, copy) NSString *nickName;
+/** token */
+@property (nonatomic,copy) NSString *token;
 
+- (BOOL) isLogin;
+- (BOOL) loginout;
+- (void)login;
 @end

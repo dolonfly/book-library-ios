@@ -36,6 +36,7 @@
 		4EA4834F1BF84317004F6E98 /* DLLBookInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA4834E1BF84317004F6E98 /* DLLBookInfoTableViewCell.m */; };
 		4EA483521BF870DA004F6E98 /* DLLSearchResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA483511BF870DA004F6E98 /* DLLSearchResultTableViewController.m */; };
 		4EA483551BF875F0004F6E98 /* DLLSearchResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA483541BF875F0004F6E98 /* DLLSearchResultTableViewCell.m */; };
+		4EA483581BF88F45004F6E98 /* DLLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA483571BF88F45004F6E98 /* DLLLoginViewController.m */; };
 		4EB82D101BD61ABA00439542 /* DLLUserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB82D0F1BD61ABA00439542 /* DLLUserInfoView.m */; };
 		4EB82D141BD61B4600439542 /* DLLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB82D131BD61B4600439542 /* DLLUser.m */; };
 		4EB82D171BD736A300439542 /* DLLBookCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB82D161BD736A300439542 /* DLLBookCoverView.m */; };
@@ -109,6 +110,8 @@
 		4EA483511BF870DA004F6E98 /* DLLSearchResultTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLSearchResultTableViewController.m; sourceTree = "<group>"; };
 		4EA483531BF875F0004F6E98 /* DLLSearchResultTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLSearchResultTableViewCell.h; sourceTree = "<group>"; };
 		4EA483541BF875F0004F6E98 /* DLLSearchResultTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLSearchResultTableViewCell.m; sourceTree = "<group>"; };
+		4EA483561BF88F45004F6E98 /* DLLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLLoginViewController.h; sourceTree = "<group>"; };
+		4EA483571BF88F45004F6E98 /* DLLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLLoginViewController.m; sourceTree = "<group>"; };
 		4EB82D0E1BD61ABA00439542 /* DLLUserInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLUserInfoView.h; sourceTree = "<group>"; };
 		4EB82D0F1BD61ABA00439542 /* DLLUserInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLUserInfoView.m; sourceTree = "<group>"; };
 		4EB82D121BD61B4600439542 /* DLLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLUser.h; sourceTree = "<group>"; };
@@ -240,6 +243,8 @@
 			children = (
 				4E29D8271BD5E84C001F8CCB /* DLLUserCenterViewController.h */,
 				4E29D8281BD5E84C001F8CCB /* DLLUserCenterViewController.m */,
+				4EA483561BF88F45004F6E98 /* DLLLoginViewController.h */,
+				4EA483571BF88F45004F6E98 /* DLLLoginViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -717,6 +722,7 @@
 				4EA483551BF875F0004F6E98 /* DLLSearchResultTableViewCell.m in Sources */,
 				4E6D93261BABC81600A2B0A7 /* DLLBookInfoCollectionViewCell.m in Sources */,
 				4E29D8111BD10B7D001F8CCB /* DLLHomeViewController.m in Sources */,
+				4EA483581BF88F45004F6E98 /* DLLLoginViewController.m in Sources */,
 				4E74C9031BE8695000335EFF /* DLLTabBar.m in Sources */,
 				4E29D8171BD10BA0001F8CCB /* DLLNavigationController.m in Sources */,
 				4EB82D171BD736A300439542 /* DLLBookCoverView.m in Sources */,
