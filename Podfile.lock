@@ -22,6 +22,21 @@ PODS:
     - AFNetworking/NSURLSession
   - APParallaxHeader (0.1.6)
   - BLKFlexibleHeightBar (1.0.2)
+  - FontAwesomeKit (2.1.8):
+    - FontAwesomeKit/Core (= 2.1.8)
+    - FontAwesomeKit/FontAwesome (= 2.1.8)
+    - FontAwesomeKit/FoundationIcons (= 2.1.8)
+    - FontAwesomeKit/IonIcons (= 2.1.8)
+    - FontAwesomeKit/Zocial (= 2.1.8)
+  - FontAwesomeKit/Core (2.1.8)
+  - FontAwesomeKit/FontAwesome (2.1.8):
+    - FontAwesomeKit/Core
+  - FontAwesomeKit/FoundationIcons (2.1.8):
+    - FontAwesomeKit/Core
+  - FontAwesomeKit/IonIcons (2.1.8):
+    - FontAwesomeKit/Core
+  - FontAwesomeKit/Zocial (2.1.8):
+    - FontAwesomeKit/Core
   - LBBlurredImage (0.2.2)
   - MBProgressHUD (0.9.1)
   - MJExtension (2.1.1)
@@ -37,6 +52,7 @@ DEPENDENCIES:
   - AFNetworking (~> 2.5.3)
   - APParallaxHeader
   - BLKFlexibleHeightBar (~> 1.0)
+  - FontAwesomeKit (~> 2.1.0)
   - LBBlurredImage
   - MBProgressHUD (~> 0.9.1)
   - MJExtension (~> 2.1.0)
@@ -50,6 +66,7 @@ SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   APParallaxHeader: 854bc48a2487ca12c702f8a236fec0d89cdac5c3
   BLKFlexibleHeightBar: b27572a69633d8e33f1f2bbc486b04d8e86f742d
+  FontAwesomeKit: 64759fb28b5d2e74a1bd81553d7c11ca10e32179
   LBBlurredImage: 700634c17922bc2d22343118e7deb6a3ca12db43
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   MJExtension: 4b8a628ec7764a4b3c6c0e7261ec0687cf32ff20

@@ -10,6 +10,7 @@
 #import <UIScrollView+APParallaxHeader.h>
 #import "DLLUserInfoView.h"
 #import "DLLScanBookViewController.h"
+#import <FontAwesomeKit.h>
 
 typedef void(^SelectedOption)();
 
@@ -38,6 +39,22 @@ typedef void(^SelectedOption)();
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setTitle:@"我的"];
+    FAKFoundationIcons *widgetIcon = [FAKFoundationIcons widgetIconWithSize:20];
+//    FAKFontAwesome *cogIcon = [FAKFontAwesome cogIconWithSize:20];
+    [widgetIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
+    UIImage *rightImage = [widgetIcon imageWithSize:CGSizeMake(20, 20)];
+    widgetIcon.iconFontSize = 15;
+
+    UIImage *rightLandscapeImage = [widgetIcon imageWithSize:CGSizeMake(15, 15)];
+    self.navigationItem.rightBarButtonItem =
+    [[UIBarButtonItem alloc] initWithImage:rightImage
+                       landscapeImagePhone:rightLandscapeImage
+                                     style:UIBarButtonItemStylePlain
+                                    target:nil
+                                    action:nil];
+    [self.navigationItem.rightBarButtonItem setTintColor:[UIColor grayColor]];
+
+    
     UITableView *tableView  = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
 //    tableView.frame = self.view.bounds;
     [self.view addSubview:tableView];
