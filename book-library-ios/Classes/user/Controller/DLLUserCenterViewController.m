@@ -16,7 +16,7 @@
 
 typedef void(^SelectedOption)();
 
-@interface DLLUserCenterViewController ()
+@interface DLLUserCenterViewController () <UIAlertViewDelegate,UITextFieldDelegate>
 @property (nonatomic, weak)UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataList;
 @property (nonatomic, weak)UIView *userInfoView;
@@ -71,7 +71,7 @@ typedef void(^SelectedOption)();
 //    [self.tableView addParallaxWithImage:[UIImage imageNamed:@"miao.jpg"] andHeight:220];
     
     // 初始化tableView的数据
-    NSArray *list = [NSArray arrayWithObjects:@"添加图书", nil];
+    NSArray *list = [NSArray arrayWithObjects:@"添加图书",@"我要买书",@"预购清单", nil];
     self.dataList = list;
     // 设置tableView的数据源
     tableView.dataSource = self;
@@ -92,7 +92,12 @@ typedef void(^SelectedOption)();
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellWithIdentifier];
     }
     NSUInteger row = [indexPath row];
-    cell.textLabel.text = [self.dataList objectAtIndex:row];
+    if (indexPath.section == 0) {
+        cell.textLabel.text =[self.dataList objectAtIndex:row];
+    }else{
+        cell.textLabel.text = [self.dataList objectAtIndex:(row + 1)];
+    }
+
 //    cell.imageView.image = [UIImage imageNamed:@"green.png"];
 //    cell.detailTextLabel.text = @"详细信息";
     return cell;
@@ -100,26 +105,30 @@ typedef void(^SelectedOption)();
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    if (section == 0) {
+        return 1;
+    }
+    return self.dataList.count - 1;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row==0) {
+    if (indexPath.row==0 && indexPath.section == 0) {
         [self clickAddBookCell];
+    }else{
+        [self clickOtherRow:indexPath];
     }
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [self freshItem];
-    NSLog(@"isLogin:%d",_isLogin);
 }
 
 /*
@@ -146,6 +155,17 @@ typedef void(^SelectedOption)();
 
 - (void)clickAddBookCell
 {
+    if (!_isLogin) {
+        UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"hello"
+                                                       message:@"登录管理员账号即可添加书籍"
+                                                      delegate:self
+                                             cancelButtonTitle:@"ok"
+                                             otherButtonTitles:nil];
+        
+        alert.title = @"你没有权限";
+        [alert show];
+        return;
+    }
     DLLScanBookViewController *scanBookController = [[DLLScanBookViewController alloc] init];
     [self.navigationController pushViewController:scanBookController animated:true];
     
@@ -162,5 +182,49 @@ typedef void(^SelectedOption)();
     }
     
 }
+
+-(void)clickOtherRow:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 1 && indexPath.row == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入要买的书的13位isbn号" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+        UITextField *tf=[alert textFieldAtIndex:0];
+        tf.keyboardType = UIKeyboardTypeNumberPad;
+        tf.delegate = self;
+        [alert show];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        UITextField *tf=[alertView textFieldAtIndex:0];
+        NSString *isbn = tf.text;
+        if (!(isbn.length == 13 && [isbn hasPrefix:@"978"])) {
+            alertView.message = @"请确认输入的isbn编码为合法编码";
+        }
+    }
+
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSString *newString = nil;
+    if (range.length == 0) {
+        newString = [textField.text stringByAppendingString:string];
+    } else {
+        NSString *headPart = [textField.text substringToIndex:range.location];
+        NSString *tailPart = [textField.text substringFromIndex:range.location+range.length];
+        newString = [NSString stringWithFormat:@"%@%@",headPart,tailPart];
+    }
+    if (!(newString.length == 13 && [newString hasPrefix:@"978"])) {
+        textField.textColor = [UIColor redColor];
+    }else{
+        textField.textColor = [UIColor blackColor];
+    }
+    return true;
+}
+
+
 
 @end
