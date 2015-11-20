@@ -10,7 +10,6 @@
 #import <UIScrollView+APParallaxHeader.h>
 #import "DLLUserInfoView.h"
 #import "DLLScanBookViewController.h"
-#import <FontAwesomeKit.h>
 #import "DLLLoginViewController.h"
 #import "DLLUser.h"
 
