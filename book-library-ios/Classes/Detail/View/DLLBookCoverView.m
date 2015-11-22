@@ -54,23 +54,31 @@
         UILabel *bookTitleLabel = [[UILabel alloc] init];
         [self addSubview:bookTitleLabel];
         self.bookTitleLabel = bookTitleLabel;
+        self.bookTitleLabel.textColor = [UIColor whiteColor];
         
         UILabel *bookAuthorLabel = [[UILabel alloc] init];
         [self addSubview:bookAuthorLabel];
         self.bookAuthorLabel = bookAuthorLabel;
+        self.bookAuthorLabel.font = [UIFont systemFontOfSize:12];
+        self.bookAuthorLabel.textColor = [UIColor whiteColor];
         
         UILabel *isbnLabel = [[UILabel alloc] init];
         [self addSubview:isbnLabel];
         self.isbnLabel = isbnLabel;
+        self.isbnLabel.font = [UIFont systemFontOfSize:12];
+        self.isbnLabel.textColor = [UIColor whiteColor];
         
         UILabel *pagesLabel = [[UILabel alloc] init];
         [self addSubview:pagesLabel];
         self.pagesLabel = pagesLabel;
+        self.pagesLabel.font = [UIFont systemFontOfSize:12];
+        self.pagesLabel.textColor = [UIColor whiteColor];
         
         UILabel *stockLabel = [[UILabel alloc] init];
         [self addSubview:stockLabel];
         self.stockLabel = stockLabel;
-
+        self.stockLabel.font = [UIFont systemFontOfSize:12];
+        self.stockLabel.textColor = [UIColor whiteColor];
     }
     return self;
 }

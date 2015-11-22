@@ -35,10 +35,12 @@
         UILabel *bookAuthorLabel = [[UILabel alloc] init];
         self.bookAuthorLabel = bookAuthorLabel;
         [self addSubview:bookAuthorLabel];
+        self.bookAuthorLabel.font = [UIFont systemFontOfSize:12];
         
         UILabel *bookPublisherLabel = [[UILabel alloc]init];
         self.bookPublisherLabel = bookPublisherLabel;
         [self addSubview:bookPublisherLabel];
+        self.bookPublisherLabel.font = [UIFont systemFontOfSize:12];
         
         
     }
