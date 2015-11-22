@@ -8,6 +8,7 @@
 
 #import "DLLTabBar.h"
 #import "DLLTabBarButton.h"
+#import <FontAwesomeKit/FAKIonIcons.h>
 
 @interface DLLTabBar ()
 
@@ -37,7 +38,14 @@
         
         UIButton *cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
         cameraButton.frame = CGRectMake(0, 0, 60, 60);
-        [cameraButton setBackgroundImage:[UIImage imageNamed:@"camera_takepicture"] forState:UIControlStateNormal];
+//        [cameraButton setBackgroundImage:[UIImage imageNamed:@"camera_takepicture"] forState:UIControlStateNormal];
+        
+        
+        FAKIonIcons *mailIcon = [FAKIonIcons ios7CameraOutlineIconWithSize:60];
+        [mailIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
+        UIImage *iconImage = [mailIcon imageWithSize:CGSizeMake(60, 60)];
+        [cameraButton setBackgroundImage:iconImage forState:UIControlStateNormal];
+        
 //        cameraButton.backgroundColor = [UIColor yellowColor];
 //        [cameraButton.imageView setImage:[UIImage imageNamed:@"camera_takePicture.png"]];
         /** 为cammeraButton添加点击事件*/
