@@ -131,19 +131,29 @@
 - (void)selectSearchItem:(id)sender
 {
     
-    DLLSearchResultTableViewController *resultTableViewController = [[DLLSearchResultTableViewController alloc] initWithStyle:UITableViewStylePlain];
-
-    self.searchController = [[UISearchController alloc] initWithSearchResultsController:resultTableViewController];
+    DLLSearchResultTableViewController *searchPageVC = [[DLLSearchResultTableViewController alloc] init];
+//    [self.navigationController pushViewController:searchPageVC animated:YES];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchPageVC];
+    [self presentViewController:nav animated:YES completion:nil];
     
-    // Use the current view controller to update the search results.
-    self.searchController.searchResultsUpdater = self;
-    self.searchController.searchBar.placeholder = @"10000";
     
-//    self.searchController.searchBar.scopeButtonTitles = @[@"All", @"111"];
+    /*
+     DLLSearchResultTableViewController *resultTableViewController = [[DLLSearchResultTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    resultTableViewController.controller = self;
+     
+     self.searchController = [[UISearchController alloc] initWithSearchResultsController:resultTableViewController];
+     
+     // Use the current view controller to update the search results.
+     self.searchController.searchResultsUpdater = self;
+     self.searchController.searchBar.placeholder = @"10000";
+     
+     //    self.searchController.searchBar.scopeButtonTitles = @[@"All", @"111"];
     
-    self.searchController.searchBar.delegate = self;
-    self.searchController.hidesNavigationBarDuringPresentation = NO;
-    [self presentViewController:self.searchController animated:YES completion:nil];
+     
+     self.searchController.searchBar.delegate = self;
+     self.searchController.hidesNavigationBarDuringPresentation = NO;
+     [self presentViewController:self.searchController animated:YES completion:nil];*/
+     
 }
 
 -(void)updateSearchResultsForSearchController:(UISearchController *)searchController

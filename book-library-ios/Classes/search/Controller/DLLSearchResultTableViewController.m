@@ -13,9 +13,10 @@
 #import "DLLBook.h"
 #import <MJExtension.h>
 
-@interface DLLSearchResultTableViewController ()
+@interface DLLSearchResultTableViewController () <UISearchBarDelegate>
 
 @property (nonatomic, strong) NSArray *books;
+@property (nonatomic,weak) UISearchBar *searchBar;
 
 
 
@@ -25,6 +26,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.definesPresentationContext = YES;
+    UIBarButtonItem *rightCancel = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:(UIBarButtonItemStylePlain) target:self action:@selector(didClickRightButton)];
+    self.navigationItem.rightBarButtonItem = rightCancel;
+    [self initSearchController];
+
     
     [self.tableView registerClass:[DLLSearchResultTableViewCell class] forCellReuseIdentifier:@"searchResultCell"];
 }
@@ -99,6 +105,29 @@
         NSLog(@"http request err :%@",error);
     }];
     
+}
+
+- (void)initSearchController {
+    UISearchBar *searchBar = [[UISearchBar alloc] init];
+    self.searchBar = searchBar;
+    searchBar.placeholder = @"";
+    searchBar.delegate = self;
+    self.navigationItem.titleView = searchBar;
+    [searchBar becomeFirstResponder];
+    
+}
+
+-(void)didClickRightButton
+{
+    [self.searchBar resignFirstResponder];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - searbar
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+    [self setFilterString:searchBar.text];
 }
 
 @end

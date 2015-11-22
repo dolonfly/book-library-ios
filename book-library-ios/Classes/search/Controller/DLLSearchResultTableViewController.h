@@ -11,5 +11,6 @@
 @interface DLLSearchResultTableViewController : UITableViewController
 
 @property (nonatomic,strong) NSString *filterString;
+@property (nonatomic,weak) UIViewController *controller;
 
 @end
