@@ -10,6 +10,7 @@
 		4E0554FC1BDCF8DD0034FA2A /* DLLScanBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0554FB1BDCF8DD0034FA2A /* DLLScanBookViewController.m */; };
 		4E0C2A861BC13E550035351A /* DLLBookDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C2A851BC13E550035351A /* DLLBookDetailViewController.m */; };
 		4E0C2A8F1BC140840035351A /* DLLBookDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C2A8E1BC140840035351A /* DLLBookDetailView.m */; };
+		4E17588F1C01E72A00096AA5 /* DLLLibraryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E17588E1C01E72A00096AA5 /* DLLLibraryInfo.m */; };
 		4E29D8111BD10B7D001F8CCB /* DLLHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E29D8101BD10B7D001F8CCB /* DLLHomeViewController.m */; };
 		4E29D8171BD10BA0001F8CCB /* DLLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E29D8141BD10BA0001F8CCB /* DLLNavigationController.m */; };
 		4E29D8181BD10BA0001F8CCB /* DLLTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E29D8161BD10BA0001F8CCB /* DLLTabBarViewController.m */; };
@@ -62,6 +63,8 @@
 		4E0C2A851BC13E550035351A /* DLLBookDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLBookDetailViewController.m; sourceTree = "<group>"; };
 		4E0C2A8D1BC140840035351A /* DLLBookDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLBookDetailView.h; sourceTree = "<group>"; };
 		4E0C2A8E1BC140840035351A /* DLLBookDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLBookDetailView.m; sourceTree = "<group>"; };
+		4E17588D1C01E72A00096AA5 /* DLLLibraryInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLLibraryInfo.h; sourceTree = "<group>"; };
+		4E17588E1C01E72A00096AA5 /* DLLLibraryInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLLibraryInfo.m; sourceTree = "<group>"; };
 		4E29D80F1BD10B7D001F8CCB /* DLLHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLHomeViewController.h; sourceTree = "<group>"; };
 		4E29D8101BD10B7D001F8CCB /* DLLHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLHomeViewController.m; sourceTree = "<group>"; };
 		4E29D8131BD10BA0001F8CCB /* DLLNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLNavigationController.h; sourceTree = "<group>"; };
@@ -455,6 +458,8 @@
 			children = (
 				4E6D93281BABCDAB00A2B0A7 /* DLLBook.h */,
 				4E6D93291BABCDAB00A2B0A7 /* DLLBook.m */,
+				4E17588D1C01E72A00096AA5 /* DLLLibraryInfo.h */,
+				4E17588E1C01E72A00096AA5 /* DLLLibraryInfo.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -724,6 +729,7 @@
 				4E29D8111BD10B7D001F8CCB /* DLLHomeViewController.m in Sources */,
 				4EA483581BF88F45004F6E98 /* DLLLoginViewController.m in Sources */,
 				4E74C9031BE8695000335EFF /* DLLTabBar.m in Sources */,
+				4E17588F1C01E72A00096AA5 /* DLLLibraryInfo.m in Sources */,
 				4E29D8171BD10BA0001F8CCB /* DLLNavigationController.m in Sources */,
 				4EB82D171BD736A300439542 /* DLLBookCoverView.m in Sources */,
 				4E5E98A51BA6F4D3002B3687 /* main.m in Sources */,

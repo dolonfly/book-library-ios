@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "DLLTabBarViewController.h"
+#import "DLLLibraryInfo.h"
 
 @interface AppDelegate ()
 
@@ -22,7 +23,7 @@
     DLLTabBarViewController *tabBarVc = [[DLLTabBarViewController alloc] init];
     self.window.rootViewController = tabBarVc;
     [self.window makeKeyAndVisible];
-    
+    [[DLLLibraryInfo new] requestInfoAndStore];
     return YES;
 }
 

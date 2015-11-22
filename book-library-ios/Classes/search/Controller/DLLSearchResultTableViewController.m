@@ -12,6 +12,7 @@
 #import "TTHttpTool.h"
 #import "DLLBook.h"
 #import <MJExtension.h>
+#import "DLLLibraryInfo.h"
 
 @interface DLLSearchResultTableViewController () <UISearchBarDelegate>
 
@@ -110,7 +111,7 @@
 - (void)initSearchController {
     UISearchBar *searchBar = [[UISearchBar alloc] init];
     self.searchBar = searchBar;
-    searchBar.placeholder = @"";
+    searchBar.placeholder = [@"在 " stringByAppendingString:[NSString stringWithFormat:@"%d 种书中搜索",[[DLLLibraryInfo new] bookCount]]];
     searchBar.delegate = self;
     self.navigationItem.titleView = searchBar;
     [searchBar becomeFirstResponder];
