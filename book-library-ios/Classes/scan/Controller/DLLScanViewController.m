@@ -86,26 +86,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    NSLog(@"view did appear");
-    
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    NSLog(@"view did disappear");
-    
-}
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
     [self startScanning];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
     self.navigationController.navigationBarHidden = NO;
     [self stopScanning];
 }

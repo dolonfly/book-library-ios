@@ -127,6 +127,7 @@ typedef void(^SelectedOption)();
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
     [self freshItem];
 }
 
