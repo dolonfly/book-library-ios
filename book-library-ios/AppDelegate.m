@@ -24,6 +24,9 @@
     self.window.rootViewController = tabBarVc;
     [self.window makeKeyAndVisible];
     [[DLLLibraryInfo new] requestInfoAndStore];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     return YES;
 }
 

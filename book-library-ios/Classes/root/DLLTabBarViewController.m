@@ -62,15 +62,18 @@
 {
     //1.首页控制器
     FAKIonIcons *homeIcon = [FAKIonIcons ios7HomeOutlineIconWithSize:30];
-    [homeIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
+    [homeIcon addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:145/255.0 green:145/255.0 blue:145/255.0 alpha:1]];
     UIImage *homeIconImage = [homeIcon imageWithSize:CGSizeMake(45, 45)];
+    FAKIonIcons *homeIcon_select = [FAKIonIcons ios7PlayOutlineIconWithSize:30];
+    [homeIcon_select addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:209/255.0 green:209/255.0 blue:209/255.0 alpha:1]];
+    UIImage *homeIconImage_select = [homeIcon_select imageWithSize:CGSizeMake(45, 45)];
     
     DLLHomeViewController *homeVc = [[DLLHomeViewController alloc] init];
-    [self setupChildViewController:homeVc withTitle:@"" withImage:homeIconImage withSelectedImage:homeIconImage];
+    [self setupChildViewController:homeVc withTitle:@"" withImage:homeIconImage withSelectedImage:homeIconImage_select];
     
     //2.我控制器
     FAKIonIcons *userIcon = [FAKIonIcons ios7PersonOutlineIconWithSize:30];
-    [userIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
+    [userIcon addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:145/255.0 green:145/255.0 blue:145/255.0 alpha:1]];
     UIImage *userIconImage = [userIcon imageWithSize:CGSizeMake(45, 45)];
     
     DLLUserCenterViewController *userCenterVc = [[DLLUserCenterViewController alloc] init];

@@ -35,6 +35,7 @@
     self = [super initWithFrame:frame];
     if (self) {
 //        self.backgroundColor = [UIColor grayColor];
+        self.backgroundColor = [UIColor colorWithRed:25/255.0 green:25/255.0 blue:25/255.0 alpha:1];
         
         UIButton *cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
         cameraButton.frame = CGRectMake(0, 0, 60, 60);
@@ -42,7 +43,7 @@
         
         
         FAKIonIcons *mailIcon = [FAKIonIcons ios7CameraOutlineIconWithSize:60];
-        [mailIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
+        [mailIcon addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:145/255.0 green:145/255.0 blue:145/255.0 alpha:1]];
         UIImage *iconImage = [mailIcon imageWithSize:CGSizeMake(60, 60)];
         [cameraButton setBackgroundImage:iconImage forState:UIControlStateNormal];
         
