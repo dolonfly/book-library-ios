@@ -14,7 +14,9 @@
 {
     _item = item;
     [self setTitle:item.title forState:UIControlStateNormal];
+
     [self setImage:item.image forState:UIControlStateNormal];
+    [self setImage:item.selectedImage forState:UIControlStateSelected];
 }
 
 @end

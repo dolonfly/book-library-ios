@@ -69,7 +69,9 @@
     UIImage *homeIconImage_select = [homeIcon_select imageWithSize:CGSizeMake(45, 45)];
     
     DLLHomeViewController *homeVc = [[DLLHomeViewController alloc] init];
-    [self setupChildViewController:homeVc withTitle:@"" withImage:homeIconImage withSelectedImage:homeIconImage_select];
+//    [self setupChildViewController:homeVc withTitle:@"" withImage:homeIconImage withSelectedImage:homeIconImage_select];
+
+    [self setupChildViewController:homeVc withTitle:@"" withImageName:@"tabbar_home" withSelectedImageName:@"tabbar_home_selected"];
     
     //2.我控制器
     FAKIonIcons *userIcon = [FAKIonIcons ios7PersonOutlineIconWithSize:30];

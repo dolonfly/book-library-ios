@@ -107,6 +107,10 @@
     if ([self.delegate respondsToSelector:@selector(tabBar:didSelectForm:to:)]) {
         [self.delegate tabBar:self didSelectForm:self.selectedBtn.tag to:sender.tag];
     }
+    
+    self.selectedBtn.selected = NO;
+    sender.selected = YES;
+    self.selectedBtn = sender;
 }
 
 -(void)cameraBtnClick
