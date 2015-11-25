@@ -61,25 +61,12 @@
 - (void)setupAllChildViewController
 {
     //1.首页控制器
-    FAKIonIcons *homeIcon = [FAKIonIcons ios7HomeOutlineIconWithSize:30];
-    [homeIcon addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:145/255.0 green:145/255.0 blue:145/255.0 alpha:1]];
-    UIImage *homeIconImage = [homeIcon imageWithSize:CGSizeMake(45, 45)];
-    FAKIonIcons *homeIcon_select = [FAKIonIcons ios7PlayOutlineIconWithSize:30];
-    [homeIcon_select addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:209/255.0 green:209/255.0 blue:209/255.0 alpha:1]];
-    UIImage *homeIconImage_select = [homeIcon_select imageWithSize:CGSizeMake(45, 45)];
-    
     DLLHomeViewController *homeVc = [[DLLHomeViewController alloc] init];
-//    [self setupChildViewController:homeVc withTitle:@"" withImage:homeIconImage withSelectedImage:homeIconImage_select];
-
-    [self setupChildViewController:homeVc withTitle:@"" withImageName:@"tabbar_home" withSelectedImageName:@"tabbar_home_selected"];
+    [self setupChildViewController:homeVc withTitle:@"首页" withImageName:@"Home" withSelectedImageName:@"Home_select"];
     
     //2.我控制器
-    FAKIonIcons *userIcon = [FAKIonIcons ios7PersonOutlineIconWithSize:30];
-    [userIcon addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:145/255.0 green:145/255.0 blue:145/255.0 alpha:1]];
-    UIImage *userIconImage = [userIcon imageWithSize:CGSizeMake(45, 45)];
-    
     DLLUserCenterViewController *userCenterVc = [[DLLUserCenterViewController alloc] init];
-    [self setupChildViewController:userCenterVc withTitle:@"" withImage:userIconImage withSelectedImage:userIconImage];
+    [self setupChildViewController:userCenterVc withTitle:@"我" withImageName:@"User" withSelectedImageName:@"User_select"];
 }
 
 - (void)setupChildViewController:(UIViewController *)childVc withTitle:(NSString *)title withImageName:(NSString *)imageName withSelectedImageName:(NSString *)selectImageName
@@ -99,22 +86,6 @@
     [self.dllTabBar addTabBarButtonWithTabBarItem:childVc.tabBarItem];
 }
 
-- (void)setupChildViewController:(UIViewController *)childVc withTitle:(NSString *)title withImage:(UIImage *)image withSelectedImage:(UIImage *)selectImage
-{
-    //设置tabBar的图片
-    childVc.tabBarItem.image = image;
-    
-    //设置tabBar选中时的图片
-    childVc.tabBarItem.selectedImage = selectImage;
-    
-    //设置Nav控制器并添加root控制器
-    DLLNavigationController *nav = [[DLLNavigationController alloc] initWithRootViewController:childVc];
-    //设置子控制器的标题
-    childVc.title = title;
-    
-    [self addChildViewController:nav];
-    [self.dllTabBar addTabBarButtonWithTabBarItem:childVc.tabBarItem];
-}
 
 #pragma mark - tabBar代理事件
 - (void)tabBar:(DLLTabBar *)tabBar didSelectForm:(NSInteger)form to:(NSInteger)to

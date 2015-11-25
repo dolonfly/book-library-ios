@@ -38,14 +38,10 @@
         self.backgroundColor = [UIColor colorWithRed:25/255.0 green:25/255.0 blue:25/255.0 alpha:1];
         
         UIButton *cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        cameraButton.frame = CGRectMake(0, 0, 60, 60);
+        cameraButton.frame = CGRectMake(0, 0, 30, 30);
 //        [cameraButton setBackgroundImage:[UIImage imageNamed:@"camera_takepicture"] forState:UIControlStateNormal];
         
-        
-        FAKIonIcons *mailIcon = [FAKIonIcons ios7CameraOutlineIconWithSize:60];
-        [mailIcon addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:145/255.0 green:145/255.0 blue:145/255.0 alpha:1]];
-        UIImage *iconImage = [mailIcon imageWithSize:CGSizeMake(60, 60)];
-        [cameraButton setBackgroundImage:iconImage forState:UIControlStateNormal];
+        [cameraButton setBackgroundImage:[UIImage imageNamed:@"Barcode"] forState:UIControlStateNormal];
         
 //        cameraButton.backgroundColor = [UIColor yellowColor];
 //        [cameraButton.imageView setImage:[UIImage imageNamed:@"camera_takePicture.png"]];
@@ -67,7 +63,7 @@
     CGFloat buttonH = self.frame.size.height;
     CGFloat buttonY = 0;
     
-    self.cameraButton.center = CGPointMake(self.frame.size.width * 0.5, self.frame.size.height * 0.5);
+    self.cameraButton.center = CGPointMake(self.frame.size.width * 0.5, self.frame.size.height - 60 / 2);
     
     for (int i = 0; i < self.tabbarBtnArray.count; i++) {
         //去除按钮
