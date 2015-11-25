@@ -77,8 +77,7 @@
     
     self.scanner.scanRect = self.viewOfInterest.frame;
     
-    
-//    [self startScanning];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -86,12 +85,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self startScanning];
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
-    [self startScanning];
+//    [self startScanning];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
