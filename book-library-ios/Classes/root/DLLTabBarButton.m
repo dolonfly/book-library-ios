@@ -26,7 +26,7 @@
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         self.titleLabel.font = [UIFont systemFontOfSize:10];
         [self setTitleColor:[[UIColor grayColor] colorWithAlphaComponent:0.5] forState:UIControlStateNormal];
-        [self setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+        [self setTitleColor:[UIColor colorWithRed:28/255.0 green:172/255.0 blue:233/255.0 alpha:1] forState:UIControlStateSelected];
     }
     return self;
 }

@@ -34,22 +34,34 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-//        self.backgroundColor = [UIColor grayColor];
-        self.backgroundColor = [UIColor colorWithRed:25/255.0 green:25/255.0 blue:25/255.0 alpha:1];
+        //        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor colorWithRed:249/255.0 green:249/255.0 blue:249/255.0 alpha:0.5];
         
-        UIButton *cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        cameraButton.frame = CGRectMake(0, 0, 30, 30);
-//        [cameraButton setBackgroundImage:[UIImage imageNamed:@"camera_takepicture"] forState:UIControlStateNormal];
+        //        UIButton *cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        //        cameraButton.frame = CGRectMake(0, 0, 60, 60);
+        ////        [cameraButton setBackgroundImage:[UIImage imageNamed:@"camera_takepicture"] forState:UIControlStateNormal];
+        //
+        //        [cameraButton setBackgroundImage:[UIImage imageNamed:@"Barcode"] forState:UIControlStateNormal];
+        //
+        ////        cameraButton.backgroundColor = [UIColor yellowColor];
+        ////        [cameraButton.imageView setImage:[UIImage imageNamed:@"camera_takePicture.png"]];
+        //        /** 为cammeraButton添加点击事件*/
+        //        [cameraButton addTarget:self action:@selector(cameraBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        //
+        //        [self addSubview:cameraButton];
+        //        self.cameraButton = cameraButton;
         
-        [cameraButton setBackgroundImage:[UIImage imageNamed:@"Barcode"] forState:UIControlStateNormal];
-        
-//        cameraButton.backgroundColor = [UIColor yellowColor];
-//        [cameraButton.imageView setImage:[UIImage imageNamed:@"camera_takePicture.png"]];
-        /** 为cammeraButton添加点击事件*/
-        [cameraButton addTarget:self action:@selector(cameraBtnClick) forControlEvents:UIControlEventTouchUpInside];
-        
-        [self addSubview:cameraButton];
-        self.cameraButton = cameraButton;
+        [self addSubview:({
+            UIButton * cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            cameraButton.layer.cornerRadius = 60 / 2;
+            cameraButton.layer.borderWidth = 5;
+            cameraButton.layer.borderColor = [UIColor colorWithRed:249/255.0 green:249/255.0 blue:249/255.0 alpha:0.9].CGColor;
+            cameraButton.backgroundColor = [UIColor colorWithRed:28/255.0 green:172/255.0 blue:233/255.0 alpha:0.9];
+            cameraButton.bounds = CGRectMake(0, 0, 60, 60);
+            [cameraButton setImage:[UIImage imageNamed:@"Barcode_Scanner_white"] forState:UIControlStateNormal];
+            [cameraButton addTarget:self action:@selector(cameraBtnClick) forControlEvents:UIControlEventTouchUpInside];
+            self.cameraButton = cameraButton;
+        })];
         
     }
     return self;

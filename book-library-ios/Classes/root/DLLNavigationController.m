@@ -18,6 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationBar.tintColor = [UIColor whiteColor];
+    [self.navigationItem.titleView setTintColor:[UIColor whiteColor]];
     
     for (UIView *view in self.navigationBar.subviews) {
         if ([view isKindOfClass:[UIImageView class]]) {
@@ -31,7 +32,7 @@
     }
     
     UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, -20, self.view.frame.size.width, 64)];
-    backView.backgroundColor = [UIColor colorWithRed:40/255.0 green:44/255.0 blue:51/255.0 alpha:1];
+    backView.backgroundColor = [UIColor colorWithRed:28/255.0 green:172/255.0 blue:233/255.0 alpha:0.9];
     [self.navigationBar addSubview:backView];
     [self.navigationBar sendSubviewToBack:backView];
     

@@ -40,6 +40,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    //    [UITabBar appearance].shadowImage = [[UIImage alloc] init];
+    //    [UITabBar appearance].backgroundImage = [[UIImage alloc] init];
     
     for (UIView *child in self.tabBar.subviews) {
         if ([child isKindOfClass:[UIControl class]]) {
