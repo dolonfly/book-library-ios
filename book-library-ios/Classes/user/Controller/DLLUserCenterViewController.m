@@ -186,12 +186,7 @@ typedef void(^SelectedOption)();
 -(void)clickOtherRow:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 1 && indexPath.row == 0) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入要买的书的13位isbn号" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-        UITextField *tf=[alert textFieldAtIndex:0];
-        tf.keyboardType = UIKeyboardTypeNumberPad;
-        tf.delegate = self;
-        [alert show];
+        [self showIsbnAlertWithText:nil title:@"请输入要买的书的13位isbn号"];
     }else if (indexPath.section == 1 && indexPath.row == 1) {
         DLLPreOrderTableViewController *preOrderVC = [[DLLPreOrderTableViewController alloc] init];
         [self.navigationController pushViewController:preOrderVC animated:YES];
@@ -204,8 +199,11 @@ typedef void(^SelectedOption)();
         UITextField *tf=[alertView textFieldAtIndex:0];
         NSString *isbn = tf.text;
         if (!(isbn.length == 13 && [isbn hasPrefix:@"978"])) {
-            alertView.message = @"请确认输入的isbn编码为合法编码";
+            [self showIsbnAlertWithText:isbn title:@"请输入正确的书的13位isbn号"];
         }
+    } else {
+        NSLog(@"buttonIndex:%ld",(long)buttonIndex);
+        [alertView resignFirstResponder];
     }
 
 }
@@ -235,6 +233,21 @@ typedef void(^SelectedOption)();
         DLLScanBookViewController *scanBookController = [[DLLScanBookViewController alloc] init];
         [self.navigationController pushViewController:scanBookController animated:true];
     }
+}
+
+#pragma mark -alertView
+-(void)showIsbnAlertWithText:(NSString *)text title:(NSString *)title
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    UITextField *isbnTF = [alert textFieldAtIndex:0];
+    [isbnTF setPlaceholder:@"图书isbn"];
+    if (text) {
+        isbnTF.text = text;
+    }
+    isbnTF.keyboardType = UIKeyboardTypeNumberPad;
+    isbnTF.delegate = self;
+    [alert show];
 }
 
 

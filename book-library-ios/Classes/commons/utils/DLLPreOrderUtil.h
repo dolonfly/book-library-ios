@@ -12,4 +12,6 @@
 
 + (void)getPreorderListOnSucess:(void (^)(id responseData))success failure:(void (^)(NSError *error))failure;
 
++ (void)addPreorderWithBookIsbn:(NSString *)isbn bookName:(NSString *)bookName success:(void (^)(id responseData))success failure:(void (^)(NSError *error))failure;
+
 @end
