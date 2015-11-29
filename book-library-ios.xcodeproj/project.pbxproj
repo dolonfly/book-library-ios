@@ -10,6 +10,8 @@
 		4E0554FC1BDCF8DD0034FA2A /* DLLScanBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0554FB1BDCF8DD0034FA2A /* DLLScanBookViewController.m */; };
 		4E0C2A861BC13E550035351A /* DLLBookDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C2A851BC13E550035351A /* DLLBookDetailViewController.m */; };
 		4E0C2A8F1BC140840035351A /* DLLBookDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C2A8E1BC140840035351A /* DLLBookDetailView.m */; };
+		4E0FF8871C0ACE7100971697 /* DLLPreOrderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0FF8861C0ACE7100971697 /* DLLPreOrderTableViewController.m */; };
+		4E0FF88B1C0ACF6F00971697 /* DLLPreOrderUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0FF88A1C0ACF6F00971697 /* DLLPreOrderUtil.m */; };
 		4E17588F1C01E72A00096AA5 /* DLLLibraryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E17588E1C01E72A00096AA5 /* DLLLibraryInfo.m */; };
 		4E29D8111BD10B7D001F8CCB /* DLLHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E29D8101BD10B7D001F8CCB /* DLLHomeViewController.m */; };
 		4E29D8171BD10BA0001F8CCB /* DLLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E29D8141BD10BA0001F8CCB /* DLLNavigationController.m */; };
@@ -63,6 +65,10 @@
 		4E0C2A851BC13E550035351A /* DLLBookDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLBookDetailViewController.m; sourceTree = "<group>"; };
 		4E0C2A8D1BC140840035351A /* DLLBookDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLBookDetailView.h; sourceTree = "<group>"; };
 		4E0C2A8E1BC140840035351A /* DLLBookDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLBookDetailView.m; sourceTree = "<group>"; };
+		4E0FF8851C0ACE7100971697 /* DLLPreOrderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLPreOrderTableViewController.h; sourceTree = "<group>"; };
+		4E0FF8861C0ACE7100971697 /* DLLPreOrderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLPreOrderTableViewController.m; sourceTree = "<group>"; };
+		4E0FF8891C0ACF6F00971697 /* DLLPreOrderUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLPreOrderUtil.h; sourceTree = "<group>"; };
+		4E0FF88A1C0ACF6F00971697 /* DLLPreOrderUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLPreOrderUtil.m; sourceTree = "<group>"; };
 		4E17588D1C01E72A00096AA5 /* DLLLibraryInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLLibraryInfo.h; sourceTree = "<group>"; };
 		4E17588E1C01E72A00096AA5 /* DLLLibraryInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLLibraryInfo.m; sourceTree = "<group>"; };
 		4E29D80F1BD10B7D001F8CCB /* DLLHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLHomeViewController.h; sourceTree = "<group>"; };
@@ -216,6 +222,32 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		4E0FF8831C0ACE5C00971697 /* PreOrder */ = {
+			isa = PBXGroup;
+			children = (
+				4E0FF8841C0ACE5C00971697 /* Controller */,
+			);
+			path = PreOrder;
+			sourceTree = "<group>";
+		};
+		4E0FF8841C0ACE5C00971697 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4E0FF8851C0ACE7100971697 /* DLLPreOrderTableViewController.h */,
+				4E0FF8861C0ACE7100971697 /* DLLPreOrderTableViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4E0FF8881C0ACF2000971697 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				4E0FF8891C0ACF6F00971697 /* DLLPreOrderUtil.h */,
+				4E0FF88A1C0ACF6F00971697 /* DLLPreOrderUtil.m */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
 		4E29D8121BD10BA0001F8CCB /* root */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +357,7 @@
 		4E6D931B1BABB5B700A2B0A7 /* commons */ = {
 			isa = PBXGroup;
 			children = (
+				4E0FF8881C0ACF2000971697 /* utils */,
 				4E7C63121BF0D2CF00E1341E /* NSDate+Helper */,
 				4E7B23F71BB3F11F00A42E62 /* tool */,
 			);
@@ -380,6 +413,7 @@
 		4EA07BE81BA9741400829E90 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4E0FF8831C0ACE5C00971697 /* PreOrder */,
 				4E7C60D11BEE2CCB00E1341E /* search */,
 				4E0554F81BDCF86C0034FA2A /* scan */,
 				4E29D8211BD5E7C3001F8CCB /* user */,
@@ -721,9 +755,11 @@
 				4E0554FC1BDCF8DD0034FA2A /* DLLScanBookViewController.m in Sources */,
 				4E5E98AB1BA6F4D3002B3687 /* book_library_ios.xcdatamodeld in Sources */,
 				4E7B23FA1BB3F13E00A42E62 /* TTHttpTool.m in Sources */,
+				4E0FF88B1C0ACF6F00971697 /* DLLPreOrderUtil.m in Sources */,
 				4E0C2A861BC13E550035351A /* DLLBookDetailViewController.m in Sources */,
 				4E6F78ED1BE5B3A9009172A4 /* DLLTextViewController.m in Sources */,
 				4EA483521BF870DA004F6E98 /* DLLSearchResultTableViewController.m in Sources */,
+				4E0FF8871C0ACE7100971697 /* DLLPreOrderTableViewController.m in Sources */,
 				4EA483551BF875F0004F6E98 /* DLLSearchResultTableViewCell.m in Sources */,
 				4E6D93261BABC81600A2B0A7 /* DLLBookInfoCollectionViewCell.m in Sources */,
 				4E29D8111BD10B7D001F8CCB /* DLLHomeViewController.m in Sources */,

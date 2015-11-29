@@ -12,10 +12,11 @@
 #import "DLLScanBookViewController.h"
 #import "DLLLoginViewController.h"
 #import "DLLUser.h"
+#import "DLLPreOrderTableViewController.h"
 
 typedef void(^SelectedOption)();
 
-@interface DLLUserCenterViewController () <UIAlertViewDelegate,UITextFieldDelegate>
+@interface DLLUserCenterViewController () <UIAlertViewDelegate,UITextFieldDelegate,UIActionSheetDelegate>
 @property (nonatomic, weak)UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataList;
 @property (nonatomic, weak)UIView *userInfoView;
@@ -166,9 +167,8 @@ typedef void(^SelectedOption)();
         [alert show];
         return;
     }
-    DLLScanBookViewController *scanBookController = [[DLLScanBookViewController alloc] init];
-    [self.navigationController pushViewController:scanBookController animated:true];
-    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"扫描录入",@"输入isbn录入", nil];
+    [actionSheet showInView:self.view];
 }
 
 - (void)loginBtnClick
@@ -192,6 +192,9 @@ typedef void(^SelectedOption)();
         tf.keyboardType = UIKeyboardTypeNumberPad;
         tf.delegate = self;
         [alert show];
+    }else if (indexPath.section == 1 && indexPath.row == 1) {
+        DLLPreOrderTableViewController *preOrderVC = [[DLLPreOrderTableViewController alloc] init];
+        [self.navigationController pushViewController:preOrderVC animated:YES];
     }
 }
 
@@ -225,6 +228,14 @@ typedef void(^SelectedOption)();
     return true;
 }
 
+#pragma mark - actionSheet
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        DLLScanBookViewController *scanBookController = [[DLLScanBookViewController alloc] init];
+        [self.navigationController pushViewController:scanBookController animated:true];
+    }
+}
 
 
 @end
