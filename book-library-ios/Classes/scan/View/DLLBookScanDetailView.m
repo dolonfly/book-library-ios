@@ -50,7 +50,7 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    self.bookImageView.frame = CGRectMake(0, 0, self.frame.size.width/3, self.frame.size.width / 3 / 0.625);
+    self.bookImageView.frame = CGRectMake(10, 0, self.frame.size.width/3 - 20, self.frame.size.width / 3 / 0.625);
     self.bookNameLabel.frame = CGRectMake(self.frame.size.width/3, 0, self.frame.size.width/3*2, 20);
     self.bookAuthorLabel.frame = CGRectMake(self.frame.size.width/3, 30, self.frame.size.width/3*2, 20);
     self.bookPublisherLabel.frame = CGRectMake(self.frame.size.width/3, 60, self.frame.size.width/3*2, 20);

@@ -13,6 +13,8 @@
 #import "DLLLoginViewController.h"
 #import "DLLUser.h"
 #import "DLLPreOrderTableViewController.h"
+#import "DLLPreOrderUtil.h"
+#import <MBProgressHUD.h>
 
 typedef void(^SelectedOption)();
 
@@ -50,7 +52,7 @@ typedef void(^SelectedOption)();
     [super viewDidLoad];
     [self setTitle:@"我的"];
     
-    self.navigationItem.rightBarButtonItem =    [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(loginBtnClick)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(loginBtnClick)];
     [self.navigationItem.rightBarButtonItem setTintColor:[UIColor grayColor]];
     
     
@@ -200,6 +202,30 @@ typedef void(^SelectedOption)();
         NSString *isbn = tf.text;
         if (!(isbn.length == 13 && [isbn hasPrefix:@"978"])) {
             [self showIsbnAlertWithText:isbn title:@"请输入正确的书的13位isbn号"];
+        }else{
+         [DLLPreOrderUtil addPreorderWithBookIsbn:isbn bookName:@"" success:^(id responseData) {
+             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+             
+             // Configure for text only and offset down
+             hud.mode = MBProgressHUDModeText;
+             hud.labelText = @"加入购买清单成功";
+             hud.margin = 10.f;
+             hud.removeFromSuperViewOnHide = YES;
+             
+             [hud hide:YES afterDelay:3];
+         } failure:^(NSError *error) {
+             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+             
+             // Configure for text only and offset down
+             hud.mode = MBProgressHUDModeText;
+             hud.labelText = @"加入购买清单失败";
+             hud.margin = 10.f;
+             hud.removeFromSuperViewOnHide = YES;
+             
+             [hud hide:YES afterDelay:3];
+             NSLog(@"%@",error);
+
+         }];
         }
     } else {
         NSLog(@"buttonIndex:%ld",(long)buttonIndex);
@@ -229,10 +255,15 @@ typedef void(^SelectedOption)();
 #pragma mark - actionSheet
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    DLLScanBookViewController *scanBookController = [[DLLScanBookViewController alloc] init];
     if (buttonIndex == 0) {
-        DLLScanBookViewController *scanBookController = [[DLLScanBookViewController alloc] init];
+        scanBookController.isIsbnInput = NO;
+        [self.navigationController pushViewController:scanBookController animated:true];
+    }else if (buttonIndex == 1){
+        scanBookController.isIsbnInput = YES;
         [self.navigationController pushViewController:scanBookController animated:true];
     }
+    
 }
 
 #pragma mark -alertView

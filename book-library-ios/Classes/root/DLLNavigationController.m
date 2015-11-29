@@ -17,24 +17,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationBar.tintColor = [UIColor whiteColor];
-    [self.navigationItem.titleView setTintColor:[UIColor whiteColor]];
+//    self.navigationBar.tintColor = [UIColor whiteColor];
+//    [self.navigationItem.titleView setTintColor:[UIColor whiteColor]];
     
-    for (UIView *view in self.navigationBar.subviews) {
-        if ([view isKindOfClass:[UIImageView class]]) {
-            view.hidden = YES;
-        }
-    }
-    
-    // 使自定返回按钮带有nav左划pop手势
-    if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
-        self.interactivePopGestureRecognizer.delegate = self;
-    }
-    
-    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, -20, self.view.frame.size.width, 64)];
-    backView.backgroundColor = [UIColor colorWithRed:28/255.0 green:172/255.0 blue:233/255.0 alpha:0.9];
-    [self.navigationBar addSubview:backView];
-    [self.navigationBar sendSubviewToBack:backView];
+//    for (UIView *view in self.navigationBar.subviews) {
+//        if ([view isKindOfClass:[UIImageView class]]) {
+//            view.hidden = YES;
+//        }
+//    }
+//    
+//    // 使自定返回按钮带有nav左划pop手势
+//    if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+//        self.interactivePopGestureRecognizer.delegate = self;
+//    }
+//    
+//    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, -20, self.view.frame.size.width, 64)];
+//    backView.backgroundColor = [UIColor colorWithRed:28/255.0 green:172/255.0 blue:233/255.0 alpha:0.9];
+//    [self.navigationBar addSubview:backView];
+//    [self.navigationBar sendSubviewToBack:backView];
     
 }
 

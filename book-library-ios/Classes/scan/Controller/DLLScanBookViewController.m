@@ -15,8 +15,9 @@
 #import <UIImageView+WebCache.h>
 #import "DLLBookScanDetailView.h"
 #import <SWFrameButton.h>
+#import "DLLBookUril.h"
 
-@interface DLLScanBookViewController ()
+@interface DLLScanBookViewController ()<UITextFieldDelegate>
 
 @property (nonatomic, weak) UIView *previewView;
 
@@ -32,6 +33,10 @@
 
 @property (nonatomic, assign) bool canClickSaveBtn;
 
+
+@property(nonatomic,weak)UITextField *isbnInputLabel;
+@property(nonatomic,weak)UIView *isbnInputView;
+
 - (void)requestBookByIsbn:(NSString *)bookIsbn;
 
 @end
@@ -41,6 +46,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"isbn录入" style:UIBarButtonItemStylePlain target:self action:@selector(switchInputType)];
     
     UIView *previewView = [[UIView alloc] init];
     self.previewView = previewView;
@@ -55,7 +62,7 @@
     CGFloat btnWidth = self.view.frame.size.width / 2 - 50;
     
     SWFrameButton *saveBookBtn = [[SWFrameButton alloc] init];
-    saveBookBtn.frame = CGRectMake(25, self.view.frame.size.height - 120, btnWidth, 40);
+    saveBookBtn.frame = CGRectMake(25, self.view.frame.size.height - 60, btnWidth, 40);
     [saveBookBtn setTitle:@"入库" forState:UIControlStateNormal];
     [saveBookBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.view addSubview:saveBookBtn];
@@ -70,7 +77,7 @@
     SWFrameButton *cancelBtn = [[SWFrameButton alloc] init];
     self.cancelBtn = cancelBtn;
     [self.view addSubview:cancelBtn];
-    cancelBtn.frame = CGRectMake(self.view.frame.size.width/2 + 25, self.view.frame.size.height - 120, btnWidth, 40);
+    cancelBtn.frame = CGRectMake(self.view.frame.size.width/2 + 25, self.view.frame.size.height - 60, btnWidth, 40);
     [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
     [cancelBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     cancelBtn.tag = 1;
@@ -79,9 +86,9 @@
     [cancelBtn.layer setMasksToBounds:YES];
     [cancelBtn.layer setCornerRadius:10.0];
     
+    [self switchInputTypeWithIsIsbnInput:self.isIsbnInput];
     self.canClickSaveBtn = false;
-    [self startScanning];
-  
+    
     
 }
 
@@ -227,14 +234,52 @@
 }
 
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - navigation item
+-(void)switchInputType
+{
+    self.isIsbnInput = !self.isIsbnInput;
+    [self switchInputTypeWithIsIsbnInput:self.isIsbnInput];
 }
-*/
+-(void)switchInputTypeWithIsIsbnInput:(bool) isIsbnInput
+{
+    if (isIsbnInput) {
+        self.navigationItem.rightBarButtonItem.title = @"扫描输入";
+        [self stopScanning];
+        [self loadIsbnInputView];
+    }else{
+        self.navigationItem.rightBarButtonItem.title = @"isbn输入";
+        [self.isbnInputView removeFromSuperview];
+        [self startScanning];
+    }
+    
+}
+
+#pragma mark -isbnInput
+-(void)loadIsbnInputView
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 250)];
+    view.backgroundColor = [UIColor whiteColor];
+    UITextField *isbnInputLabel = [[UITextField alloc] initWithFrame:CGRectMake(20, 120, view.frame.size.width - 40, 30)];
+    [isbnInputLabel setBorderStyle:UITextBorderStyleRoundedRect];
+    isbnInputLabel.keyboardType = UIKeyboardTypeNumberPad;
+    isbnInputLabel.returnKeyType = UIReturnKeySearch;
+    isbnInputLabel.placeholder = @"13位isbn";
+    [isbnInputLabel addTarget:self action:@selector(nextOnKeyboard:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [view addSubview:isbnInputLabel];
+    self.isbnInputView = view;
+    self.isbnInputLabel = isbnInputLabel;
+    [self.view addSubview:view];
+}
+-(void)nextOnKeyboard:(id *)sender
+{
+    NSString *isbn = self.isbnInputLabel.text;
+    [DLLBookUril getWithIsbn:isbn success:^(id responseData) {
+        self.scanBookDetailView.dllBook = responseData;
+        self.canClickSaveBtn = true;
+    } failure:^(NSError *error) {
+        [self showText:[NSString stringWithFormat:@"isbn输入错误或者找不到：%@",isbn]];
+        NSLog(@"%@",error);
+    }];
+}
 
 @end

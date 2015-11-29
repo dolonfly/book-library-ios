@@ -28,6 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"预购清单";
     // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
     self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
     [self.tableView.header beginRefreshing];
@@ -52,11 +53,10 @@
     static NSString *CellWithIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellWithIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellWithIdentifier];
     }
     NSDictionary *order = self.preOrders[indexPath.row];
-    cell.textLabel.text = order[@"book"][@"bookName"];
-    cell.detailTextLabel.text = order[@"book"][@"isbn"];
+    cell.textLabel.text = order[@"book"][@"isbn"];
     return cell;
     
 }
@@ -68,11 +68,11 @@
         NSLog(@"%@",datas);
         NSLog(@"%lu",(unsigned long)datas.count);
         self.preOrders = datas;
-        [self.tableView.header endRefreshing];
+
         [self.tableView reloadData];
 
     } failure:^(NSError *error) {
-        
+        [self.tableView.header endRefreshing];        
     }];
 }
 

@@ -14,14 +14,15 @@
 
 + (void)getPreorderListOnSucess:(void (^)(id))success failure:(void (^)(NSError *))failure
 {
-    [TTHttpTool getWithURL:@"http://172.16.1.13:3000/api/v1/preOrder" parameters:nil success:success failure:failure];
+    [TTHttpTool getWithURL:@"http://bl.itfengzi.com/api/v1/preOrder" parameters:nil success:success failure:failure];
 }
 
 + (void)addPreorderWithBookIsbn:(NSString *)isbn bookName:(NSString *)bookName success:(void (^)(id))success failure:(void (^)(NSError *))failure
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [[AFJSONRequestSerializer alloc] init];
     NSDictionary *parameters = @{@"book":@{@"isbn":isbn,@"bookName":bookName}};
-    [manager POST:@"http://172.16.1.13:3000/api/v1/preOrder" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:@"http://bl.itfengzi.com/api/v1/preOrder" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (success) {
             return success(responseObject);
         }
@@ -30,6 +31,8 @@
             return failure(error);
         }
     }];
+    
+    
 }
 
 @end

@@ -10,4 +10,6 @@
 
 @interface DLLScanBookViewController : UIViewController
 
+@property(nonatomic,assign)bool isIsbnInput;
+
 @end
