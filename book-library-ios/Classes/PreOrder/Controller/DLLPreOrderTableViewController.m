@@ -68,7 +68,7 @@
         NSLog(@"%@",datas);
         NSLog(@"%lu",(unsigned long)datas.count);
         self.preOrders = datas;
-
+        [self.tableView.header endRefreshing];
         [self.tableView reloadData];
 
     } failure:^(NSError *error) {
