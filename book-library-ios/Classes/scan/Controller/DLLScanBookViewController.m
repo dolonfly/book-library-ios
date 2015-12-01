@@ -275,6 +275,7 @@
     NSString *isbn = self.isbnInputLabel.text;
     [DLLBookUril getWithIsbn:isbn success:^(id responseData) {
         self.scanBookDetailView.dllBook = responseData;
+        self.book = responseData;
         self.canClickSaveBtn = true;
     } failure:^(NSError *error) {
         [self showText:[NSString stringWithFormat:@"isbn输入错误或者找不到：%@",isbn]];
