@@ -22,11 +22,23 @@
             DLLBook *book = [DLLBook objectWithKeyValues:responseData[@"data"]];
             return success(book);
         }
-        return failure(@"err");
+        return failure([[NSError init] initWithString:@"err"]);
     } failure:^(NSError *error) {
         return failure(error);
     }];
 }
 
++(void)listBooksWithCursor:(NSString *)cursor success:(void (^)(id))success failure:(void (^)(NSError *))failure
+{
+    if (cursor==nil || cursor == NULL || [cursor isEqualToString:@"0"]) {
+        cursor = @"";
+    }
+    NSString *url = [@"http://bl.itfengzi.com/api/v1/books?cursor=" stringByAppendingString:cursor];
+    [TTHttpTool getWithURL:url parameters:nil success:^(id responseData) {
+        return success(responseData);
+    } failure:^(NSError *error) {
+        return failure(error);
+    }];
+}
 
 @end

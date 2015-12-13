@@ -15,15 +15,18 @@
 #import <MJExtension.h>
 #import <MJRefresh.h>
 #import "DLLSearchResultTableViewController.h"
+#import "DLLBookUtil.h"
 
 
 @interface DLLHomeViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UISearchControllerDelegate,UISearchResultsUpdating,UISearchControllerDelegate,UISearchBarDelegate>
 
 @property (nonatomic, weak) UICollectionView *collectionView;
-@property (nonatomic, strong) NSArray *books;
+@property (nonatomic, strong) NSMutableArray *books;
 
 //搜索
 @property (strong, nonatomic)  UISearchController *searchController;
+
+@property(nonatomic,assign) long cursor;
 
 @end
 
@@ -32,7 +35,7 @@
 - (NSArray *)books
 {
     if (!_books) {
-        _books = [NSArray array];
+        _books = [NSMutableArray array];
     }
     return _books;
 }
@@ -70,6 +73,9 @@
     // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
     self.collectionView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
     [self.collectionView.header beginRefreshing];
+    
+    // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadMoreData方法）
+    self.collectionView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
 
 
 }
@@ -111,20 +117,38 @@
 
 - (void)loadNewData
 {
-    [TTHttpTool getWithURL:@"http://121.40.253.109:3002/api/v1/book/news" parameters:NULL success:^(id responseData) {
-        int code = [responseData[@"code"] intValue];
-        if (code == 200) {
-            NSArray *datas = responseData[@"data"];
-            NSArray *books = [DLLBook objectArrayWithKeyValuesArray:datas];
-            _books = books;
-
-                    }
-        [self.collectionView.header endRefreshing];
-        [self.collectionView reloadData];
+    [DLLBookUtil listBooksWithCursor:nil success:^(id responseData) {
+        NSArray *books = [DLLBook objectArrayWithKeyValuesArray:responseData[@"data"]];
+        self.cursor = [((NSString *)responseData[@"cursor"]) longLongValue];
+        if (books.count>0) {
+            [self.books addObjectsFromArray:books];
+            [self.collectionView.header endRefreshing];
+            [self.collectionView reloadData];
+        }else{
+            [self.collectionView.header endRefreshing];
+        }
     } failure:^(NSError *error) {
-        NSLog(@"%@",error);
+        [self.collectionView.footer endRefreshing];
     }];
 
+}
+
+- (void)loadMoreData
+{
+    long cursor = self.cursor;
+    [DLLBookUtil listBooksWithCursor:[NSString stringWithFormat:@"%ld",cursor] success:^(id responseData) {
+        NSArray *books = [DLLBook objectArrayWithKeyValuesArray:responseData[@"data"]];
+        self.cursor = [((NSString *)responseData[@"cursor"]) longLongValue];
+        if (books.count>0) {
+            [self.books addObjectsFromArray:books];
+            [self.collectionView.footer endRefreshing];
+            [self.collectionView reloadData];
+        }else{
+            [self.collectionView.footer endRefreshingWithNoMoreData];
+        }
+    } failure:^(NSError *error) {
+        [self.collectionView.footer endRefreshing];
+    }];
 }
 
 #pragma mark search

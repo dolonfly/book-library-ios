@@ -12,4 +12,6 @@
 
 +(void)getWithIsbn:(NSString *)isbn success:(void (^)(id responseData))success failure:(void (^)(NSError *error))failure;
 
++(void)listBooksWithCursor:(NSString *)cursor success:(void (^)(id responseData))success failure:(void (^)(NSError *error))failure;
+
 @end
