@@ -12,8 +12,8 @@
 		4E0C2A8F1BC140840035351A /* DLLBookDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C2A8E1BC140840035351A /* DLLBookDetailView.m */; };
 		4E0FF8871C0ACE7100971697 /* DLLPreOrderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0FF8861C0ACE7100971697 /* DLLPreOrderTableViewController.m */; };
 		4E0FF88B1C0ACF6F00971697 /* DLLPreOrderUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0FF88A1C0ACF6F00971697 /* DLLPreOrderUtil.m */; };
-		4E0FF8901C0AFF9000971697 /* DLLBookUril.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0FF88F1C0AFF9000971697 /* DLLBookUril.m */; };
 		4E17588F1C01E72A00096AA5 /* DLLLibraryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E17588E1C01E72A00096AA5 /* DLLLibraryInfo.m */; };
+		4E1994401C1D874A004BC4E7 /* DLLBookUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E19943F1C1D874A004BC4E7 /* DLLBookUtil.m */; };
 		4E29D8111BD10B7D001F8CCB /* DLLHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E29D8101BD10B7D001F8CCB /* DLLHomeViewController.m */; };
 		4E29D8171BD10BA0001F8CCB /* DLLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E29D8141BD10BA0001F8CCB /* DLLNavigationController.m */; };
 		4E29D8181BD10BA0001F8CCB /* DLLTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E29D8161BD10BA0001F8CCB /* DLLTabBarViewController.m */; };
@@ -70,10 +70,10 @@
 		4E0FF8861C0ACE7100971697 /* DLLPreOrderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLPreOrderTableViewController.m; sourceTree = "<group>"; };
 		4E0FF8891C0ACF6F00971697 /* DLLPreOrderUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLPreOrderUtil.h; sourceTree = "<group>"; };
 		4E0FF88A1C0ACF6F00971697 /* DLLPreOrderUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLPreOrderUtil.m; sourceTree = "<group>"; };
-		4E0FF88E1C0AFF9000971697 /* DLLBookUril.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLBookUril.h; sourceTree = "<group>"; };
-		4E0FF88F1C0AFF9000971697 /* DLLBookUril.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLBookUril.m; sourceTree = "<group>"; };
 		4E17588D1C01E72A00096AA5 /* DLLLibraryInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLLibraryInfo.h; sourceTree = "<group>"; };
 		4E17588E1C01E72A00096AA5 /* DLLLibraryInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLLibraryInfo.m; sourceTree = "<group>"; };
+		4E19943E1C1D874A004BC4E7 /* DLLBookUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLBookUtil.h; sourceTree = "<group>"; };
+		4E19943F1C1D874A004BC4E7 /* DLLBookUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLBookUtil.m; sourceTree = "<group>"; };
 		4E29D80F1BD10B7D001F8CCB /* DLLHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLHomeViewController.h; sourceTree = "<group>"; };
 		4E29D8101BD10B7D001F8CCB /* DLLHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLHomeViewController.m; sourceTree = "<group>"; };
 		4E29D8131BD10BA0001F8CCB /* DLLNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLNavigationController.h; sourceTree = "<group>"; };
@@ -247,8 +247,8 @@
 			children = (
 				4E0FF8891C0ACF6F00971697 /* DLLPreOrderUtil.h */,
 				4E0FF88A1C0ACF6F00971697 /* DLLPreOrderUtil.m */,
-				4E0FF88E1C0AFF9000971697 /* DLLBookUril.h */,
-				4E0FF88F1C0AFF9000971697 /* DLLBookUril.m */,
+				4E19943E1C1D874A004BC4E7 /* DLLBookUtil.h */,
+				4E19943F1C1D874A004BC4E7 /* DLLBookUtil.m */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -745,6 +745,7 @@
 			files = (
 				4EB82D101BD61ABA00439542 /* DLLUserInfoView.m in Sources */,
 				4EA07C0B1BA9816A00829E90 /* DLLListPageViewController.m in Sources */,
+				4E1994401C1D874A004BC4E7 /* DLLBookUtil.m in Sources */,
 				4E0C2A8F1BC140840035351A /* DLLBookDetailView.m in Sources */,
 				4EB82D141BD61B4600439542 /* DLLUser.m in Sources */,
 				4EF2DDE31BDF267B008D2449 /* DLLBookScanDetailView.m in Sources */,
@@ -754,7 +755,6 @@
 				4E29D8181BD10BA0001F8CCB /* DLLTabBarViewController.m in Sources */,
 				4E74C9061BE86CAA00335EFF /* DLLTabBarButton.m in Sources */,
 				4E6D932A1BABCDAB00A2B0A7 /* DLLBook.m in Sources */,
-				4E0FF8901C0AFF9000971697 /* DLLBookUril.m in Sources */,
 				4E6F78F01BE5FF67009172A4 /* DLLScanViewController.m in Sources */,
 				4E7C63161BF0D2CF00E1341E /* NSDate+Helper.m in Sources */,
 				4EA4834F1BF84317004F6E98 /* DLLBookInfoTableViewCell.m in Sources */,

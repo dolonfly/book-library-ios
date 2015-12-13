@@ -1,17 +1,17 @@
 //
-//  DLLBookUril.m
+//  DLLBookUtil.m
 //  book-library-ios
 //
-//  Created by dll on 15/11/29.
+//  Created by dll on 15/12/13.
 //  Copyright © 2015年 dll. All rights reserved.
 //
 
-#import "DLLBookUril.h"
+#import "DLLBookUtil.h"
 #import "TTHttpTool.h"
 #import "DLLBook.h"
 #import <MJExtension.h>
 
-@implementation DLLBookUril
+@implementation DLLBookUtil
 
 +(void)getWithIsbn:(NSString *)isbn success:(void (^)(id))success failure:(void (^)(NSError *))failure
 {

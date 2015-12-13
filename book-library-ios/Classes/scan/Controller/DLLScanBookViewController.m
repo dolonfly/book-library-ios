@@ -15,7 +15,7 @@
 #import <UIImageView+WebCache.h>
 #import "DLLBookScanDetailView.h"
 #import <SWFrameButton.h>
-#import "DLLBookUril.h"
+#import "DLLBookUtil.h"
 
 @interface DLLScanBookViewController ()<UITextFieldDelegate>
 
@@ -273,7 +273,7 @@
 -(void)nextOnKeyboard:(id *)sender
 {
     NSString *isbn = self.isbnInputLabel.text;
-    [DLLBookUril getWithIsbn:isbn success:^(id responseData) {
+    [DLLBookUtil getWithIsbn:isbn success:^(id responseData) {
         self.scanBookDetailView.dllBook = responseData;
         self.book = responseData;
         self.canClickSaveBtn = true;
