@@ -26,7 +26,7 @@
 //        imageView.frame = CGRectMake(0, 0, 100, 100);
         self.imgView = imageView;
         [self addSubview:imageView];
-        [imageView sd_setImageWithURL:[NSURL URLWithString:@"http://blog.gamecd.com.cn/content/images/2015/09/IMG_0184.JPG"]];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:@"http://img3.duitang.com/uploads/item/201412/07/20141207151658_SMt4n.gif"]];
 //        [self setImage:[UIImage imageNamed:@"miao.jpg"]];
         [self setImageToBlur:[UIImage imageNamed:@"miao.jpg"] blurRadius:kLBBlurredImageDefaultBlurRadius completionBlock:^{
             

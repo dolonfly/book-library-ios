@@ -22,14 +22,19 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
+        self.contentView.backgroundColor = [UIColor whiteColor];
         UIImageView *imageView = [[UIImageView alloc] init];
-        imageView.backgroundColor = [UIColor whiteColor];
-        imageView.contentMode = UIViewContentModeScaleToFill;
+        imageView.contentMode = UIViewContentModeCenter;
+//        imageView.backgroundColor = [UIColor lightGrayColor];
         [self.contentView addSubview:imageView];
         self.imgView = imageView;
         self.imgView.contentMode = UIViewContentModeScaleToFill;
         
         UILabel *label = [[UILabel alloc] init];
+        label.font = [UIFont systemFontOfSize:11];
+        label.textColor = [UIColor grayColor];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.numberOfLines = 2;
         [self.contentView addSubview:label];
         self.label = label;
     }
@@ -40,28 +45,28 @@
 {
     [super layoutSubviews];
     
-    self.imgView.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height - 20);
-    self.label.frame = CGRectMake(0, self.bounds.size.height-15, self.bounds.size.width, 10);
-    self.label.font = [UIFont systemFontOfSize:12 weight:0.5];
-    [self.label setTextAlignment:NSTextAlignmentCenter];
-    self.label.textColor = [UIColor grayColor];
+    CGFloat labelH = 30;
+    self.imgView.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height - labelH);
+    self.label.frame = CGRectMake(0, self.bounds.size.height - labelH, self.bounds.size.width, labelH);
 }
 
 -(void)setDllBook:(DLLBook *)dllBook
 {
     _dllBook = dllBook;
     
+    [self.imgView sd_setImageWithURL:[NSURL URLWithString:dllBook.image] placeholderImage:[UIImage imageNamed:@"image_placeholder"]];
     
-    SDWebImageManager *imageManager = [SDWebImageManager sharedManager];
-    imageManager.delegate = self;
-    [imageManager downloadImageWithURL:[NSURL URLWithString:dllBook.image] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-        
-    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-        if (finished) {
-            self.imgView.image = image;
-        }
-    }];
-        
+    
+//    SDWebImageManager *imageManager = [SDWebImageManager sharedManager];
+//    imageManager.delegate = self;
+//    [imageManager downloadImageWithURL:[NSURL URLWithString:dllBook.image] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+//        
+//    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+//        if (finished) {
+//            self.imgView.image = image;
+//        }
+//    }];
+    
     self.label.text = dllBook.title;
     
 }

@@ -45,16 +45,19 @@
     [super viewDidLoad];
     [self setTitle:@"首页"];
     
+    
+    
     UIBarButtonItem *searchItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(selectSearchItem:)];
     self.navigationItem.rightBarButtonItem = searchItem;
     
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     flowLayout.minimumInteritemSpacing = 0;
-    flowLayout.minimumLineSpacing = 10;
-    CGFloat width = self.view.bounds.size.width / 3 - 10;
+//    flowLayout.minimumLineSpacing = 15;
+    CGFloat padding = 20;
+    CGFloat width = (self.view.bounds.size.width - padding * 2) / 2 - 10;
     CGFloat height = width / 0.625 ;//为什么是0.625倍？仿照kindle 的尺寸
     flowLayout.itemSize = CGSizeMake(width, height);
-    flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 0, 10);
+    flowLayout.sectionInset = UIEdgeInsetsMake(10, padding, 10, padding);
    
     
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
@@ -63,7 +66,7 @@
     collectionView.frame = self.view.bounds;
     [collectionView registerClass:[DLLBookInfoCollectionViewCell class] forCellWithReuseIdentifier:@"bookInfoCell"];
 //    collectionView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
-    collectionView.backgroundColor = [UIColor whiteColor];
+    collectionView.backgroundColor = [UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1];
     [self.view addSubview:collectionView];
     self.collectionView = collectionView;
     
